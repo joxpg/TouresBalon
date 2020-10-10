@@ -94,15 +94,15 @@ Se lleva a cabo la generación del Arbol de atributos de utilidad respecto de lo
 
 
 ![alt text][fig3]
-Figura 3: Interoperabilidad
+<br/>Figura 3: Interoperabilidad<br/>
 ![alt text][fig4]
-Figura 4: Adaptabilidad
+<br/>Figura 4: Adaptabilidad<br/>
 ![alt text][fig5]
-Figura 5: Modificabilidad
+<br/>Figura 5: Modificabilidad<br/>
 ![alt text][fig6]
-Figura 6: Mantenibilidad
+<br/>Figura 6: Mantenibilidad<br/>
 ![alt text][fig7]
-Figura 7: Eficiencia de Rendimiento
+<br/>Figura 7: Eficiencia de Rendimiento<br/>
 
 
 ## 5. Artefactos <a name="artefactos"></a>
