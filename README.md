@@ -48,12 +48,24 @@ PATRÓN NUCLEAR:
 
 MICROSERVICIOS: Como se definió anteriormente, este patrón permitirá que todo el desarrollo se rija frente a la formación del proceso a través de la composición de los servicios propuestos de este comunicandose de diferentes maneras, dandole valor al negocio.
 
-|    Patrón   | descripción | Representación |
-|:-----------:|:-----------:|:--------------:|
-| Api-Gateway |             |                |
-|    Broker   |             |                |
-|   Pub-Sub   |             |                |
+|    Patrón   |                                                                                                                                                       descripción                                                                                                                                                      |                           Representación                          |
+|:-----------:|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------:|
+| Api-Gateway | Dado a la definición del primer patrón, es necesario una puerta de enlace hacia las interfaces de consumo, para acceder a este servicio. Para su aplicación se puede hacer uso de herramientas que cuentan frameworks tales como Spring Cloud Gateway, AWS Api Gateway, entre otros.                                   | <img src="https://microservices.io/i/apigateway.jpg" width="600"> |
+|    Broker   | Es un patrón de arquitectura que se utiliza en sistemas de software distribuidos con servicios desacoplados que interactúan por invocaciones de servicios remotos. Será el responsable de coordinar la comunicación, tanto de enviar/reenviar las peticiones, así como de transmitir los resultados y las excepciones. |                                                                   |
+|   Pub-Sub   |                                                                                                                                                                                                                                                                                                                        |                                                                   |
 
+
+### Herramientas
+Para la implementación de Arquitectura se implementarán las siguientes herramientas.
+
+| Herramienta  | Descripción                                                                                                                                                                           |
+|--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| OpenAPI         | Para el desarrollo de los contratos, este ofrece una herramienta de código abierto para su diseño.                                                                                    |
+| Spring Boot  | El desarrollo de apis con servicios REST no lo permite hacer de manera sencilla mediante sus anotaciones. Además de ello permite hacer uso de clientes REST y SOAP.                   |
+| Kafka        | Debido a que su orientación mediante patrón de Publicador Suscriptor es una gran herramienta para actuar como coreógrafo del proceso.                                                 |
+| Zuul         | Con el fin de modelar el api-gateway, este ofrece grandes herramientas para ser la puerta de enlace para las interfaces.                                                              |
+| Spring Cloud | Debido a que se debe interactuar entre varios componentes este framework ofrece funcionalidades para ambientes distribuidos como clientes de consumo sencillos hacia otros servicios. |
+| Eureka       | Para conocer los servicios de los proveedores, este actúa como el encargado de registrar los microservicios / servicios que compone el proceso.                                       |
 
 
 
