@@ -80,7 +80,10 @@ La vista estructural se presenta por medio del diagrama de componentes. En este 
 
 Figura 2: Diagrama de componentes
 
-Contamos con los componentes de cada uno de los canales que dispone el banco para que sus clientes realicen el pago de servicios. Cada una de los canales se conecta con su propio api gateway, las peticiones que ingresan por los api gateway y que llevarán el código de factura se conectan a una interface (tópico) expuesta por el orquestador y a la cual está conectado y escuchando el servicio de gestión de convenios, este servicio se encarga de aplicar la lógica necesaria (basada en el modelo de datos de la figura 3) para determinar el convenio a la que pertenece esta factura.
+La arquitectura candidata pretende aportar a Toures Balón independencia en la gestión, reducir el acoplamiento en las operaciones que realiza su sistema, y tolerancia a fallos entre otros, por ello presentamos proveedores que se comunican a través de la capa anticorrupción por un adaptador cuya tarea con las interfaces de proveedor, será la de traducir los datos que provienen de terceros reduciendo la posibilidad de fallos por el empleo de diferentes tecnologias, de esta forma ser enviados por intermedio de los servicios hacia el sistema de colas permanentes, esta lleva a cabo la composición de servicios para registrar proveedores, consultar reservas, realizar búsquedas y completar transacciones de pago y demás acciones requeridas por el negocio.<br/>
+
+Estas últimas operaciones seran procesadas de cara al proveedor con ayuda de la capa Aticorrupcion Outbound quien con la implementación de adaptadores de servicios registran los pagos en los proveedores. Es importante aclarar que se ha implementado un registro de servicios donde puedan persistir los end points de proveedores con los cuales el sistema se comunicará, asi mismo se cuenta con un api gateway como enlace hacia el interior de Toures Balón. 
+
 
 
 ## 6. Referencias <a name="referencias"></a>
