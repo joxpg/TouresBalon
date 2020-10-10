@@ -1,0 +1,212 @@
+swagger: "2.0"
+info:
+  description: The notification API allows sending transaction email and SMS notifications
+  version: "1.0.0"
+  title: Notifications API
+host: nostifications.pica.javeriana.edu.co
+basePath: /
+tags:
+- name: notifications
+  description: "Transactional email and SMS notifications"
+schemes:
+- https
+- http
+securityDefinitions:
+  api-key:
+      type: apiKey
+      name: x-api-key
+      in: header
+security:
+  - api-key: []
+paths:
+  /SendEmail:
+    post:
+      tags:
+      - Send email notification
+      summary: "Send an email notification to recipient with data, template, attachment(s)"
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+        - name: body
+          in: body
+          description: "Email notification details"
+          required: true
+          schema:
+            $ref: '#/definitions/PostSendEmail'
+      responses:
+        200:
+          description: "Email notification created"
+          schema:
+            $ref: "#/definitions/NotificationApiResponse"
+        400:
+          description: "Unexpected data structure"
+          schema:
+            $ref: "#/definitions/GeneralError"
+        401:
+          description: "Unauthorised"
+          schema:
+            $ref: "#/definitions/AuthError"
+
+  /SendSMS:
+    post:
+      tags:
+      - Send SMS notification
+      summary: "Send an SMS notification to recipient"
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+        - name: body
+          in: body
+          description: "SMS notification details"
+          required: true
+          schema:
+            $ref: '#/definitions/PostSendSMS'
+      responses:
+        200:
+          description: "SMS notification created"
+          schema:
+            $ref: "#/definitions/NotificationApiResponse"
+        400:
+          description: "Unexpected data structure"
+          schema:
+            $ref: "#/definitions/GeneralError"
+        401:
+          description: "Unauthorised"
+          schema:
+            $ref: "#/definitions/AuthError"
+
+  # /{NotificationId}:
+  #   get:
+  #     tags:
+  #     - Get the status of a notification
+  #     summary: "Retrieve status of a notification"
+  #     consumes:
+  #     - application/json
+  #     produces:
+  #     - application/json
+  #     parameters:
+  #       - name: NotificationId
+  #         in: path
+  #         type: string
+  #         description: "The Notification Id"
+  #         required: true
+  #     responses:
+  #       200:
+  #         description: "Successful retrieve"
+  #         schema:
+  #           $ref: "#/definitions/NotificationApiStatusResponse"
+  #       400:
+  #         description: "Data error"
+  #         schema:
+  #           $ref: "#/definitions/GeneralError"
+  #       401:
+  #         description: "Unauthorised"
+  #         schema:
+  #           $ref: "#/definitions/AuthError"
+  #       404:
+  #         description: "Requested code does not exist"
+  #         schema:
+  #           $ref: "#/definitions/GeneralError"
+
+
+definitions:
+
+  PostSendEmail:
+    type: object
+    properties:
+      RecipientAddress:
+        type: string
+        example: 'jon.doe@live.com'
+      ReplyAddress:
+        type: string
+        example: 'no-reply@jbhifi.com.au'
+      Data:
+        type: object
+        example:
+          RecipientFirstName: 'Neil'
+          RecipientLastName: 'Kloot'
+          RecipientFullName: 'Neil Kloot'
+          CustomerOrderNumber: 123456789
+          OrderStatus: 'Completed'
+      Attachments:
+        type: array
+        items:
+          $ref: "#/definitions/Attachment"
+      TemplateName:
+        type: string
+
+  Attachment:
+    type: object
+    properties:
+      Name:
+        type: string
+      Type:
+        type: string
+        description: MIME type
+      Content:
+        type: string
+
+
+  PostSendSMS:
+    type: object
+    properties:
+      Sender:
+        $ref: "#/definitions/SMSSender"
+      RecipientE164:
+        type: string
+      SMSData:
+        type: object
+        properties:
+          Message:
+           type: string
+           
+
+
+  NotificationApiResponse:
+    type: object
+    properties:
+      NotificationId:
+        type: string
+
+
+  NotificationApiStatusResponse:
+    type: object
+    properties:
+      NotificationId:
+        type: string
+      NotificationStatus:
+        type: string
+
+  SMSSender:
+    type: object
+    properties:
+      Id:
+        type: string
+        example: 21
+      Type: 
+        type: string
+        example: Store
+        enum:
+        - Store
+        - Custom
+
+  AuthError:
+    type: object
+    properties:
+      ErrorCode:
+        type: string
+      ErrorDescription:
+        type: string
+
+
+  GeneralError:
+    type: object
+    properties:
+      ErrorCode:
+        type: string
+      ErrorDescription:
+        type: string
