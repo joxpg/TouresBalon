@@ -32,9 +32,9 @@ Integrantes:
     5. [Pasarela](#pasarela)
     6. [Trasporte](#trasporte)
     7. [Hospedaje](#hospedaje)
-    7. [Proveedores](#proveedores)
-    7. [Espectáculo](#espectaculo)
-    7. [Búsqueda](#busqueda)
+    8. [Proveedores](#proveedores)
+    9. [Espectáculo](#espectaculo)
+    10. [Búsqueda](#busqueda)
 6. [Referencias](#referencias).
 
 ## 1. Estilo de arquitectura <a name="estilo-arquitectura"></a>
@@ -70,7 +70,19 @@ Para la implementación de Arquitectura se implementarán las siguientes herrami
 
 ## 3. Arquitectura <a name="arquitectrua"></a>
 ## 3.1 Vista de proceso <a name="vista-proceso"></a>
-A continuación, se presenta en la figura 1 la vista de proceso ilustrada por un diagrama de archi en la cual se presenta el flujo del proceso para proveedores de toures Balón.
+A continuación, se presenta en la figura 1 la vista de proceso ilustrada por un diagrama de Archi en la cual se presenta el flujo del proceso para proveedores de Toures Balón.
+
+![alt text][fig1]
+
+Figura 1: Cotización de plan turístico
+
+![alt text][fig8]
+
+Figura 2: Compra de plan turístico
+
+![alt text][fig9]
+
+Figura 3: Cancelación de plan turístico
 
 ## 3.2 Vista estructural <a name="vista-estructural"></a>
 
@@ -78,7 +90,7 @@ La vista estructural se presenta por medio del diagrama de componentes. En este 
 
 ![alt text][fig2]
 
-Figura 2: Diagrama de componentes
+Figura 4: Diagrama de componentes
 
 La arquitectura candidata pretende aportar a Toures Balón independencia en la gestión, reducir el acoplamiento en las operaciones que realiza su sistema, y tolerancia a fallos entre otros, por ello presentamos proveedores que se comunican a través de la capa anticorrupción por un adaptador cuya tarea con las interfaces de proveedor, será la de traducir los datos que provienen de terceros reduciendo la posibilidad de fallos por el empleo de diferentes tecnologias, de esta forma ser enviados por intermedio de los servicios hacia el sistema de colas permanentes, esta lleva a cabo la composición de servicios para registrar proveedores, consultar reservas, realizar búsquedas y completar transacciones de pago y demás acciones requeridas por el negocio.<br/>
 
@@ -94,15 +106,15 @@ Se lleva a cabo la generación del Arbol de atributos de utilidad respecto de lo
 
 
 ![alt text][fig3]
-<br/>Figura 3: Interoperabilidad<br/>
+<br/>Figura 5: Interoperabilidad<br/>
 ![alt text][fig4]
-<br/>Figura 4: Adaptabilidad<br/>
+<br/>Figura 6: Adaptabilidad<br/>
 ![alt text][fig5]
-<br/>Figura 5: Modificabilidad<br/>
+<br/>Figura 7: Modificabilidad<br/>
 ![alt text][fig6]
-<br/>Figura 6: Mantenibilidad<br/>
+<br/>Figura 8: Mantenibilidad<br/>
 ![alt text][fig7]
-<br/>Figura 7: Eficiencia de Rendimiento<br/>
+<br/>Figura 9: Eficiencia de Rendimiento<br/>
 
 
 ## 5. Artefactos <a name="artefactos"></a>
@@ -115,11 +127,13 @@ Se lleva a cabo la generación del Arbol de atributos de utilidad respecto de lo
 [contrato-reserva]: contratos/reserva.json
 [contrato-notificacion]: contratos/NotificationV2.yaml
 [contrato-transporte]: contratos/transporte.yaml
-[fig1]: /img/diagramaNegocio.png "Módelo de procesos"
+[fig1]: /img/negocio1.jpg "Cotización"
 [fig2]: /img/diagramaComponentesV1.jpg "Diagrama de componentes"
-[fig3]: /img/atr1.png "Interoperabilidad"
-[fig4]: /img/atr2.png "Adaptabiliadad"
-[fig5]: /img/atr3.png "Modificabilidad"
-[fig6]: /img/atr4.png "Mantenibilidad"
-[fig7]: /img/atr5.png "Eficiencia de rendimiento"
+[fig3]: /img/atr1.jpg "Interoperabilidad"
+[fig4]: /img/atr2.jpg "Adaptabiliadad"
+[fig5]: /img/atr3.jpg "Modificabilidad"
+[fig6]: /img/atr4.jpg "Mantenibilidad"
+[fig7]: /img/atr5.jpg "Eficiencia de rendimiento"
+[fig8]: /img/negocio2.jpg "Compra"
+[fig9]: /img/negocio3.jpg "Cancelación"
 
