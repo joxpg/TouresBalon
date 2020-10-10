@@ -117,9 +117,9 @@ Figura 7: Eficiencia de Rendimiento
 [contrato-transporte]: contratos/transporte.yaml
 [fig1]: /img/diagramaNegocio.png "Módelo de procesos"
 [fig2]: /img/diagramaComponentesV1.jpg "Diagrama de componentes"
-[fig3]: /img/atr1.jpg "Interoperabilidad"
-[fig4]: /img/atr2.jpg "Adaptabiliadad"
-[fig5]: /img/atr3.jpg "Modificabilidad"
-[fig6]: /img/atr4.jpg "Mantenibilidad"
-[fig7]: /img/atr5.jpg "Eficiencia de rendimiento"
+[fig3]: /img/atr1.png "Interoperabilidad"
+[fig4]: /img/atr2.png "Adaptabiliadad"
+[fig5]: /img/atr3.png "Modificabilidad"
+[fig6]: /img/atr4.png "Mantenibilidad"
+[fig7]: /img/atr5.png "Eficiencia de rendimiento"
 
