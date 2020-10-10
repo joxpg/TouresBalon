@@ -109,6 +109,6 @@ Figura 3: Árbol de utilidad
 [contrato-notificacion]: contratos/NotificationV2.yaml
 [contrato-transporte]: contratos/transporte.yaml
 [fig1]: /img/diagramaNegocio.png "Módelo de procesos"
-[fig2]: /img/diagramaComponentes.jpg "Diagrama de componentes"
+[fig2]: /img/diagramaComponentesV1.jpg "Diagrama de componentes"
 [fig3]: /img/arbolUtilidad.jpg "Árbol de utilidad"
 
