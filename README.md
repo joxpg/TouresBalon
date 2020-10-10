@@ -68,7 +68,22 @@ Para la implementación de Arquitectura se implementarán las siguientes herrami
 | Eureka       | Para conocer los servicios de los proveedores, este actúa como el encargado de registrar los microservicios / servicios que compone el proceso.                                       |
 
 
+## 3. Arquitectura <a name="arquitectrua"></a>
+## 3.1 Vista de proceso <a name="vista-proceso"></a>
+A continuación, se presenta en la figura 1 la vista de proceso ilustrada por un diagrama de archi en la cual se presenta el flujo del proceso para proveedores de toures Balón.
+
+## 3.2 Vista estructural <a name="vista-estructural"></a>
+
+La vista estructural se presenta por medio del diagrama de componentes. En este diagrama podemos describir algunos de los principales patrones y decisiones arquitectónicas que se tomaron, decisiones que explicaremos en la siguiente sección.
+
+![alt text][fig2]
+
+Figura 2: Diagrama de componentes
+
+Contamos con los componentes de cada uno de los canales que dispone el banco para que sus clientes realicen el pago de servicios. Cada una de los canales se conecta con su propio api gateway, las peticiones que ingresan por los api gateway y que llevarán el código de factura se conectan a una interface (tópico) expuesta por el orquestador y a la cual está conectado y escuchando el servicio de gestión de convenios, este servicio se encarga de aplicar la lógica necesaria (basada en el modelo de datos de la figura 3) para determinar el convenio a la que pertenece esta factura.
 
 
-
+## 6. Referencias <a name="referencias"></a>
+[fig1]: /img/diagramaNegocio.png "Módelo de procesos"
+[fig2]: /img/diagramaComponentes.jpg "Diagrama de componentes"
 
