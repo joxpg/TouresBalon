@@ -84,9 +84,21 @@ La arquitectura candidata pretende aportar a Toures Balón independencia en la g
 
 Estas últimas operaciones seran procesadas de cara al proveedor con ayuda de la capa Aticorrupcion Outbound quien con la implementación de adaptadores de servicios registran los pagos en los proveedores. Es importante aclarar que se ha implementado un registro de servicios donde puedan persistir los end points de proveedores con los cuales el sistema se comunicará, asi mismo se cuenta con un api gateway como enlace hacia el interior de Toures Balón. 
 
+## 4. Justificación de arquitectura <a name="justificacion-arquitectura"></a>
 
+## 4.1 Decisiones de arquitectura <a name="decisiones-arquitectura"></a>
+## 4.2. TradeOff de la Arquitectura <a name="tradeoff"></a>
+
+## 5. Artefactos <a name="artefactos"></a>
+1. [Reserva][contrato-reserva]
+2. [Notificación][contrato-notificacion]
+3. [Transporte][contrato-transporte]
 
 ## 6. Referencias <a name="referencias"></a>
+
+[contrato-reserva]: contratos/reserva.json
+[contrato-notificacion]: contratos/NotificationV2.yaml
+[contrato-transporte]: contratos/transporte.yaml
 [fig1]: /img/diagramaNegocio.png "Módelo de procesos"
 [fig2]: /img/diagramaComponentes.jpg "Diagrama de componentes"
 
