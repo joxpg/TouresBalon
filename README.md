@@ -110,5 +110,5 @@ Figura 3: Árbol de utilidad
 [contrato-transporte]: contratos/transporte.yaml
 [fig1]: /img/diagramaNegocio.png "Módelo de procesos"
 [fig2]: /img/diagramaComponentes.jpg "Diagrama de componentes"
-[fig3]: /img/atributosRequerimientos.jpg "Árbol de utilidad"
+[fig3]: /img/arbolUtilidad.jpg "Árbol de utilidad"
 
