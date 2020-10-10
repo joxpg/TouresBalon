@@ -1,0 +1,529 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Contrato para la suscripcion de un servicio de reserva para Toures Balón, construido como documento de referencia para suscribir un servicio.",
+    "version": "1.0.0",
+    "title": "Reservas Toures Balón",
+    "contact": {
+      "email": "johancespedes@javeriana.edu.co"
+    }
+  },
+  "tags": [
+    {
+      "name": "reserva",
+      "description": "Lista de métodos servicio reserva"
+    }
+  ],
+  "schemes": [
+    "https",
+    "http"
+  ],
+  "paths": {
+    "/reserva": {
+      "post": {
+        "tags": [
+          "reserva"
+        ],
+        "summary": "Add a new reserva",
+        "description": "",
+        "operationId": "addreserva",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "reserva object that needs to be added",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Reserva"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "reserva_auth": [
+              "write:reservas",
+              "read:reservas"
+            ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "reserva"
+        ],
+        "summary": "Update an existing reserva",
+        "description": "",
+        "operationId": "updatereserva",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "reserva object that needs to be added",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Reserva"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "reserva not found"
+          },
+          "405": {
+            "description": "Validation exception"
+          }
+        },
+        "security": [
+          {
+            "reserva_auth": [
+              "write:reservas",
+              "read:reservas"
+            ]
+          }
+        ]
+      }
+    },
+    "/reserva/findByStatus": {
+      "get": {
+        "tags": [
+          "reserva"
+        ],
+        "summary": "Finds reservas by status",
+        "description": "Multiple status values can be provided with comma separated strings",
+        "operationId": "findreservasByStatus",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "status",
+            "in": "query",
+            "description": "Status values that need to be considered for filter",
+            "required": true,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "available",
+                "pending",
+                "sold"
+              ],
+              "default": "available"
+            },
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Reserva"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        },
+        "security": [
+          {
+            "reserva_auth": [
+              "write:reservas",
+              "read:reservas"
+            ]
+          }
+        ]
+      }
+    },
+    "/reserva/findByTags": {
+      "get": {
+        "tags": [
+          "reserva"
+        ],
+        "summary": "Finds reservas by tags",
+        "description": "Muliple tags can be provided with comma separated strings. Use         tag1, tag2, tag3 for testing.",
+        "operationId": "findreservasByTags",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "tags",
+            "in": "query",
+            "description": "Tags to filter by",
+            "required": true,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Reserva"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid tag value"
+          }
+        },
+        "security": [
+          {
+            "reserva_auth": [
+              "write:reservas",
+              "read:reservas"
+            ]
+          }
+        ]
+      }
+    },
+    "/reserva/{reservaId}": {
+      "get": {
+        "tags": [
+          "reserva"
+        ],
+        "summary": "Find reserva by ID",
+        "description": "Returns a single reserva",
+        "operationId": "getreservaById",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "reservaId",
+            "in": "path",
+            "description": "ID of reserva to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Reserva"
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "reserva not found"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "reserva"
+        ],
+        "summary": "Updates a reserva with form data",
+        "description": "",
+        "operationId": "updatereservaWithForm",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "reservaId",
+            "in": "path",
+            "description": "ID of reserva that needs to be updated",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "name",
+            "in": "formData",
+            "description": "Updated name of the reserva",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "status",
+            "in": "formData",
+            "description": "Updated status of the reserva",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "reserva_auth": [
+              "write:reservas",
+              "read:reservas"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "reserva"
+        ],
+        "summary": "Deletes a reserva",
+        "description": "",
+        "operationId": "deletereserva",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "api_key",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "reservaId",
+            "in": "path",
+            "description": "reserva id to delete",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "reserva not found"
+          }
+        },
+        "security": [
+          {
+            "reserva_auth": [
+              "write:reservas",
+              "read:reservas"
+            ]
+          }
+        ]
+      }
+    },
+    "/reserva/{reservaId}/uploadImage": {
+      "post": {
+        "tags": [
+          "reserva"
+        ],
+        "summary": "uploads an image",
+        "description": "",
+        "operationId": "uploadFile",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "reservaId",
+            "in": "path",
+            "description": "ID of reserva to update",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "additionalMetadata",
+            "in": "formData",
+            "description": "Additional data to pass to server",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "file",
+            "in": "formData",
+            "description": "file to upload",
+            "required": false,
+            "type": "file"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ApiResponse"
+            }
+          }
+        },
+        "security": [
+          {
+            "reserva_auth": [
+              "write:reservas",
+              "read:reservas"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "securityDefinitions": {
+    "reserva_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "http://reserva.swagger.io/oauth/dialog",
+      "flow": "implicit",
+      "scopes": {
+        "write:reservas": "modify reservas in your account",
+        "read:reservas": "read your reservas"
+      }
+    },
+    "api_key": {
+      "type": "apiKey",
+      "name": "api_key",
+      "in": "header"
+    }
+  },
+  "definitions": {
+    "Category": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "Category"
+      }
+    },
+    "Tag": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "Tag"
+      }
+    },
+    "Reserva": {
+      "type": "object",
+      "required": [
+        "name",
+        "photoUrls"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "category": {
+          "$ref": "#/definitions/Category"
+        },
+        "name": {
+          "type": "string",
+          "example": "doggie"
+        },
+        "photoUrls": {
+          "type": "array",
+          "xml": {
+            "name": "photoUrl",
+            "wrapped": true
+          },
+          "items": {
+            "type": "string"
+          }
+        },
+        "tags": {
+          "type": "array",
+          "xml": {
+            "name": "tag",
+            "wrapped": true
+          },
+          "items": {
+            "$ref": "#/definitions/Tag"
+          }
+        },
+        "status": {
+          "type": "string",
+          "description": "reserva status",
+          "enum": [
+            "available",
+            "pending",
+            "sold"
+          ]
+        }
+      },
+      "xml": {
+        "name": "reserva"
+      }
+    },
+    "ApiResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "type": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  }
+}
