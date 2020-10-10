@@ -94,8 +94,15 @@ Se lleva a cabo la generación del Arbol de atributos de utilidad respecto de lo
 
 
 ![alt text][fig3]
-
-Figura 3: Árbol de utilidad
+Figura 3: Interoperabilidad
+![alt text][fig4]
+Figura 4: Adaptabilidad
+![alt text][fig5]
+Figura 5: Modificabilidad
+![alt text][fig6]
+Figura 6: Mantenibilidad
+![alt text][fig7]
+Figura 7: Eficiencia de Rendimiento
 
 
 ## 5. Artefactos <a name="artefactos"></a>
@@ -110,5 +117,9 @@ Figura 3: Árbol de utilidad
 [contrato-transporte]: contratos/transporte.yaml
 [fig1]: /img/diagramaNegocio.png "Módelo de procesos"
 [fig2]: /img/diagramaComponentesV1.jpg "Diagrama de componentes"
-[fig3]: /img/arbolUtilidad.jpg "Árbol de utilidad"
+[fig3]: /img/atr1.jpg "Interoperabilidad"
+[fig4]: /img/atr2.jpg "Adaptabiliadad"
+[fig5]: /img/atr3.jpg "Modificabilidad"
+[fig6]: /img/atr4.jpg "Mantenibilidad"
+[fig7]: /img/atr5.jpg "Eficiencia de rendimiento"
 
