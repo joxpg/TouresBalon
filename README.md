@@ -7,11 +7,11 @@ Este repositorio tiene como fin documentar la arquitectura de Toures Balón para
 
 Integrantes:
 
-Kattya Alexandra Peña Nieto 
-Johann Fernando Trigos Niño 
-Javier Alfonso Becerra Sanchez 
-José Esteban Betin Diaz 
-Johan Miguel Céspedes Ortega
+- Kattya Alexandra Peña Nieto 
+- Johann Fernando Trigos Niño 
+- Javier Alfonso Becerra Sanchez 
+- José Esteban Betin Diaz 
+- Johan Miguel Céspedes Ortega
 
 
 ## Tabla de contenido <a name="table-of-contents"></a>
@@ -36,6 +36,11 @@ Johan Miguel Céspedes Ortega
     7. [Espectáculo](#espectaculo)
     7. [Búsqueda](#busqueda)
 6. [Referencias](#referencias).
+
+## 1. Estilo de arquitectura <a name="estilo-arquitectura"></a>
+La arquitectura orientada a microservicios (SOA) es un estilo arquitectónico que nos permite definir un conjunto de servicios de colaboración debilmente acoplados, esto favorece la rápida implementación de nuevos componentes, de manera rapida y sencilla, es posible distribuir resoponsabilidades entre servicios de aplicación lo cual reduce el acoplamiento y aumenta la cohesión, siendo esto un factor importante de la solución, los microservicios permitiran llevar a cabo una facil integración entre componentes independiente de la tecnologia que implementen, asi mismo puede llevarse a cabo desarrollo de manera incremental, rapida y continua de cada funcionalidad, los costes de mantenimiento y su impacto para el negocio serán menores, aunque su implementación demande mayor inversión al inicio, a futuro se podrá ver un amplio ahora respecto del mantenimiento y escalamiento<br/>
+Es importante resaltar que la arquitectura propuesta por el equipo J4K presenta una solucion optima a los problemas tecnologicos y perdida de utilidades que viene presentado Toures Balón durante los últimos eventos, por tanto el estilo presetado a continuación evolucionara de manera natural, su gestión será más sencilla, utilizando los recursos disponibles con una minima invesión bajo el empleo de algunas herramientas descritas en adelante<br/>
+
 
 
 
