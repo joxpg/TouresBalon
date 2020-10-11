@@ -103,7 +103,7 @@ Estas últimas operaciones seran procesadas de cara al proveedor con ayuda de la
 ## 4. Justificación de arquitectura <a name="justificacion-arquitectura"></a>
 
 ## 4.1 Decisiones de arquitectura <a name="decisiones-arquitectura"></a>
-## 4.2. TradeOff de la Arquitectura <a name="tradeoff"></a>
+###    TradeOff de la Arquitectura <a name="tradeoff"></a>
 
 
 Se lleva a cabo la generación del Arbol de atributos de utilidad respecto de los requerimientos de Toures Balón, el equipo de evaluación y los stakeholders identifican y priorizan los atributos de calidad de tal forma que puedan cumplirse con los objetivos de negocio con la calidad esperada <br/>
