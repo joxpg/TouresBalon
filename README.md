@@ -1,4 +1,4 @@
-# TouresBalon
+# Toures Balón
 
 
 ## Descripción
@@ -96,9 +96,9 @@ La vista estructural se presenta por medio del diagrama de componentes. En este 
 
 Figura 4: Diagrama de componentes
 
-La arquitectura candidata pretende aportar a Toures Balón independencia en la gestión, reducir el acoplamiento en las operaciones que realiza su sistema, y tolerancia a fallos entre otros, por ello presentamos proveedores que se comunican a través de la capa anticorrupción por un adaptador cuya tarea con las interfaces de proveedor, será la de traducir los datos que provienen de terceros reduciendo la posibilidad de fallos por el empleo de diferentes tecnologias, de esta forma ser enviados por intermedio de los servicios hacia el sistema de colas permanentes, esta lleva a cabo la composición de servicios para registrar proveedores, consultar reservas, realizar búsquedas y completar transacciones de pago y demás acciones requeridas por el negocio.<br/>
+La arquitectura candidata pretende aportar a Toures Balón independencia en la gestión, reducir el acoplamiento en las operaciones que realiza su sistema, y tolerancia a fallos entre otros, por ello presentamos proveedores que se comunican a través de la capa anticorrupción por un adaptador cuya tarea con las interfaces de proveedor, será la de traducir los datos que provienen de terceros reduciendo la posibilidad de fallos por el empleo de diferentes tecnologias, de esta forma ser enviados por intermedio del servicio hacia el sistema de colas permanentes, esta lleva a cabo la composición de servicios para registrar proveedores, consultar reservas, realizar búsquedas y completar transacciones de pago y demás acciones requeridas por el negocio.<br/>
 
-Estas últimas operaciones seran procesadas de cara al proveedor con ayuda de la capa Aticorrupcion Outbound quien con la implementación de adaptadores de servicios registran los pagos en los proveedores. Es importante aclarar que se ha implementado un registro de servicios donde puedan persistir los end points de proveedores con los cuales el sistema se comunicará, asi mismo se cuenta con un api gateway como enlace hacia el interior de Toures Balón. 
+Estas últimas operaciones seran procesadas de cara al proveedor con ayuda de la capa Aticorrupcion quien con la implementación del adaptador de servicio registra los pagos en los proveedores. Es importante aclarar que se ha implementado un registro de servicios donde puedan persistir los end points de proveedores con los cuales el sistema se comunicará, asi mismo se cuenta con un api gateway como enlace hacia el interior de Toures Balón. 
 
 ## 4. Justificación de arquitectura <a name="justificacion-arquitectura"></a>
 
@@ -106,7 +106,7 @@ Estas últimas operaciones seran procesadas de cara al proveedor con ayuda de la
 ###    TradeOff de la Arquitectura <a name="tradeoff"></a>
 
 
-Se lleva a cabo la generación del Arbol de atributos de utilidad respecto de los requerimientos de Toures Balón, el equipo de evaluación y los stakeholders identifican y priorizan los atributos de calidad de tal forma que puedan cumplirse con los objetivos de negocio con la calidad esperada <br/>
+Se lleva a cabo la evaluación de atributos de calidad respecto de los requerimientos de Toures Balón, el equipo de evaluación y los stakeholders identifican y priorizan los atributos de calidad (Trade Off) de tal forma que puedan cumplirse con los objetivos de negocio con la calidad esperada <br/>
 
 
 ![alt text][fig3]
