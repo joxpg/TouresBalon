@@ -55,6 +55,9 @@ MICROSERVICIOS: Como se definió anteriormente, este patrón permitirá que todo
 |     Server Side Discovery     | Realiza solicitudes a través de un enrutador que se ejecuta en una ubicación conocida. El enrutador consulta un registro de servicios , que podría estar integrado en el enrutador, y reenvía la solicitud a una instancia de servicio disponible.                                                                                                                                                                                                                                                                                           | <img src ="https://microservices.io/i/servicediscovery/server-side-discovery.jpg" width="600">                                           |
 |        Circuit Breaker        | Favorece el control de fallas cuando el número de fallas consecutivas cruza un umbral, el Circuit Braker se dispara y durante un período de tiempo de espera, todos los intentos de invocar el servicio remoto fallarán inmediatamente. Una vez que expira el tiempo de espera, el Circuit Braker permite el paso de un número limitado de solicitudes de prueba. Si esas solicitudes tienen éxito, el Circuit Braker reanuda el funcionamiento normal. De lo contrario, si hay una falla, el período de tiempo de espera comienza de nuevo. | <img src ="https://martinfowler.com/bliki/images/circuitBreaker/state.png" width="600">                                                  |
 | Client-side service discovery | Al realizar una solicitud a un servicio, el cliente obtiene la ubicación de una instancia de servicio consultando un Registro de servicios , que conoce las ubicaciones de todas las instancias de servicio.                                                                                                                                                                                                                                                                                                                                 | <img src ="https://microservices.io/i/servicediscovery/client-side-discovery.jpg" width="600">                                           |
+|      Anticorruption Layer     | Capa de fachada o adaptador entre los diferentes subsistemas que no comparten la misma semántica. Esta capa traduce las solicitudes que un subsistema hace al otro subsistema. Use este patrón para asegurarse de que el diseño de la aplicación no se vea limitado por dependencias de subsistemas externos.                                                                                                                                                                                                                                | <img src ="https://docs.microsoft.com/es-es/azure/architecture/patterns/_images/anti-corruption-layer.png" width="600">                  |
+|    Publicador - Suscriptor    | Por el uso de coreografía en el desarrollo del proyecto, es necesario pensar que el banco actuará como Publicador (Envío de transacciones) y Suscriptor (Recepción de las respuestas), por ello la importancia del uso de este patrón ya que permite el procesamiento de transacciones. Para su aplicación se puede hacer uso de herramientas como apache camel y kafka.                                                                                                                                                                     | <img src="https://realtimeapi.io/wp-content/uploads/2017/09/pubsub-1.png" width="600">                                                   |
+|              SAGA             | Debido que el sistema del banco se comporta como una secuencia de transacciones, este patron describe la definición como un sistema desde una primera transacción desde una solicitud externa, y el paso para para completar la solicitud. Esta funcionalidad de complementa con intermedia routing y da como fin la implementación de la coreografía.                                                                                                                                                                                       | <img src="https://chrisrichardson.net/i/sagas/From_2PC_To_Saga.png" width="600">                                                         |
 
 ### Herramientas
 Para la implementación de Arquitectura se implementarán las siguientes herramientas.
@@ -124,6 +127,27 @@ Se lleva a cabo la generación del Arbol de atributos de utilidad respecto de lo
 3. [Transporte][contrato-transporte]
 
 ## 6. Referencias <a name="referencias"></a>
+
+1. [Broker Pattern (Service Contract)][broker]
+2. [Circuit Breaker][circuitbreaker]
+3. [Api Gateway][apigateway]
+4. [Anti Corruption Layer][corruptionlayer]
+5. [Publish-subscribe messaging system][publish-subscribe]
+6. [Event-driven architecture (Saga)][saga]
+7. [Microservices][microservices]
+8. [oreilly][oreilly]
+8. [arcitura][arcitura]
+
+[broker]: https://www.oreilly.com/library/view/pattern-oriented-software-architecture/9781119963998/chap12-sec005.html
+[circuitbreaker]: https://martinfowler.com/bliki/CircuitBreaker.html
+[apigateway]: https://microservices.io/patterns/apigateway.html
+[corruptionlayer]: https://docs.microsoft.com/es-es/azure/architecture/patterns/anti-corruption-layer
+[publish-subscribe]: https://subscription.packtpub.com/book/big_data_and_business_intelligence/9781787283985/1/01lvl1sec5/publish-subscribe-messaging-system
+[saga]: https://microservices.io/patterns/data/saga.html
+[microservices]: https://microservices.io/index.html
+[oreilly]: https://www.oreilly.com/
+[arcitura]: https://patterns.arcitura.com/
+
 
 [contrato-reserva]: contratos/reserva.json
 [contrato-notificacion]: contratos/NotificationV2.yaml
