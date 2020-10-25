@@ -5,10 +5,12 @@ Eureka es un servicio REST, utilizándose principalmente en la nube de AWS, a la
 # Comandos para ejecutar el Eureka Server
 
 Se debe ejecutar 
-``` mvn install
+``` 
+mvn install
 ```
 Para correrlo localmente 
-``` mvn spring-boot:run
+``` 
+mvn spring-boot:run
 ```
 # Datos importantes
 
@@ -18,12 +20,11 @@ Este Eureka se desplegará automaticamente por el puerto 9040.
 
 Añadir la dependencia spring-cloud-starter-eureka en el archivo pom.xml
 
-```
-      <dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-            <version>2.2.5.RELEASE</version>
-		</dependency>
+```<dependency>
+		<groupId>org.springframework.cloud</groupId>
+		<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+      <version>2.2.5.RELEASE</version>
+	</dependency>
 ```
 
 Añadir la anotación @EnableDiscoreyClient en la clase principal de la aplicación SpringBoot
