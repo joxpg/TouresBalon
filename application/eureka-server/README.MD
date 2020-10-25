@@ -27,7 +27,28 @@ Añadir la dependencia spring-cloud-starter-eureka en el archivo pom.xml
 	</dependency>
 ```
 
-Añadir la anotación @EnableDiscoreyClient en la clase principal de la aplicación SpringBoot
+Añadir la anotación @EnableDiscoreyClient en la clase principal de la aplicación SpringBoot. Ejemplo:
+
+```
+package co.com.puj.aes.proveedor;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.web.bind.annotation.RequestMapping;
+@SpringBootApplication
+@EnableEurekaClient
+
+public class ProveedorApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(ProveedorApplication.class, args);
+    }
+
+}
+
+```
 
 Adicional si estamos manejando application.properties para el manejo de las configuraciones incluir la siguiente configuración al final del archivo:
 
