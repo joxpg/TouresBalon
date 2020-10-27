@@ -1,16 +1,18 @@
-package com.puj.aes.producto.producto.Service;
+package com.puj.aes.busqueda.busqueda.Service;
 
-import com.puj.aes.producto.producto.Entity.Busqueda;
-import com.puj.aes.producto.producto.Interface.IBusquedaService;
+import com.puj.aes.busqueda.busqueda.Entity.BusquedaProducto;
+import com.puj.aes.busqueda.busqueda.Interface.IBusquedaService;
 import org.springframework.stereotype.Service;
+
+import javax.validation.Valid;
 
 @Service
 public class BusquedaService implements IBusquedaService {
-    @Override
-    public Busqueda enviarRespuesta(Busqueda respuesta) {
+    public BusquedaProducto enviarRespuesta(@Valid BusquedaProducto respuesta) {
         Double calificacion = 4.0;
         Double pesoConvenio = 2.0;
 
         return respuesta;
     }
+
 }

@@ -1,7 +1,7 @@
-package com.puj.aes.producto.producto.Controller;
+package com.puj.aes.busqueda.busqueda.Controller;
 
-import com.puj.aes.producto.producto.Entity.Busqueda;
-import com.puj.aes.producto.producto.Service.BusquedaService;
+import com.puj.aes.busqueda.busqueda.Entity.BusquedaProducto;
+import com.puj.aes.busqueda.busqueda.Service.BusquedaService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -18,16 +18,16 @@ import javax.validation.Valid;
         RequestMethod.DELETE}, allowedHeaders = "*")
 public class BusquedaController {
     @Autowired
-    private KafkaTemplate<String, Busqueda> kafkaTemplate;
-    private static final String TOPIC = "busqueda";
+    private KafkaTemplate<String, BusquedaProducto> kafkaTemplate;
+    private static final String TOPIC = "productobusqueda";
     @Autowired
     BusquedaService busquedaService;
     public BusquedaController(BusquedaService busquedaService) {this.busquedaService = busquedaService;}
 
     @PostMapping("")
-    public ResponseEntity<?> create(@Valid @RequestBody Busqueda busqueda) throws Exception {
-        busqueda = busquedaService.enviarRespuesta(busqueda);
-        kafkaTemplate.send(TOPIC, busqueda);
+    public ResponseEntity<?> create(@Valid @RequestBody BusquedaProducto busquedaproducto) throws Exception {
+        busquedaproducto = busquedaService.enviarRespuesta(busquedaproducto);
+        kafkaTemplate.send(TOPIC, busquedaproducto);
         return new ResponseEntity<>("Escribiendo en kafka",HttpStatus.OK);
     }
 }

@@ -1,10 +1,10 @@
-package co.com.puj.aes.producto;
+package com.puj.aes.producto.producto;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MsBusquedaApplicationTests {
+class MsBusquedaProductoApplicationTests {
 
 	@Test
 	void contextLoads() {
