@@ -27,7 +27,7 @@ En la raiz del microservicio que queremos registrar al eureka, se debe añadir l
 	</dependency>
 ```
 
-Añadir la anotación @EnableDiscoreyClient en la clase principal de la aplicación SpringBoot. Ejemplo:
+Añadir la anotación @EnableEurekaClient en la clase principal de la aplicación SpringBoot. Ejemplo:
 
 ```
 package co.com.puj.aes.proveedor;
