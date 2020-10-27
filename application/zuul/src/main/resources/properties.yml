@@ -1,0 +1,12 @@
+zuul:
+  routes:
+    proveedor:
+      path: /proveedor/**
+      url: http://localhost:9050
+    reserva:
+      path: /proveedor/**
+      url: http://localhost:9051
+
+
+server:
+  port: 9041
