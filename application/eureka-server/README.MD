@@ -18,7 +18,7 @@ Este Eureka se desplegará automaticamente por el puerto 9040.
 
 # Registrar un cliente 
 
-En la raiz del microservicio Añadir la dependencia spring-cloud-starter-eureka en el archivo pom.xml
+En la raiz del microservicio que queremos registrar al eureka, se debe añadir la dependencia spring-cloud-starter-eureka en el archivo pom.xml
 
 ```<dependency>
 		<groupId>org.springframework.cloud</groupId>
