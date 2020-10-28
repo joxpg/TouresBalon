@@ -1,4 +1,4 @@
-package com.puj.aes.pasarela.pasarela.Entity;
+package co.com.puj.aes.msPasarela.Entity;
 
 import lombok.*;
 

@@ -1,7 +1,7 @@
-package com.puj.aes.pasarela.pasarela.Controller;
+package co.com.puj.aes.msPasarela.Controller;
 
-import com.puj.aes.pasarela.pasarela.Entity.Pasarela;
-import com.puj.aes.pasarela.pasarela.Service.PasarelaService;
+import co.com.puj.aes.msPasarela.Entity.Pasarela;
+import co.com.puj.aes.msPasarela.Service.PasarelaService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
