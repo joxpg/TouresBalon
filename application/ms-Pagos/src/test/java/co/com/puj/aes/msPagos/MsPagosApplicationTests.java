@@ -1,13 +1,13 @@
-package co.com.puj.aes.pago;
+package co.com.puj.aes.msPagos;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class PagosApplicationTests {
+class MsPagosApplicationTests {
 
-    @Test
-    void contextLoads() {
-    }
+	@Test
+	void contextLoads() {
+	}
 
 }
