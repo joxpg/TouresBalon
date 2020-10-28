@@ -1,7 +1,7 @@
-package com.puj.aes.pasarela.pasarela.Service;
+package co.com.puj.aes.msPasarela.Service;
 
-import com.puj.aes.pasarela.pasarela.Entity.Pasarela;
-import com.puj.aes.pasarela.pasarela.Interface.IPasarelaService;
+import co.com.puj.aes.msPasarela.Entity.Pasarela;
+import co.com.puj.aes.msPasarela.Interface.IPasarelaService;
 import org.springframework.stereotype.Service;
 
 @Service
