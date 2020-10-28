@@ -59,17 +59,17 @@ services:
    - eureka-server
   links:
    - eureka-server
- #ms-pagos:
- # image: ms-pagos:lastest
- # environment: 
+ ms-pagos:
+  image: ms-pagos:lastest
+  environment: 
    # Important for clients to register with eureka
- #  - eureka.client.serviceUrl.defaultZone=http://eureka-server:9040/eureka/
- # ports:
- #  - "9071:9071"
- # depends_on:
- #  - eureka-server
- # links:
- #  - eureka-server
+   - eureka.client.serviceUrl.defaultZone=http://eureka-server:9040/eureka/
+  ports:
+   - "9071:9071"
+  depends_on:
+   - eureka-server
+  links:
+   - eureka-server
  #ms-pasarela:
  # image: ms-pasarela:lastest
  # environment: 
@@ -92,3 +92,15 @@ services:
  #  - eureka-server
  # links:
  #  - eureka-server
+####################Proyectos .NET
+ soapadapter:
+  image: soapadapter:lastest
+  environment: 
+   # Important for clients to register with eureka
+   - eureka.client.serviceUrl=http://eureka-server:9040/eureka/
+  ports:
+   - "9090:80"
+  depends_on:
+   - eureka-server
+  links:
+   - eureka-server

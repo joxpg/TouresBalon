@@ -44,4 +44,13 @@ mvn install
 docker rm -f producto
 docker build -t producto:lastest .
 cd ..
+cd AnticorruptionLayer
+cd SoapAdapter
+dotnet build -c Release
+docker build -t soapadapter:lastest .
+cd ..
+cd ..
+
+
+
 docker-compose up -d
