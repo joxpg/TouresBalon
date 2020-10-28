@@ -1,7 +1,7 @@
-package com.puj.aes.producto.producto.Interface;
+package com.puj.aes.busqueda.busqueda.Interface;
 
-import com.puj.aes.producto.producto.Entity.Busqueda;
+import com.puj.aes.busqueda.busqueda.Entity.BusquedaProducto;
 
 public interface IBusquedaService {
-    public Busqueda enviarRespuesta(Busqueda respuesta);
+    public BusquedaProducto enviarRespuesta(BusquedaProducto respuesta);
 }
