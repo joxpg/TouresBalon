@@ -1,6 +1,6 @@
 # ¿Qué es Eureka?
 
-Eureka es un servicio REST, utilizándose principalmente en la nube de AWS, a la cuál está estrechamente ligado. Eureka se comporta como servidor, cuyo objetivo es registrar y localizar microservicios existentes, informar de su localización, su estado y datos relevantes de cada uno de ellos. Además, nos facilita el balanceo de carga y tolerancia a fallos.
+Eureka se comporta como servidor, cuyo objetivo es registrar y localizar microservicios existentes, informar de su localización, su estado y datos relevantes de cada uno de ellos. Además, nos facilita el balanceo de carga y tolerancia a fallos.
 
 # Comandos para ejecutar el Eureka Server
 

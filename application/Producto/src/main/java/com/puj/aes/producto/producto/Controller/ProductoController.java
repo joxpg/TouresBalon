@@ -35,5 +35,6 @@ public class ProductoController {
     @KafkaListener(topics = "productoBusqueda", groupId = "producto")
     public void consumerBusqueda(String producto){
         productoService.buscarProducto(producto);
+
     }
 }
