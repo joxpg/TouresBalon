@@ -34,7 +34,7 @@ mvn install
 docker rm -f ms-pagos
 docker build -t ms-pagos:lastest .
 cd ..
-cd ms-pasarela
+cd ms-Pasarela
 mvn install
 docker rm -f ms-pasarela
 docker build -t ms-pasarela:lastest .
