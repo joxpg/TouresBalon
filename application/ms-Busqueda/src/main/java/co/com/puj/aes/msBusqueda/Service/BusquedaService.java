@@ -1,7 +1,7 @@
-package com.puj.aes.busqueda.busqueda.Service;
+package co.com.puj.aes.msBusqueda.Service;
 
-import com.puj.aes.busqueda.busqueda.Entity.BusquedaProducto;
-import com.puj.aes.busqueda.busqueda.Interface.IBusquedaService;
+import co.com.puj.aes.msBusqueda.Entity.BusquedaProducto;
+import co.com.puj.aes.msBusqueda.Interface.IBusquedaService;
 import org.springframework.stereotype.Service;
 
 import javax.validation.Valid;
