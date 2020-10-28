@@ -11,7 +11,7 @@ import java.util.*;
 
 @Service
 public class PagosService implements ServiceInterface  <Pagos, Short>{
-    @Autowired
+
     private PagosRepository pagosRepository;
 
     @Override
