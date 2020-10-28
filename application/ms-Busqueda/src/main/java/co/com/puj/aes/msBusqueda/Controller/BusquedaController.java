@@ -1,7 +1,7 @@
-package com.puj.aes.busqueda.busqueda.Controller;
+package co.com.puj.aes.msBusqueda.Controller;
 
-import com.puj.aes.busqueda.busqueda.Entity.BusquedaProducto;
-import com.puj.aes.busqueda.busqueda.Service.BusquedaService;
+import co.com.puj.aes.msBusqueda.Entity.BusquedaProducto;
+import co.com.puj.aes.msBusqueda.Service.BusquedaService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
