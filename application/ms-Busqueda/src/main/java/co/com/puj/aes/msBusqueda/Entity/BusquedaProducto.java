@@ -1,4 +1,4 @@
-package com.puj.aes.busqueda.busqueda.Entity;
+package co.com.puj.aes.msBusqueda.Entity;
 
 import lombok.*;
 
@@ -27,5 +27,6 @@ public class BusquedaProducto implements Serializable {
     private Date showDate;
     private int quantity;
     private String location;
+    private String tipoproducto;
 
 }

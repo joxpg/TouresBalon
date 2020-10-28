@@ -1,6 +1,6 @@
-package com.puj.aes.busqueda.busqueda.Interface;
+package co.com.puj.aes.msBusqueda.Interface;
 
-import com.puj.aes.busqueda.busqueda.Entity.BusquedaProducto;
+import co.com.puj.aes.msBusqueda.Entity.BusquedaProducto;
 
 public interface IBusquedaService {
     public BusquedaProducto enviarRespuesta(BusquedaProducto respuesta);
