@@ -25,4 +25,6 @@ public class ProductoBusqueda implements Serializable {
     private int quantity;
     private String location;
     private String idBusqueda;
+    private String tipoProducto;
+
 }

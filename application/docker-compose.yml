@@ -1,0 +1,106 @@
+version: "3.3"
+services:
+ eureka-server:
+  image: eureka-server:lastest
+  ports:
+   - "9040:9040"
+ zuul:
+  image: zuul:lastest
+  environment: 
+   # Important for clients to register with eureka
+   - eureka.client.serviceUrl.defaultZone=http://eureka-server:9040/eureka/
+  ports:
+   - "9041:9041"
+  depends_on:
+   - eureka-server
+  links:
+   - eureka-server
+ calificacion:
+  image: calificacion:lastest
+  environment: 
+   # Important for clients to register with eureka
+   - eureka.client.serviceUrl.defaultZone=http://eureka-server:9040/eureka/
+  ports:
+   - "9060:9060"
+  depends_on:
+   - eureka-server
+  links:
+   - eureka-server
+ reserva:
+  image: reserva:lastest
+  environment: 
+   # Important for clients to register with eureka
+   - eureka.client.serviceUrl.defaultZone=http://eureka-server:9040/eureka/
+  ports:
+   - "9061:9061"
+  depends_on:
+   - eureka-server
+  links:
+   - eureka-server
+ proveedor:
+  image: proveedor:lastest
+  environment: 
+   # Important for clients to register with eureka
+   - eureka.client.serviceUrl.defaultZone=http://eureka-server:9040/eureka/
+  ports:
+   - "9062:9062"
+  depends_on:
+   - eureka-server
+  links:
+   - eureka-server
+ ms-busqueda:
+  image: ms-busqueda:lastest
+  environment: 
+   # Important for clients to register with eureka
+   - eureka.client.serviceUrl.defaultZone=http://eureka-server:9040/eureka/
+  ports:
+   - "9070:9070"
+  depends_on:
+   - eureka-server
+  links:
+   - eureka-server
+ ms-pagos:
+  image: ms-pagos:lastest
+  environment: 
+   # Important for clients to register with eureka
+   - eureka.client.serviceUrl.defaultZone=http://eureka-server:9040/eureka/
+  ports:
+   - "9071:9071"
+  depends_on:
+   - eureka-server
+  links:
+   - eureka-server
+ #ms-pasarela:
+ # image: ms-pasarela:lastest
+ # environment: 
+ #  # Important for clients to register with eureka
+ #  - eureka.client.serviceUrl.defaultZone=http://eureka-server:9040/eureka/
+ # ports:
+ #  - "9072:9072"
+ # depends_on:
+ #  - eureka-server
+ # links:
+ #  - eureka-server
+ #producto:
+ # image: producto:lastest
+ # environment: 
+ #  # Important for clients to register with eureka
+ #  - eureka.client.serviceUrl.defaultZone=http://eureka-server:9040/eureka/
+ # ports:
+ #  - "9072:9072"
+ # depends_on:
+ #  - eureka-server
+ # links:
+ #  - eureka-server
+####################Proyectos .NET
+ soapadapter:
+  image: soapadapter:lastest
+  environment: 
+   # Important for clients to register with eureka
+   - eureka.client.serviceUrl=http://eureka-server:9040/eureka/
+  ports:
+   - "9090:80"
+  depends_on:
+   - eureka-server
+  links:
+   - eureka-server

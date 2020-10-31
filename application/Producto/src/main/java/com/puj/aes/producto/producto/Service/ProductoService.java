@@ -1,6 +1,9 @@
 package com.puj.aes.producto.producto.Service;
 
-import com.puj.aes.producto.producto.Entity.ProductoResultado;
+
+import com.puj.aes.producto.producto.Entity.*;
+import java.util.*;
+
 import com.puj.aes.producto.producto.Interface.IProductoService;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -16,6 +19,22 @@ public class ProductoService implements IProductoService {
         respuesta.setCalificacion(calificacion);
         respuesta.setPesoConvenio(pesoConvenio);
         return respuesta;
+    }
+
+    @Override
+    public ProductoResultado buscarProducto(String busqueda) {
+        //TODO mapear busqueda en ProductoBusqueda
+        return null;
+    }
+
+    private List<Proveedor> obtenerProveedores(String tipoProducto){
+        return null;
+    }
+
+    private ProductoResultado enviarPeticion(Proveedor provider, ProductoBusqueda busqueda){
+        //TODO enviar a servicio que mapea los campos
+        //TODO enviar la petición al servicio de proveedores
+        return null;
     }
 
     //TODO Servicio que gestione la búsqueda por proveedor
