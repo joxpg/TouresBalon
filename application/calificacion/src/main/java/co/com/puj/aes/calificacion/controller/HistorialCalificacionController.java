@@ -2,14 +2,20 @@ package co.com.puj.aes.calificacion.controller;
 
 import co.com.puj.aes.calificacion.entity.Calificacion;
 import co.com.puj.aes.calificacion.entity.HistorialCalificacion;
+import co.com.puj.aes.calificacion.entity.Proveedor;
 import co.com.puj.aes.calificacion.service.CalificacionService;
 import co.com.puj.aes.calificacion.service.HistorialCalificacionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.web.reactive.function.client.WebClient;
 
 import java.util.List;
 
@@ -27,6 +33,19 @@ public class HistorialCalificacionController {
     @Autowired
     private KafkaTemplate<String, Calificacion> kafkaTemplate;
     private static final String TOPIC = "reserva";
+
+    @Autowired
+    private RestTemplate restTemplate;
+
+    @Autowired
+    private  CalificacionService calificacionService;
+
+    @Autowired
+    private DiscoveryClient discoveryClient;
+
+    @Qualifier("getWebClientBuilder")
+    @Autowired
+    private WebClient.Builder webClientBuilder;
 
     @GetMapping("")
     public ResponseEntity<?> getList() throws Exception {
@@ -48,7 +67,23 @@ public class HistorialCalificacionController {
 
     @PostMapping("")
     public ResponseEntity <?> create(@RequestBody HistorialCalificacion historialCalificacion) throws Exception {
+        historialCalificacionService.create(historialCalificacion);
+        Proveedor proveedor = new Proveedor();
+        proveedor.setCalificacion(""+countRating(historialCalificacion.getIdProveedor()));
+
+        restTemplate.put("http://ms-proveedor/proveedor/"+historialCalificacion.getIdProveedor(),
+        proveedor,Proveedor.class);
+
         return new ResponseEntity<>(historialCalificacionService.create(historialCalificacion), HttpStatus.OK);
+    }
+
+    public String countRating(String idProveedor) throws Exception {
+        String calificacion = historialCalificacionService.promedioCalificacion(idProveedor);
+
+        if(calificacion == null){
+            return ("No existe una Calificación correspondiente al id ingresado");
+        }
+        return calificacion;
     }
 
     @PutMapping("{id}")

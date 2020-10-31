@@ -3,6 +3,8 @@ package co.com.puj.aes.proveedor.service;
 import co.com.puj.aes.proveedor.entity.Proveedor;
 import co.com.puj.aes.proveedor.repository.ProveedorRepository;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBScanExpression;
+import com.amazonaws.services.dynamodbv2.datamodeling.PaginatedScanList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBSaveExpression;
@@ -29,6 +31,13 @@ public Proveedor save(Proveedor proveedor) throws Exception{
 public Proveedor getProveedorById (String idProveedor) throws Exception{
         return dynamoDbMapper.load(Proveedor.class, idProveedor);
         }
+    public List<Proveedor> getlist ()throws Exception{
+        List<Proveedor> scanResult = dynamoDbMapper.scan(Proveedor.class, new DynamoDBScanExpression());
+        ((PaginatedScanList<Proveedor>) scanResult).loadAllResults();
+        System.out.println("getList size en el servicio " + scanResult.size());
+
+        return scanResult;
+    }
 
 public  Proveedor update (String idProveedor, Proveedor proveedor) throws Exception{
         dynamoDbMapper.save(proveedor,

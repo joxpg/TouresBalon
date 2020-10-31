@@ -1,15 +1,21 @@
 package co.com.puj.aes.proveedor.controller;
 
+import co.com.puj.aes.proveedor.entity.Calificacion;
 import co.com.puj.aes.proveedor.entity.Proveedor;
 import co.com.puj.aes.proveedor.service.ProveedorService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.web.reactive.function.client.WebClient;
 
+import java.util.Collections;
 import java.util.List;
 
 
@@ -23,6 +29,15 @@ public class ProveedorController {
     private ProveedorService proveedorService;
 
     public ProveedorController(ProveedorService proveedorService){this.proveedorService = proveedorService;}
+    @Autowired
+    private RestTemplate restTemplate;
+
+    @Autowired
+    private DiscoveryClient discoveryClient;
+
+    @Qualifier("getWebClientBuilder")
+    @Autowired
+    private WebClient.Builder webClientBuilder;
 
     @Autowired
     private KafkaTemplate<String, Proveedor> kafkaTemplate;
@@ -30,9 +45,10 @@ public class ProveedorController {
 
     @GetMapping("")
     public ResponseEntity<?> getList() throws Exception {
-        List<Proveedor> list = proveedorService.findAll();
+        List<Proveedor> list = proveedorService.getlist();
         if(!list.isEmpty()){
-            return new ResponseEntity<List>(list, HttpStatus.OK);
+            //return new ResponseEntity<List>(list, HttpStatus.OK);
+            return new ResponseEntity<>(list, HttpStatus.OK);
         }
         return new ResponseEntity<>("No hay registros",HttpStatus.NOT_FOUND);
     }
@@ -54,18 +70,27 @@ public class ProveedorController {
     @KafkaListener(topics = "reserva", groupId = "proveedor")
     public String consumerProveedor (String reserva){
         System.out.println("Mensaje entrante de nueva reserva" + reserva);
-
         return reserva;
     }
 
     @PutMapping("{id}")
     public ResponseEntity <?> update(@PathVariable("id") String idProveedor, @RequestBody Proveedor proveedor) throws Exception {
+        System.out.println("Calificacion = " + proveedor.getCalificacion());
+
         Proveedor proveedor1 = proveedorService.getProveedorById(idProveedor);
+       // Calificacion calificacion = restTemplate.getForObject("http://ms-calificacion/calificacion/"+ idProveedor+"/proveedor", Calificacion.class);
         if(proveedor1==null){
             return new ResponseEntity<>("No existe un Proveedor correspondiente al id ingresado",HttpStatus.BAD_REQUEST);
         }
-        proveedor.setIdProveedor(idProveedor);
-        return new ResponseEntity<>(proveedorService.update(idProveedor, proveedor),HttpStatus.OK);
+        proveedor1.setIdProveedor(idProveedor);
+        proveedor1.setCalificacion(proveedor.getCalificacion());
+        return new ResponseEntity<>(proveedorService.update(idProveedor, proveedor1),HttpStatus.OK);
+    }
+
+    @KafkaListener(topics = "calificacion", groupId = "proveedor")
+    public Calificacion consumerCalificacion (Calificacion proveedor){
+        System.out.println(" Mensaje entrante de un proveedor = " + proveedor);
+        return proveedor;
     }
 
     @ResponseBody
