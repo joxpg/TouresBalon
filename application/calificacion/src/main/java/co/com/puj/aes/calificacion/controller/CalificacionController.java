@@ -1,6 +1,8 @@
 package co.com.puj.aes.calificacion.controller;
 import co.com.puj.aes.calificacion.entity.Calificacion;
+import co.com.puj.aes.calificacion.entity.HistorialCalificacion;
 import co.com.puj.aes.calificacion.service.CalificacionService;
+import co.com.puj.aes.calificacion.service.HistorialCalificacionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,9 +25,13 @@ public class CalificacionController {
 
     public CalificacionController(CalificacionService calificacionService) {this.calificacionService = calificacionService;}
 
+    @Autowired
+    private HistorialCalificacionService historialCalificacionService;
+
+
 @Autowired
     private KafkaTemplate<String, Calificacion> kafkaTemplate;
-    private static final String TOPIC = "reserva";
+    private static final String TOPIC = "calificacion";
 
     @GetMapping("")
     public ResponseEntity<?> getList() throws Exception {
@@ -44,6 +50,15 @@ public class CalificacionController {
         }
         return new ResponseEntity<>(calificacionService.findById(id),HttpStatus.OK);
     }
+    @ResponseBody
+    @GetMapping("{idProveedor}/proveedor")
+    public ResponseEntity <?> getByIdProveedor(@PathVariable("idProveedor") String id ) throws Exception {
+        Calificacion calificacion = calificacionService.findByIdProvider(id);
+        if(calificacion==null){
+            return new ResponseEntity<>("No existen resultados para su consulta",HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(calificacionService.findByIdProvider(id),HttpStatus.OK);
+    }
 
     @PostMapping("")
     public ResponseEntity <?> create(@RequestBody Calificacion calificacion) throws Exception {
@@ -56,6 +71,7 @@ public class CalificacionController {
         if(calificacion1==null){
             return new ResponseEntity<>("No existe una Calificación correspondiente al id ingresado",HttpStatus.BAD_REQUEST);
         }
+        kafkaTemplate.send(TOPIC, calificacion);
         calificacion.setIdCalificacion(id);
         return new ResponseEntity<>(calificacionService.update(calificacion),HttpStatus.OK);
     }

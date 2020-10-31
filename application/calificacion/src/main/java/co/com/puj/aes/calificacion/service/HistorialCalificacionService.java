@@ -22,6 +22,9 @@ public class HistorialCalificacionService implements ServiceInterface <Historial
         return historialCalificacionRepository.findById(key).get();
     }
 
+    public String promedioCalificacion(String idProveedor) throws Exception {
+        return historialCalificacionRepository.avgCalificacionProveedor(idProveedor);
+    }
     @Override
     public List<HistorialCalificacion> findAll() throws Exception {
         return (List <HistorialCalificacion>) historialCalificacionRepository.findAll();
@@ -29,6 +32,11 @@ public class HistorialCalificacionService implements ServiceInterface <Historial
 
     @Override
     public HistorialCalificacion create(HistorialCalificacion entity) throws Exception {
+
+
+
+
+
         entity.setEstadoCalificacion(true);
         return historialCalificacionRepository.save(entity);
     }
