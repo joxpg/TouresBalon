@@ -3,13 +3,15 @@ package com.puj.aes.producto.producto.Service;
 
 import com.puj.aes.producto.producto.Entity.*;
 import java.util.*;
-
+import com.google.gson.*;
 import com.puj.aes.producto.producto.Interface.IProductoService;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 @Service
 public class ProductoService implements IProductoService {
+    RestTemplate restTemplate = new RestTemplate();
+
     @Override
     public ProductoResultado enviarRespuesta(ProductoResultado respuesta) {
         float calificacion = 4;
@@ -22,13 +24,22 @@ public class ProductoService implements IProductoService {
     }
 
     @Override
-    public ProductoResultado buscarProducto(String busqueda) {
-        //TODO mapear busqueda en ProductoBusqueda
-        return null;
+    public void buscarProducto(String busqueda) {
+        Gson g = new Gson();
+        ProductoBusqueda productoBusqueda = g.fromJson(busqueda, ProductoBusqueda.class);
+        String productType = productoBusqueda.getProductType();
+        List<Proveedor> proveedorList = this.obtenerProveedores(productType);
+        for (Proveedor provedor: proveedorList)
+        {
+            ProductoBusqueda productoBusquedaAux = productoBusqueda;
+            this.enviarPeticion(provedor,productoBusquedaAux);
+        }
     }
 
     private List<Proveedor> obtenerProveedores(String tipoProducto){
-        return null;
+        //List<Proveedor> proveedorList = restTemplate.getForObject("https://run.mocky.io/v3/f8ece200-5a9d-4855-92d3-3fe20d5c497a", List.class);
+        List<Proveedor> proveedorList = restTemplate.getForObject("https://run.mocky.io/v3/f8ece200-5a9d-4855-92d3-3fe20d5c497a", List.class);
+        return proveedorList;
     }
 
     private ProductoResultado enviarPeticion(Proveedor provider, ProductoBusqueda busqueda){

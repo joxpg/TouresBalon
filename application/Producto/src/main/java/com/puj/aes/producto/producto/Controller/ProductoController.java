@@ -27,7 +27,12 @@ public class ProductoController {
     public ProductoController(ProductoService productoService) {this.productoService = productoService;}
 
     @PostMapping("")
-    public void producerRespuesesta(@Valid @RequestBody ProductoResultado producto) throws Exception {
+    public void servicioGenerador(@Valid @RequestBody ProductoResultado producto){
+        producto = productoService.enviarRespuesta(producto);
+        kafkaTemplate.send("productoBusqueda", producto);
+    }
+
+    public void producerRespuesesta(ProductoResultado producto){
         producto = productoService.enviarRespuesta(producto);
         kafkaTemplate.send(TOPIC, producto);
     }
@@ -35,6 +40,5 @@ public class ProductoController {
     @KafkaListener(topics = "productoBusqueda", groupId = "producto")
     public void consumerBusqueda(String producto){
         productoService.buscarProducto(producto);
-
     }
 }
