@@ -27,15 +27,14 @@ public class ProductoController {
     public ProductoController(ProductoService productoService) {this.productoService = productoService;}
 
     @PostMapping("")
-    public ResponseEntity<?> create(@Valid @RequestBody ProductoResultado producto) throws Exception {
+    public void producerRespuesesta(@Valid @RequestBody ProductoResultado producto) throws Exception {
         producto = productoService.enviarRespuesta(producto);
         kafkaTemplate.send(TOPIC, producto);
-        return new ResponseEntity<>("Escribiendo en kafka",HttpStatus.OK);
     }
 
     @KafkaListener(topics = "productoBusqueda", groupId = "producto")
-    public String consumerProducto (String producto){
-        System.out.println(producto.toString());
-        return producto;
+    public void consumerBusqueda(String producto){
+        productoService.buscarProducto(producto);
+
     }
 }
