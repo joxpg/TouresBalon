@@ -69,7 +69,7 @@ public class HistorialCalificacionController {
     public ResponseEntity <?> create(@RequestBody HistorialCalificacion historialCalificacion) throws Exception {
         historialCalificacionService.create(historialCalificacion);
         Proveedor proveedor = new Proveedor();
-        proveedor.setCalificacion(""+countRating(historialCalificacion.getIdProveedor()));
+        proveedor.setRating(""+countRating(historialCalificacion.getIdProveedor()));
 
         restTemplate.put("http://ms-proveedor/proveedor/"+historialCalificacion.getIdProveedor(),
         proveedor,Proveedor.class);

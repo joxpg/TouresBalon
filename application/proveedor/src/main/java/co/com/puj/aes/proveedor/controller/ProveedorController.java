@@ -75,15 +75,15 @@ public class ProveedorController {
 
     @PutMapping("{id}")
     public ResponseEntity <?> update(@PathVariable("id") String idProveedor, @RequestBody Proveedor proveedor) throws Exception {
-        System.out.println("Calificacion = " + proveedor.getCalificacion());
+        System.out.println("Calificacion = " + proveedor.getRating());
 
         Proveedor proveedor1 = proveedorService.getProveedorById(idProveedor);
        // Calificacion calificacion = restTemplate.getForObject("http://ms-calificacion/calificacion/"+ idProveedor+"/proveedor", Calificacion.class);
         if(proveedor1==null){
             return new ResponseEntity<>("No existe un Proveedor correspondiente al id ingresado",HttpStatus.BAD_REQUEST);
         }
-        proveedor1.setIdProveedor(idProveedor);
-        proveedor1.setCalificacion(proveedor.getCalificacion());
+        proveedor1.setIdProvider(idProveedor);
+        proveedor1.setRating(proveedor.getRating());
         return new ResponseEntity<>(proveedorService.update(idProveedor, proveedor1),HttpStatus.OK);
     }
 

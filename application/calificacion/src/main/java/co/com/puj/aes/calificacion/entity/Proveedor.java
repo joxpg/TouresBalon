@@ -21,21 +21,20 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Proveedor {
 
-    private String idProveedor;
-    private String servicio;
-    private String razonSocial;
-    private String nombre;
+    private String idProvider;
+    private String productType;
+    private String nameProvider;
     private String email;
-    private String direccion;
-    private String teléfono;
-    private String pais;
-    private String contacto;
-    private String peso;
-    private String calificacion;
-    private boolean estado;
-    private String descripcion;
+    private String address;
+    private String phoneNumber;
+    private String country;
+    private String contact;
+    private String weight;
+    private String rating;
+    private boolean active;
+    private String description;
 
-    public Proveedor(String idProveedor) {
-        this.idProveedor = idProveedor;
+    public Proveedor(String idProvider) {
+        this.idProvider = idProvider;
     }
 }

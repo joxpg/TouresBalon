@@ -28,8 +28,8 @@ public Proveedor save(Proveedor proveedor) throws Exception{
         return proveedor;
         }
 
-public Proveedor getProveedorById (String idProveedor) throws Exception{
-        return dynamoDbMapper.load(Proveedor.class, idProveedor);
+public Proveedor getProveedorById (String idProvider) throws Exception{
+        return dynamoDbMapper.load(Proveedor.class, idProvider);
         }
     public List<Proveedor> getlist ()throws Exception{
         List<Proveedor> scanResult = dynamoDbMapper.scan(Proveedor.class, new DynamoDBScanExpression());
@@ -39,34 +39,34 @@ public Proveedor getProveedorById (String idProveedor) throws Exception{
         return scanResult;
     }
 
-public  Proveedor update (String idProveedor, Proveedor proveedor) throws Exception{
+public  Proveedor update (String idProvider, Proveedor proveedor) throws Exception{
         dynamoDbMapper.save(proveedor,
         new DynamoDBSaveExpression()
-        .withExpectedEntry("idProveedor",
+        .withExpectedEntry("idProvider",
         new ExpectedAttributeValue(
-        new AttributeValue().withS(idProveedor)
+        new AttributeValue().withS(idProvider)
         )));
-        return dynamoDbMapper.load(Proveedor.class, idProveedor);
+        return dynamoDbMapper.load(Proveedor.class, idProvider);
 
         }
 
-    public String deleteProveedor (String idProveedor) throws Exception{
-        Proveedor proveedor = getProveedorById(idProveedor);
-        proveedor.setEstado(false);
+    /*public String deleteProveedor (String idProvider) throws Exception{
+        Proveedor proveedor = getProveedorById(idProvider);
+        proveedor.setActive(false);
         dynamoDbMapper.save(proveedor,
                 new DynamoDBSaveExpression()
-                        .withExpectedEntry("idProveedor",
+                        .withExpectedEntry("idProvider",
                                 new ExpectedAttributeValue(
-                                        new AttributeValue().withS(idProveedor)
+                                        new AttributeValue().withS(idProvider)
                                 )));
-        return idProveedor +"  Proveedor Eliminado";
-    }
-    /*public String delete (String idProveedor){
-        Proveedor proveedor = dynamoDbMapper.load(Proveedor.class, idProveedor);
+        return idProvider +"  Proveedor Eliminado";
+    }*/
+    public String deleteProveedor (String idProvider){
+        Proveedor proveedor = dynamoDbMapper.load(Proveedor.class, idProvider);
         dynamoDbMapper.delete(proveedor);
         return "Proveedor Eliminado!";
 
-    }*/
+    }
 
     @Override
     public Proveedor findById(String key) throws Exception {
