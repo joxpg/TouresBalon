@@ -14,9 +14,9 @@ import lombok.NoArgsConstructor;
 public class Categoria {
 
     @DynamoDBAttribute
-    private String categorianame;
+    private String categoryName;
     @DynamoDBAttribute
-    private String subcategoria;
+    private String subCategory;
 
 
 

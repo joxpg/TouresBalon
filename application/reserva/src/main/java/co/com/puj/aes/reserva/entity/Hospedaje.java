@@ -18,13 +18,15 @@ import java.util.Date;
 public class Hospedaje {
 
     @DynamoDBAttribute
-    private String idProveedor;
+    private String idProvider;
     @DynamoDBAttribute
-    private Date fechaIngreso;
+    private String guestName;
     @DynamoDBAttribute
-    private Date fechaSalida;
+    private String roomNumber;
     @DynamoDBAttribute
-    @DynamoDBTypeConvertedJson
-    private ArrayList<?> huespedes;
-
+    private Date checkIn;
+    @DynamoDBAttribute
+    private Date checkOut;
+    @DynamoDBAttribute
+    private String hotel;
 }

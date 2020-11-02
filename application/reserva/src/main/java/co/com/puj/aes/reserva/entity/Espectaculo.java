@@ -16,15 +16,11 @@ import java.util.Date;
 public class Espectaculo {
 
     @DynamoDBAttribute
-    private String idProveedor;
+    private String idProvider;
     @DynamoDBAttribute
-    private String nombreEspectaculo;
+    private String idShow;
     @DynamoDBAttribute
-    private Date fechaInicio;
+    private Date showDate;
     @DynamoDBAttribute
-    private Date fechaFin;
-    @DynamoDBAttribute
-    @DynamoDBTypeConvertedJson
-    private ArrayList<?> asistentes;
-
+    private String attendeeIdentification;
 }

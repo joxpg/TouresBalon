@@ -10,6 +10,8 @@ import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RestController
 @RequiredArgsConstructor
@@ -22,6 +24,16 @@ public class ReservaController {
     @Autowired
     private KafkaTemplate<String, Reserva> kafkaTemplate;
     private static final String TOPIC = "reserva";
+
+    @GetMapping("")
+    public ResponseEntity<?> getList() throws Exception {
+        List<Reserva> list = reservaRepository.getlist();
+        if(!list.isEmpty()){
+            //return new ResponseEntity<List>(list, HttpStatus.OK);
+            return new ResponseEntity<>(list, HttpStatus.OK);
+        }
+        return new ResponseEntity<>("No hay registros",HttpStatus.NOT_FOUND);
+    }
 
     @PostMapping("")
     public ResponseEntity<?> create(@RequestBody Reserva reserva) throws Exception {
@@ -44,26 +56,26 @@ public class ReservaController {
     }
 
     @PutMapping("{id}")
-    public ResponseEntity <?> update(@PathVariable("id") String idReserva, @RequestBody Reserva reserva) throws Exception {
-        Reserva reserva1 = reservaRepository.getProveedorById(idReserva);
+    public ResponseEntity <?> update(@PathVariable("id") String idBooking, @RequestBody Reserva reserva) throws Exception {
+        Reserva reserva1 = reservaRepository.getProveedorById(idBooking);
         if(reserva1 ==null){
             return new ResponseEntity<>("No existe un Reserva correspondiente al id ingresado",HttpStatus.BAD_REQUEST);
         }
-        reserva.setIdReserva(idReserva);
-        return new ResponseEntity<>(reservaRepository.update(idReserva, reserva),HttpStatus.OK);
+        reserva.setIdBooking(idBooking);
+        return new ResponseEntity<>(reservaRepository.update(idBooking, reserva),HttpStatus.OK);
     }
     @ResponseBody
-    @DeleteMapping("{idReserva}")
-    public ResponseEntity <?> delete(@PathVariable("idReserva") String idReserva) throws Exception {
-        Reserva reserva = reservaRepository.getProveedorById(idReserva);
+    @DeleteMapping("{idBooking}")
+    public ResponseEntity <?> delete(@PathVariable("idBooking") String idBooking) throws Exception {
+        Reserva reserva = reservaRepository.getProveedorById(idBooking);
         if(reserva ==null /*|| !reservaService.existeById(id)*/){
             return new ResponseEntity<>("No existe un Eps correspondiente al id ingresado",HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity<>(reservaRepository.delete(idReserva), HttpStatus.OK);
+        return new ResponseEntity<>(reservaRepository.delete(idBooking), HttpStatus.OK);
     }
 
 
-    @KafkaListener(topics = "reserva", groupId = "reserva"/*,    containerFactory = "reservaKafkaListenerFactory"*/)
+    @KafkaListener(topics = "reserva", groupId = "reserva")
     public String consumerProveedor (String proveedor){
         System.out.println(" Mensaje entrante de un proveedor = " + proveedor);
         return proveedor;
