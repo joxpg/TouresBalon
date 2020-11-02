@@ -14,6 +14,11 @@ namespace DomainModel.Dto.Transport
         public string Cabin { get; set; }
 
         /// <summary>
+        /// Fecha de salida
+        /// </summary>
+        public DateTime? DepartingDate { get; set; }
+
+        /// <summary>
         /// Fecha de destino vuello
         /// </summary>
         public DateTime? ArrivingDate { get; set; }
@@ -22,6 +27,11 @@ namespace DomainModel.Dto.Transport
         /// precio del vuelo
         /// </summary>
         public double? Price { get; set; }
+
+        /// <summary>
+        /// Ciudad de origen
+        /// </summary>
+        public string DepartingCity { get; set; }
 
         /// <summary>
         /// ciudaad de llegada
@@ -33,15 +43,9 @@ namespace DomainModel.Dto.Transport
         /// </summary>
         public string Meals { get; set; }
 
-        /// <summary>
-        /// Fecha de salida
-        /// </summary>
-        public DateTime? DepartingDate { get; set; }
 
-        /// <summary>
-        /// Ciudad de origen
-        /// </summary>
-        public string DepartingCity { get; set; }
+
+
 
         /// <summary>
         /// Número de viaje (AA)

@@ -35,10 +35,11 @@ namespace RouterProviderService
 
             services.AddDbContext<RouterContext>(options =>
             {
-                options.UseNpgsql(Configuration.GetConnectionString("DbRouterConnection"));
+                options.UseNpgsql(Configuration.GetConnectionString("DbPGConnection"));
             });
 
-            services.AddSingleton<IRouterService, RouterService>();
+            services.AddScoped<IRouterService, RouterService>();
+            services.AddScoped<IMapperService, MapperService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

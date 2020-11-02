@@ -5,7 +5,7 @@ namespace SoapAdapter.Manager
 {
     public interface IManagerMapper<T>
     {
-        public Task<T> GetResponseSearch(InformationProv informationProv, T concreteDto);
-        public Task<T> GetResponseBook(InformationProv informationProv, T concreteDto);
+        public Task<T> GetResponseSearch(InformationProvider informationProv, T concreteDto);
+        public Task<T> GetResponseBook(InformationProvider informationProv, T concreteDto);
     }
 }
