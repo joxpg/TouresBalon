@@ -3,6 +3,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using DomainModel.Dto;
+using Microsoft.Extensions.Configuration;
+using RestAdapter.Services;
+using RestAdapter.Interfaces;
 
 namespace RestAdapter.Controllers
 {
@@ -10,21 +13,35 @@ namespace RestAdapter.Controllers
     [ApiController]
     public class ProviderController : ControllerBase
     {
+        private readonly IConfiguration configuration;
+        private readonly ITransportServices transportServices;
+        private readonly IHotelServices hotelServices;
+        private readonly IShowServices showServices;
 
-        public ProviderController()
+        public ProviderController(
+            ITransportServices transportServices,
+            IHotelServices hotelServices,
+            IShowServices showServices
+            )
         {
-
+            this.transportServices = transportServices;
+            this.hotelServices = hotelServices;
+            this.showServices = showServices;
         }
 
-        [Route("transport")]
-        [HttpGet]
-        public async Task<IActionResult> SearchFl([FromBody]GeneralDto info)
+        [Route("transport/search")]
+        [HttpPost]
+        public async Task<IActionResult> SearchFlight([FromBody]GeneralDto info)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
             try
             {
-                return NotFound();
+                var result = await transportServices.Search(info.GeneralFlightInfo.SearchFlight, info.InformationProvider);
+                if (result == null)
+                    return NoContent();
+                else
+                    return Ok(result);
             }
             catch (Exception)
             {
@@ -34,13 +51,14 @@ namespace RestAdapter.Controllers
 
         [Route("transport/book")]
         [HttpPost]
-        public async Task<IActionResult> BookFl([FromBody]GeneralDto info)
+        public async Task<IActionResult> BookFlight([FromBody]GeneralDto info)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
             try
             {
-                return NotFound();
+                var result = await transportServices.Book(info.GeneralFlightInfo.BookFlight, info.InformationProvider);
+                return Ok(result);
             }
             catch (Exception)
             {
@@ -48,15 +66,16 @@ namespace RestAdapter.Controllers
             }
         }
 
-        [Route("hotel")]
-        [HttpGet]
+        [Route("hotel/search")]
+        [HttpPost]
         public async Task<IActionResult> SearchRoom([FromBody]GeneralDto info)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
             try
             {
-                return NotFound();
+                var result = await hotelServices.Search(info.GeneralHotelInfo.SearchRoom, info.InformationProvider);
+                return Ok(result);
             }
             catch (Exception)
             {
@@ -72,7 +91,8 @@ namespace RestAdapter.Controllers
                 return BadRequest(ModelState);
             try
             {
-                return NotFound();
+                var result = await hotelServices.Book(info.GeneralHotelInfo.RoomReservation, info.InformationProvider);
+                return Ok(result);
             }
             catch (Exception)
             {
@@ -81,15 +101,16 @@ namespace RestAdapter.Controllers
         }
 
 
-        [Route("show")]
-        [HttpGet]
+        [Route("show/search")]
+        [HttpPost]
         public async Task<IActionResult> SearchShow([FromBody]GeneralDto info)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
             try
             {
-                return NotFound();
+                var result = await showServices.Search(info.GeneralShowInfo.SearchShow, info.InformationProvider);
+                return Ok(result);
             }
             catch (Exception)
             {
@@ -105,7 +126,8 @@ namespace RestAdapter.Controllers
                 return BadRequest(ModelState);
             try
             {
-                return NotFound();
+                var result = await showServices.Book(info.GeneralShowInfo.ShowReservation, info.InformationProvider);
+                return Ok(result);
             }
             catch (Exception)
             {

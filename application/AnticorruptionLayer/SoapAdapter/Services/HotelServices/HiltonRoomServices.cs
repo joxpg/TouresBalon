@@ -66,7 +66,7 @@ namespace SoapAdapter.Services.HotelServices
         }
 
         /// <summary>
-        /// Traduce el dto al objeto initiateRequest para consultar las habitaciones en el hotel en formato solicitado por proveedor
+        /// Transforma el dto al objeto initiateRequest para consultar las habitaciones en el hotel en formato solicitado por proveedor
         /// </summary>
         /// <param name="searchRoom"></param>
         /// <returns></returns>
@@ -87,7 +87,7 @@ namespace SoapAdapter.Services.HotelServices
 
 
         /// <summary>
-        /// Traduce el dto al objeto de bookRoomRequest para solicitar la reserva
+        /// Transforma el dto al objeto de bookRoomRequest para solicitar la reserva
         /// </summary>
         /// <remarks>
         /// En esta transformación se utiliza la librería mappper porque el dto es igual al objeto del proveedor

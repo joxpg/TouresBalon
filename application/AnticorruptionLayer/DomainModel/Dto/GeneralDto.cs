@@ -6,7 +6,7 @@ namespace DomainModel.Dto
 {
     public class GeneralDto
     {
-        public InformationProv InformationProvider { get; set; }
+        public InformationProvider InformationProvider { get; set; }
         public GeneralFlightDto? GeneralFlightInfo { get; set; }
         public GeneralHotelDto? GeneralHotelInfo { get; set; }
         public GeneralShowDto? GeneralShowInfo { get; set; }

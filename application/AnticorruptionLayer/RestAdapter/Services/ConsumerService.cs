@@ -18,14 +18,14 @@ namespace RestAdapter.Services
             return httpContent;
         }
 
-        public async Task<object> Get(string endpoint, object body)
+        public async Task<object> GetAsync(string endpoint, object body=null)
         {            
             var httpClient = new HttpClient();
             var messageResponse = await httpClient.GetAsync(endpoint).ConfigureAwait(false);
             return messageResponse;
         }
 
-        public async Task<object> Post(string endpoint, object body)
+        public async Task<object> PostAsync(string endpoint, object body)
         {
             var httpClient = new HttpClient();
             var httpContent = GetHttpContent(body);
@@ -33,7 +33,7 @@ namespace RestAdapter.Services
             return messageResponse;
         }
 
-        public async Task<object> Put(string endpoint, object body)
+        public async Task<object> PutAsync(string endpoint, object? body)
         {
             var httpClient = new HttpClient();
             var httpContent = GetHttpContent(body);
@@ -41,7 +41,7 @@ namespace RestAdapter.Services
             return messageResponse;
         }
 
-        public async Task<object> Delete(string endpoint)
+        public async Task<object> DeleteAsync(string endpoint)
         {
             var httpClient = new HttpClient();
             var messageResponse = await httpClient.DeleteAsync(endpoint).ConfigureAwait(false);

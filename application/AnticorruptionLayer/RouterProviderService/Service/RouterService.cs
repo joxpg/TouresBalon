@@ -11,11 +11,12 @@ namespace RouterProviderService.Service
 {
     public class RouterService : IRouterService
     {
-        List<RouterProvider> routers;
+ 
+        private readonly RouterContext _context;
 
-        public RouterService()
+        public RouterService(RouterContext context)
         {
-            routers = new List<RouterProvider>();
+            _context = context;
         }
 
         public async Task<object> Book(GeneralDto generalDto)
@@ -30,7 +31,7 @@ namespace RouterProviderService.Service
 
         private async Task<object> GetResponseProviderService(GeneralDto generalDto, string type)
         {
-            var router = routers.FirstOrDefault(x => x.IdProveedor == generalDto.InformationProvider.IdProveedor && x.TipoProveedor == generalDto.InformationProvider.TipoProveedor);
+            var router = _context.RouterProvider.FirstOrDefault(x => x.IdProveedor == generalDto.InformationProvider.IdProvider && x.TipoProveedor == generalDto.InformationProvider.ProviderType);
             if (router != null)
             {
                 var url = $"{router.Endpoint}/{router.TipoAdaptador}/{router.TipoProveedor}/{type}";

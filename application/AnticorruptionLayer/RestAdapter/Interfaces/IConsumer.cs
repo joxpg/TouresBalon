@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿
 using System.Threading.Tasks;
 
 namespace RestAdapter.Interfaces
 {
     public interface IConsumer
     {
-        public Task<object> Get(string endpoint, object body); 
-        public Task<object> Post(string endpoint, object body); 
-        public Task<object> Put(string endpoint, object body); 
-        public Task<object> Delete(string endpoint); 
+        public Task<object> GetAsync(string endpoint, object body=null); 
+        public Task<object> PostAsync(string endpoint, object body); 
+        public Task<object> PutAsync(string endpoint, object body); 
+        public Task<object> DeleteAsync(string endpoint); 
     }
 }
