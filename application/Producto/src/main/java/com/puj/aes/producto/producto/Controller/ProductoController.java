@@ -21,23 +21,25 @@ import javax.validation.Valid;
 public class ProductoController {
     @Autowired
     private KafkaTemplate<String, ProductoResultado> kafkaTemplate;
-    private static final String TOPIC = "productoResultado";
+    @Autowired
+    private KafkaTemplate<String, ProductoBusqueda> kafkaTemplateTest; // para la prueba de creación
+    private static final String TOPIC = "productoresultado";
     @Autowired
     ProductoService productoService;
     public ProductoController(ProductoService productoService) {this.productoService = productoService;}
 
     @PostMapping("")
-    public void servicioGenerador(@Valid @RequestBody ProductoResultado producto){
-        producto = productoService.enviarRespuesta(producto);
-        kafkaTemplate.send("productoBusqueda", producto);
+    public void servicioGenerador(@Valid @RequestBody ProductoBusqueda producto){
+        //producto = productoService.enviarRespuesta(producto);
+        kafkaTemplateTest.send("productobusqueda", producto);
     }
 
     public void producerRespuesesta(ProductoResultado producto){
-        producto = productoService.enviarRespuesta(producto);
+        //producto = productoService.enviarRespuesta(producto);
         kafkaTemplate.send(TOPIC, producto);
     }
 
-    @KafkaListener(topics = "productoBusqueda", groupId = "producto")
+    @KafkaListener(topics = "productobusqueda", groupId = "producto")
     public void consumerBusqueda(String producto){
         productoService.buscarProducto(producto);
     }
