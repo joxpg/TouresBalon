@@ -43,6 +43,15 @@ public class ProveedorController {
     private KafkaTemplate<String, Proveedor> kafkaTemplate;
     private static final String TOPIC = "reserva";
 
+    @GetMapping("product/{type}")
+    public ResponseEntity<?> getlistByProductType(@PathVariable String type) throws Exception {
+        List<Proveedor> list = proveedorService.getlistByProductType(type);
+        if(!list.isEmpty()){
+            return new ResponseEntity<>(list, HttpStatus.OK);
+        }
+        return new ResponseEntity<>("No hay registros",HttpStatus.NOT_FOUND);
+    }
+
     @GetMapping("")
     public ResponseEntity<?> getList() throws Exception {
         List<Proveedor> list = proveedorService.getlist();
