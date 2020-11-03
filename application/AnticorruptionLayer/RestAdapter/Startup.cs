@@ -15,6 +15,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using RestAdapter.Interfaces;
 using RestAdapter.Models;
+using RestAdapter.Repository.Common;
 using RestAdapter.Services;
 using Steeltoe.Discovery.Client;
 
@@ -35,8 +36,7 @@ namespace RestAdapter
             services.AddDiscoveryClient(Configuration);
             services.AddControllers();
             var awsOptions = Configuration.GetAWSOptions();
-            //awsOptions.Credentials = new EnvironmentVariablesAWSCredentials();
-            var awsCredentials = new Amazon.Runtime.BasicAWSCredentials("D", "D");
+            var awsCredentials = new BasicAWSCredentials("AKIAXUBBAWFFH4XPS5EH", "Db/5S/ham0GEaDFqjrWVDYLeUklbK9xVEoFuyzzp");
             awsOptions.Credentials = awsCredentials;
             services.AddDefaultAWSOptions(awsOptions);
             services.AddAWSService<IAmazonDynamoDB>();
@@ -49,6 +49,12 @@ namespace RestAdapter
             services.AddScoped<ITransportServices, TransportService>();
             services.AddScoped<IHotelServices, HotelService>();
             services.AddScoped<IShowServices, ShowService>();
+
+
+            services.AddScoped<IFieldMapper, FieldAdapter>();
+            services.AddScoped<IConsumer, ConsumerService>();
+            services.AddScoped<IMetadataRepository, MetadataRepository>();
+            //services.AddScoped(typeof(IAsyncRepository<>), typeof(EfRepository<>));
 
         }
 
