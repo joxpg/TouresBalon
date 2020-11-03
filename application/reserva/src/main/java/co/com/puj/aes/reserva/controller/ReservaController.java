@@ -37,21 +37,18 @@ public class ReservaController {
 
     @PostMapping("")
     public ResponseEntity<?> create(@RequestBody Reserva reserva) throws Exception {
-        return new ResponseEntity<>(reservaRepository.save(reserva), HttpStatus.OK);
+    Reserva booking =reservaRepository.save(reserva);
+    kafkaTemplate.send(TOPIC, booking);
+        return new ResponseEntity<>(booking, HttpStatus.OK);
     }
 
     @ResponseBody
     @GetMapping("{id}")
     public ResponseEntity <?> getByid(@PathVariable("id") String id) throws Exception {
-
-        System.out.println(" llegando a getbyId" );
-
         Reserva reserva = reservaRepository.getProveedorById(id);
         if(reserva ==null){
             return new ResponseEntity<>("No existen resultados para su consulta",HttpStatus.BAD_REQUEST);
         }
-
-        kafkaTemplate.send(TOPIC, reserva);
         return new ResponseEntity<>(reservaRepository.getProveedorById(id),HttpStatus.OK);
     }
 
