@@ -70,17 +70,17 @@ services:
    - eureka-server
   links:
    - eureka-server
- #ms-pasarela:
- # image: ms-pasarela:lastest
- # environment: 
- #  # Important for clients to register with eureka
- #  - eureka.client.serviceUrl.defaultZone=http://eureka-server:9040/eureka/
- # ports:
- #  - "9072:9072"
- # depends_on:
- #  - eureka-server
- # links:
- #  - eureka-server
+ ms-pasarela:
+  image: ms-pasarela:lastest
+  environment: 
+   # Important for clients to register with eureka
+   - eureka.client.serviceUrl.defaultZone=http://eureka-server:9040/eureka/
+  ports:
+   - "9072:9072"
+  depends_on:
+   - eureka-server
+  links:
+   - eureka-server
  producto:
   image: producto:lastest
   environment: 
