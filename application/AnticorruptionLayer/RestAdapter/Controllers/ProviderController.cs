@@ -13,7 +13,6 @@ namespace RestAdapter.Controllers
     [ApiController]
     public class ProviderController : ControllerBase
     {
-        private readonly IConfiguration configuration;
         private readonly ITransportServices transportServices;
         private readonly IHotelServices hotelServices;
         private readonly IShowServices showServices;

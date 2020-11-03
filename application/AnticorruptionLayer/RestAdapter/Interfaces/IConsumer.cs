@@ -1,13 +1,14 @@
 ﻿
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace RestAdapter.Interfaces
 {
     public interface IConsumer
     {
-        public Task<object> GetAsync(string endpoint, object body=null); 
-        public Task<object> PostAsync(string endpoint, object body); 
-        public Task<object> PutAsync(string endpoint, object body); 
-        public Task<object> DeleteAsync(string endpoint); 
+        public Task<HttpResponseMessage> GetAsync(string endpoint, string? headers, object body=null); 
+        public Task<HttpResponseMessage> PostAsync(string endpoint, string? headers, object body); 
+        public Task<HttpResponseMessage> PutAsync(string endpoint, string? headers, object body); 
+        public Task<HttpResponseMessage> DeleteAsync(string endpoint, string? headers); 
     }
 }

@@ -1,11 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using RestAdapter.Repository.Common;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RestAdapter.Models
 {
     [Table("RestAdapterConfiguration", Schema = "RestAdapterService")]
-    public class RestAdapterConfiguration
+    public class RestAdapterConfiguration: BaseEntity, IAggregateRoot
     {
-        public int Id { get; set; }
 
         /// <summary>
         /// Identificador de proveedor
