@@ -128,7 +128,7 @@
             },
             "Steeltoe.Discovery.ClientCore": {
               "target": "Package",
-              "version": "[3.0.1, )"
+              "version": "[2.5.1, )"
             }
           },
           "imports": [

@@ -27,6 +27,6 @@ public class BusquedaProducto implements Serializable {
     private Date showDate;
     private int quantity;
     private String location;
-    private String tipoproducto;
+    private String productType;
 
 }
