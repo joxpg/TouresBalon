@@ -13,7 +13,7 @@ import javax.validation.Valid;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(value="/pagos")
+@RequestMapping(value="/pasarela")
 @CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT,
         RequestMethod.DELETE}, allowedHeaders = "*")
 public class PasarelaController {
@@ -25,9 +25,7 @@ public class PasarelaController {
     public PasarelaController(PasarelaService pasarelaService) {this.pasarelaService = pasarelaService;}
 
     @PostMapping("")
-    public ResponseEntity<?> create(@Valid @RequestBody Pasarela pasarela) throws Exception {
-        pasarela = pasarelaService.enviarRespuesta(pasarela);
-        kafkaTemplate.send(TOPIC, pasarela);
-        return new ResponseEntity<>("Escribiendo en kafka",HttpStatus.OK);
+    public void servicioPagos(@Valid @RequestBody Pasarela pasarela){
+        kafkaTemplate.send("pagos", pasarela);
     }
 }
