@@ -1,4 +1,5 @@
 ﻿using DomainModel.Dto.Transport;
+using SoapAdapter.Interfaces;
 using System.Threading.Tasks;
 
 namespace SoapAdapter.Manager

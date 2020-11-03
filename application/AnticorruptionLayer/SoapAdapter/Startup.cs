@@ -1,9 +1,11 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SoapAdapter.Manager;
+using SoapAdapter.Models;
 using Steeltoe.Discovery.Client;
 
 namespace SoapAdapter
@@ -22,6 +24,12 @@ namespace SoapAdapter
         {
             services.AddDiscoveryClient(Configuration);
             services.AddControllers();
+
+            services.AddDbContext<MetadataContext>(options =>
+            {
+                options.UseNpgsql(Configuration.GetConnectionString("DbPGConnection"));
+            });
+
             services.AddScoped<IFlightServiceManager, FlightServiceManager>();
             services.AddScoped<IHotelServiceManager, HotelServiceManager>();
             services.AddScoped<IShowServiceManager, ShowServiceManager>();

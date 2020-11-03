@@ -12,7 +12,7 @@ namespace RouterProviderService.Models
         /// <summary>
         /// Identificador de proveedor
         /// </summary>
-        public int IdProveedor { get; set; }
+        public string IdProveedor { get; set; }
 
         /// <summary>
         /// Nombre del proveedor que lo identifíca dentro del dominio

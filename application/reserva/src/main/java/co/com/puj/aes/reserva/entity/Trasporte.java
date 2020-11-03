@@ -17,20 +17,18 @@ import java.util.Map;
 
 public class Trasporte {
     @DynamoDBAttribute
-    private String idProveedor;
+    private String idProvider;
     @DynamoDBAttribute
-    private String origen;
+    private String departingCity;
     @DynamoDBAttribute
-    private String destino;
+    private String arrivingCity;
     @DynamoDBAttribute
-    private Date fechaSalida;
+    private Date departingDate;
     @DynamoDBAttribute
-    private Date fechaRegreso;
+    private int adult;
     @DynamoDBAttribute
-    private int adultos;
-    @DynamoDBAttribute
-    private int niños;
+    private int child;
     @DynamoDBAttribute
     @DynamoDBTypeConvertedJson
-    private ArrayList<?> pasajeros;
+    private ArrayList<?> passengers;
 }

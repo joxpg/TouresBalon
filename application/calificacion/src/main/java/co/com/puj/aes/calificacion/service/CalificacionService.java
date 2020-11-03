@@ -1,6 +1,7 @@
 package co.com.puj.aes.calificacion.service;
 
 import co.com.puj.aes.calificacion.entity.Calificacion;
+import co.com.puj.aes.calificacion.entity.HistorialCalificacion;
 import co.com.puj.aes.calificacion.exceptions.ResourceNotFoundException;
 import co.com.puj.aes.calificacion.repository.CalificacionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,10 @@ public class CalificacionService implements ServiceInterface  <Calificacion, Sho
             throw new ResourceNotFoundException("La Calificaciones con id " + key + " no existe.");
         }
         return calificacionRepository.findById(key).get();
+    }
+
+    public Calificacion findByIdProvider(String idProveedor) throws Exception {
+        return calificacionRepository.findByIdProveedor(idProveedor);
     }
 
     @Override

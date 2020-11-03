@@ -34,7 +34,7 @@ mvn install
 docker rm -f ms-pagos
 docker build -t ms-pagos:lastest .
 cd ..
-cd ms-pasarela
+cd ms-Pasarela
 mvn install
 docker rm -f ms-pasarela
 docker build -t ms-pasarela:lastest .
@@ -44,4 +44,13 @@ mvn install
 docker rm -f producto
 docker build -t producto:lastest .
 cd ..
+cd AnticorruptionLayer
+cd SoapAdapter
+dotnet build -c Release
+docker build -t soapadapter:lastest .
+cd ..
+cd ..
+
+
+
 docker-compose up -d

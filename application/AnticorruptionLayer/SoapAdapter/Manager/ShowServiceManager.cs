@@ -2,22 +2,26 @@
 using DomainModel.Dto;
 using DomainModel.Dto.Show;
 using SoapAdapter.Interfaces;
+using SoapAdapter.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace SoapAdapter.Manager
 {
-    public class ShowServiceManager : IShowServiceManager
+    public class ShowServiceManager : MetadataManager<IShowServices>, IShowServiceManager
     {
-        private readonly Dictionary<string, IShowServices> _servicesRegistry;
-        public ShowServiceManager()
+
+
+        public ShowServiceManager(MetadataContext context) : base(context)
         {
-            _servicesRegistry = new Dictionary<string, IShowServices>();
+
         }
 
-        public async Task<GeneralShowDto> GetResponseBook(InformationProv informationProv, GeneralShowDto concreteDto)
+
+        public async Task<GeneralShowDto> GetResponseBook(InformationProvider informationProv, GeneralShowDto concreteDto)
         {
-            if (_servicesRegistry.TryGetValue(informationProv.NombreProveedor, out IShowServices service))
+            var service = GetService(informationProv);
+            if (service != null)
             {
                 var book = await service.BookShow(concreteDto.ShowReservation);
                 concreteDto.ShowReservationResponse = book;
@@ -27,9 +31,10 @@ namespace SoapAdapter.Manager
             return null;
         }
 
-        public async Task<GeneralShowDto> GetResponseSearch(InformationProv informationProv, GeneralShowDto concreteDto)
+        public async Task<GeneralShowDto> GetResponseSearch(InformationProvider informationProv, GeneralShowDto concreteDto)
         {
-            if (_servicesRegistry.TryGetValue(informationProv.NombreProveedor, out IShowServices service))
+            var service = GetService(informationProv);
+            if (service != null)
             {
                 var shows = await service.SearchShow(concreteDto.SearchShow);
                 concreteDto.Shows = shows;
