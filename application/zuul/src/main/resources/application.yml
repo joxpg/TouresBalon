@@ -1,0 +1,6 @@
+zuul:
+  routes:
+    proveedor:
+      path: /proveedor/**
+      serviceId: MS-PROVEEDOR
+      stripPrefix: false
