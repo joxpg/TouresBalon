@@ -26,8 +26,8 @@ public class ProductoResultado {
     private String row;
     private String seatNumber;
     private String Location;
-    private float calificacion;
-    private float pesoConvenio;
+    private String calificacion;
+    private String pesoConvenio;
     private String idBusqueda;
 
     public ProductoResultado(String idBusqueda){

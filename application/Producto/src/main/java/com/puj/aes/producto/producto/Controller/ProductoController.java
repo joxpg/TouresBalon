@@ -34,7 +34,7 @@ public class ProductoController {
         kafkaTemplateTest.send("productobusqueda", producto);
     }
 
-    public void producerRespuesesta(ProductoResultado producto){
+    public void producerRespuesta(ProductoResultado producto){
         //producto = productoService.enviarRespuesta(producto);
         kafkaTemplate.send(TOPIC, producto);
     }
