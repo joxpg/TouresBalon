@@ -110,7 +110,7 @@ services:
    # Important for clients to register with eureka
    - eureka.client.serviceUrl=http://eureka-server:9040/eureka/
   ports:
-   - "9090:80"
+   - "9091:80"
   depends_on:
    - eureka-server
   links:
@@ -121,7 +121,7 @@ services:
    # Important for clients to register with eureka
    - eureka.client.serviceUrl=http://eureka-server:9040/eureka/
   ports:
-   - "9090:80"
+   - "9092:80"
   depends_on:
    - eureka-server
   links:
