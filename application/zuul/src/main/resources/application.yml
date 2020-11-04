@@ -4,3 +4,31 @@ zuul:
       path: /proveedor/**
       serviceId: MS-PROVEEDOR
       stripPrefix: false
+    calificacion:
+      path: /calificacion/**
+      serviceId: MS-CALIFICACION
+      stripPrefix: false
+    reserva:
+      path: /reserva/**
+      serviceId: MS-RESERVA
+      stripPrefix: false
+    busqueda:
+      path: /busqueda/**
+      serviceId: MS-BUSQUEDA
+      stripPrefix: false
+    pagos:
+      path: /pagos/**
+      serviceId: MS-PAGOS
+      stripPrefix: false
+    pasarela:
+      path: /pasarela/**
+      serviceId: MS-PASARELA
+      stripPrefix: false
+    producto:
+      path: /producto/**
+      serviceId: PRODUCTO
+      stripPrefix: false
+    soapadapter:
+      path: /producto/**
+      serviceId: PRODUCTO
+      stripPrefix: false
