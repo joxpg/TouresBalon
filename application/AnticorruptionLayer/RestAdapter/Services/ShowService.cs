@@ -1,6 +1,7 @@
 ﻿using DomainModel.Dto;
 using DomainModel.Dto.Show;
 using RestAdapter.Interfaces;
+using RestAdapter.Repository.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,14 +11,55 @@ namespace RestAdapter.Services
 {
     public class ShowService : IShowServices
     {
-        public Task<bool> Book(ShowReservationDto showReservation, InformationProvider informationProvider)
+        private readonly IConsumer _consumer;
+        private readonly IFieldMapper _fieldMapper;
+        private readonly IMetadataRepository _repository;
+
+        public ShowService(IConsumer consumer,
+            IFieldMapper fieldMapper,
+            IMetadataRepository repository)
         {
-            throw new NotImplementedException();
+            _consumer = consumer;
+            _fieldMapper = fieldMapper;
+            _repository = repository;
         }
 
-        public Task<List<ShowDto>> Search(SearchShowDto searchShow, InformationProvider informationProvider)
+        public async Task<bool> Book(ShowReservationDto showReservation, InformationProvider informationProvider)
         {
-            throw new NotImplementedException();
+            var metadataCofig = await _repository.GetMetadata(informationProvider, IMetadataRepository.RequestType.search);
+            //Obtiene la información de metadata y la lleva al modelo de metadata
+
+            if (metadataCofig.Body != null || metadataCofig.Body != "")
+            {
+                var metadataFieldTransport = Newtonsoft.Json.JsonConvert.DeserializeObject<RestAdapter.Models.Show.ShowReservationDto>(metadataCofig.Body);
+                //Convierte el objeto request en Json
+                var body = Newtonsoft.Json.JsonConvert.SerializeObject(showReservation, Newtonsoft.Json.Formatting.Indented);
+                metadataCofig.Body = _fieldMapper.GetBodyMapped(metadataFieldTransport, body);
+            }
+            metadataCofig.Url = _fieldMapper.GetUrlMapped(showReservation, metadataCofig.Url);
+            var providerConsumer = new ProviderConsumerService(_consumer);
+            var result = await providerConsumer.Request(metadataCofig);
+
+            return false;
+        }
+
+        public async Task<List<ShowDto>> Search(SearchShowDto searchShow, InformationProvider informationProvider)
+        {
+            //Obtiene la información de metadata y la lleva al modelo de metadata
+            var metadataCofig = await _repository.GetMetadata(informationProvider, IMetadataRepository.RequestType.search);
+            if (metadataCofig.Body != null || metadataCofig.Body != "")
+            {
+                var metadataFieldTransport = Newtonsoft.Json.JsonConvert.DeserializeObject<RestAdapter.Models.Show.SearchShowDto>(metadataCofig.Body);
+                //Convierte el objeto request en Json
+                var body = Newtonsoft.Json.JsonConvert.SerializeObject(searchShow, Newtonsoft.Json.Formatting.Indented);
+                metadataCofig.Body = _fieldMapper.GetBodyMapped(metadataFieldTransport, body);
+            }
+
+            metadataCofig.Url = _fieldMapper.GetUrlMapped(searchShow, metadataCofig.Url);
+            var providerConsumer = new ProviderConsumerService(_consumer);
+            var result = await providerConsumer.Request(metadataCofig);
+
+            return new List<ShowDto>();
         }
     }
 }

@@ -23,12 +23,5 @@ namespace RestAdapter.Services
         {
 
         }
-
-        public MetadataProvider GetMetadataProvider(DomainModel.Dto.InformationProvider information)
-        {
-            var laMeta = new Metadata(_configuration);
-            laMeta.GetMetadata(information);
-            return new MetadataProvider();
-        }
     }
 }

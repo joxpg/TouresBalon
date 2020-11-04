@@ -11,37 +11,40 @@ namespace RestAdapter.Services
 {
     public class ConsumerService : IConsumer
     {
-        private HttpContent GetHttpContent(object value)
+        private HttpContent GetHttpContent(object value, string? headers)
         {
-            var jsonDatosPDF = Newtonsoft.Json.JsonConvert.SerializeObject(value, Newtonsoft.Json.Formatting.Indented);
-            HttpContent httpContent = new StringContent(jsonDatosPDF, Encoding.UTF8, "application/json");
+            if (string.IsNullOrEmpty(headers))            
+                headers = "application/json";
+
+            //var jsonDatosPDF = Newtonsoft.Json.JsonConvert.SerializeObject(value, Newtonsoft.Json.Formatting.Indented);
+            HttpContent httpContent = new StringContent(value.ToString(), Encoding.UTF8, headers);
             return httpContent;
         }
 
-        public async Task<object> GetAsync(string endpoint, object body=null)
+        public async Task<HttpResponseMessage> GetAsync(string endpoint, string? headers, object body=null)
         {            
             var httpClient = new HttpClient();
             var messageResponse = await httpClient.GetAsync(endpoint).ConfigureAwait(false);
             return messageResponse;
         }
 
-        public async Task<object> PostAsync(string endpoint, object body)
+        public async Task<HttpResponseMessage> PostAsync(string endpoint, string? headers, object body)
         {
             var httpClient = new HttpClient();
-            var httpContent = GetHttpContent(body);
+            var httpContent = GetHttpContent(body,headers);
             var messageResponse = await httpClient.PostAsync(endpoint, httpContent).ConfigureAwait(false);
             return messageResponse;
         }
 
-        public async Task<object> PutAsync(string endpoint, object? body)
+        public async Task<HttpResponseMessage> PutAsync(string endpoint, string? headers, object? body)
         {
             var httpClient = new HttpClient();
-            var httpContent = GetHttpContent(body);
+            var httpContent = GetHttpContent(body, headers);
             var messageResponse = await httpClient.PutAsync(endpoint, httpContent).ConfigureAwait(false);
             return messageResponse;
         }
 
-        public async Task<object> DeleteAsync(string endpoint)
+        public async Task<HttpResponseMessage> DeleteAsync(string endpoint, string? headers)
         {
             var httpClient = new HttpClient();
             var messageResponse = await httpClient.DeleteAsync(endpoint).ConfigureAwait(false);

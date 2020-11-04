@@ -4,6 +4,6 @@ import com.puj.aes.producto.producto.Entity.*;
 
 
 public interface IProductoService {
-    public ProductoResultado enviarRespuesta(ProductoResultado respuesta);
+    public void enviarRespuesta(Proveedor proveedor, ProductoResultado respuesta);
     public void buscarProducto(String busqueda);
 }
