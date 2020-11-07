@@ -1,0 +1,156 @@
+{
+	"info": {
+		"_postman_id": "618b3517-0c5f-45eb-a1eb-f7c81c1299f4",
+		"name": "Proveedor",
+		"description": "Servicio de proveedores Toures Balón",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Crear un Proveedor",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"productType\": \"T\",\r\n    \"nameProvider\": \"BERLINAS DEL FONCE S.A.S\",\r\n    \"email\": \"www.berlinasdelfonce.com\",\r\n    \"address\": \"Carrera 10 Nº 24-55 Piso 11, Bogotá(Colombia)\",\r\n    \"phoneNumber\": \"57- (1) 7458963\",\r\n    \"country\": \"Colombia\",\r\n    \"contact\": \"Michelle Ibrahim\",\r\n    \"weight\": \"5\",\r\n    \"rating\": \"3\",\r\n    \"active\": true,\r\n    \"description\": \"Empresa de transporte terrestre de pasajeros con un radio de acción nacional, creada en 1954.\",\r\n    \"category\": {\r\n        \"categoryName\": \"Transporte\",\r\n        \"subCategory\": \"BERLINAS\"\r\n    }\r\n}",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9062/proveedor",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9062",
+					"path": [
+						"proveedor"
+					]
+				},
+				"description": "Servicio para la creación de un Proveedor"
+			},
+			"response": []
+		},
+		{
+			"name": "Provedor por Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9062/proveedor/a7c25117-8903-45c9-ad4d-b3a4d178adb6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9062",
+					"path": [
+						"proveedor",
+						"a7c25117-8903-45c9-ad4d-b3a4d178adb6"
+					]
+				},
+				"description": "Metodo que permite obtener un proveedor por Id"
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar un Proveedor",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"idProvider\": \"a7c25117-8903-45c9-ad4d-b3a4d178adb6\",\r\n    \"productType\": \"H\",\r\n    \"nameProvider\": \"Hotel Dann carlton Medellin S.A\",\r\n    \"email\": \"reservas@danncarlton.com.co\",\r\n    \"address\": \"Cra 43A #7-50, Medellín, Antioquia\",\r\n    \"phoneNumber\": \"57- (4) 4445151\",\r\n    \"country\": \"Colombia\",\r\n    \"contact\": \"Juan Carlos Jaramillo\",\r\n    \"weight\": \"1\",\r\n    \"rating\": \"2\",\r\n    \"active\": true,\r\n    \"description\": \"Dann, la cadena de hoteles que nació con la primera visita papal a la región\",\r\n    \"category\": {\r\n        \"categoryName\": \"Hospedaje\",\r\n        \"subCategory\": \"Hotel Dann Carlton\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9062/proveedor/a7c25117-8903-45c9-ad4d-b3a4d178adb6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9062",
+					"path": [
+						"proveedor",
+						"a7c25117-8903-45c9-ad4d-b3a4d178adb6"
+					]
+				},
+				"description": "Método que permite actualizar un proveedor "
+			},
+			"response": []
+		},
+		{
+			"name": "Borrado Logico de un proveedor",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9062/proveedor/fcddaecb-7995-43da-9e33-d3571c34c5a8",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9062",
+					"path": [
+						"proveedor",
+						"fcddaecb-7995-43da-9e33-d3571c34c5a8"
+					]
+				},
+				"description": "Se envia un Id, se consulta a la Db y se procede a cambiar el estado a false siendo tomado como borrado lógico"
+			},
+			"response": []
+		},
+		{
+			"name": "Listar todos los proveedores",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9062/proveedor",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9062",
+					"path": [
+						"proveedor"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener proveedores por product Type",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9062/proveedor/product/H",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9062",
+					"path": [
+						"proveedor",
+						"product",
+						"H"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

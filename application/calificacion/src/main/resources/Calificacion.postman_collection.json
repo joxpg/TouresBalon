@@ -1,0 +1,159 @@
+{
+	"info": {
+		"_postman_id": "919d6507-0373-49e6-99d0-a86c42eda5ae",
+		"name": "Calificacion",
+		"description": "Servicios de Calificación e historial de una Calificación",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Obtener lista de calificaciones",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9060/calificacion/c72c38de-4eb9-43fe-b583-8ecceb374aa7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9060",
+					"path": [
+						"calificacion",
+						"c72c38de-4eb9-43fe-b583-8ecceb374aa7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear registro de HistoricoCalificacion",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"idCalificacion\": \"1\",\r\n        \"idProveedor\": \"c72c38de-4eb9-43fe-b583-8ecceb374aa7\",\r\n        \"calificacion\": 8,\r\n        \"estadoCalificacion\": true\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9060/calificacion/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9060",
+					"path": [
+						"calificacion",
+						"1"
+					]
+				},
+				"description": "Servicio que permite llevar a cabo una calificación por parte de un usuario, la cual se persiste en el historico"
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener lista de calificacion historica",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9060/historicocalificacion",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9060",
+					"path": [
+						"historicocalificacion"
+					]
+				},
+				"description": "Devuelve objeto con lista de calificaciones de proveedores"
+			},
+			"response": []
+		},
+		{
+			"name": "Crear una nueva Calificacion",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"idProveedor\": \"cceaf976-ec0b-4bd4-84ae-25efc26b1196\",\r\n        \"calificacion\": 1,\r\n        \"estadoCalificacion\": true\r\n}\r\n    ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9060/calificacion",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9060",
+					"path": [
+						"calificacion"
+					]
+				},
+				"description": "Servicio para la creación de calificacion calculada de proveedor"
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Calificacion por proveedor",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9060/calificacion/cceaf976-ec0b-4bd4-84ae-25efc26b1196/proveedor",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9060",
+					"path": [
+						"calificacion",
+						"cceaf976-ec0b-4bd4-84ae-25efc26b1196",
+						"proveedor"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9060/historicocalificacion",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"idCliente\": \"1\",\r\n        \"idProveedor\": \"a7c25117-8903-45c9-ad4d-b3a4d178adb6\",\r\n        \"calificacion\": 10,\r\n        \"fechaCalificacion\": \"2020-09-28\",\r\n        \"estadoCalificacion\": true\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9060/historicocalificacion",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9060",
+					"path": [
+						"historicocalificacion"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
