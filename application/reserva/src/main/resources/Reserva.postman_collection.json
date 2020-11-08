@@ -1,0 +1,108 @@
+{
+	"info": {
+		"_postman_id": "f3d00ab0-5885-4c7b-ab2e-4e9ada4f0c4b",
+		"name": "Reserva",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Creación de una reserva",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"idCoustumer\": \"0005\",\r\n    \"email\": \"cliente8@gmail.com\",\r\n    \"address\": \"Carrera 50e No. 15 -125\",\r\n    \"phoneNumber\": \"57(1) 2364589\",\r\n    \"contact\": \"Nubia Ortega\",\r\n    \"active\": true,\r\n    \"country\": \"Colombia\",\r\n    \"transportBooking\": {\r\n        \"idProvider\": \"c72c38de-4eb9-43fe-b583-8ecceb374aa7\",\r\n        \"departingCity\": \"Bogota\",\r\n        \"arrivingCity\": \"Barranquilla\",\r\n        \"departingDate\": \"2020-09-10\",\r\n\t\t\"flight\": \"XYZ-123\",\r\n        \"adult\": 1,\r\n        \"child\": 0,\r\n        \"passengers\": [\r\n            {\r\n                \"p1\": {\r\n                    \"passengerName\": \"Nubia Ortega\",\r\n                    \"passengerIdentification\": \"10023569985\"\t\t\t\t\t\r\n                }\r\n            }\r\n        ]\r\n    },\r\n    \"hostingBooking\": {\r\n        \"idProvider\": \"fcddaecb-7995-43da-9e33-d3571c34c5a8\",\r\n\t\t\"guestName\": \"Nubia Ortega\",\r\n\t\t\"roomNumber\": \"402-B\", \r\n\t\t\"checkIn\": \"2020-09-10\",\r\n        \"checkOut\": \"2020-09-18\",\r\n        \"hotel\": \"Hilton Barranquilla Cr 5 Calle 26\"\r\n         \r\n    },\r\n    \"showBooking\": {\r\n        \"idProvider\": \"6f502ca7-c934-4b2d-b926-d23ed5512b25\",\r\n        \"idShow\": \"Colombia Toures\",\r\n        \"showDate\": \"2020-09-16\",\r\n        \"attendeeIdentification\": \"10023569985\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9061/reserva",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9061",
+					"path": [
+						"reserva"
+					]
+				},
+				"description": "Servicio para la creacion de una reserva "
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar reserva por id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9061/reserva/07979fb3-a381-4c9f-9f6c-fc1ea551ad1b",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9061",
+					"path": [
+						"reserva",
+						"07979fb3-a381-4c9f-9f6c-fc1ea551ad1b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar una reserva",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"idBooking\": \"ffde0a9b-32b2-47f6-81e5-18599602dd66\",\r\n    \"idCoustumer\": \"0001\",\r\n    \"email\": \"cliente2@gmail.com\",\r\n    \"address\": \"Avenida Calle 26 No. 59-15\",\r\n    \"phoneNumber\": \"5896326\",\r\n    \"contact\": \"Carlos Guarin\",\r\n    \"active\": true,\r\n    \"country\": \"Colombia\",\r\n    \"transportBooking\": {\r\n        \"idProvider\": \"c72c38de-4eb9-43fe-b583-8ecceb374aa7\",\r\n        \"departingCity\": \"Bogota\",\r\n        \"arrivingCity\": \"Medellin\",\r\n        \"departingDate\": \"2020-12-15T00:00:00.000+00:00\",\r\n        \"adult\": 3,\r\n        \"child\": 1,\r\n        \"passengers\": [\r\n            {\r\n                \"p1\": {\r\n                    \"passengerName\": \"Fabian Torres\",\r\n                    \"passengerIdentification\": \"80369863\"\r\n                },\r\n                \"p2\": {\r\n                    \"passengerName\": \"Patricia Londoño\",\r\n                    \"PassengerIdentification\": \"54123698\"\r\n                },\r\n                \"p3\": {\r\n                    \"passengerName\": \"Matias Torres Londoño\",\r\n                    \"passengerIdentification\": \"10124563215\"\r\n                }\r\n            }\r\n        ]\r\n    },\r\n    \"hostingBooking\": {\r\n        \"idProvider\": \"fcddaecb-7995-43da-9e33-d3571c34c5a8\",\r\n        \"guestName\": \"Fabian Torres\",\r\n        \"roomNumber\": \"1002\",\r\n        \"checkIn\": null,\r\n        \"checkOut\": null,\r\n        \"hotel\": \"Hilton Bogota Cr 5 Calle 26\"\r\n    },\r\n    \"showBooking\": {\r\n        \"idProvider\": \"6f502ca7-c934-4b2d-b926-d23ed5512b25\",\r\n        \"idShow\": \"Concierto Carlos Vives Cumbiana\",\r\n        \"showDate\": \"2020-12-16T00:00:00.000+00:00\",\r\n        \"attendeeIdentification\": \"45963256862\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9061/reserva/ffde0a9b-32b2-47f6-81e5-18599602dd66",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9061",
+					"path": [
+						"reserva",
+						"ffde0a9b-32b2-47f6-81e5-18599602dd66"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List all reserva",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9061/reserva",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9061",
+					"path": [
+						"reserva"
+					]
+				},
+				"description": "Listar todas las reservas "
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
