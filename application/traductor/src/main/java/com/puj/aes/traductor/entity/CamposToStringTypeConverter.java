@@ -1,39 +1,22 @@
 package com.puj.aes.traductor.entity;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTypeConverter;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.regex.MatchResult;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.lang.reflect.Type;
 
-public class CamposToStringTypeConverter implements DynamoDBTypeConverter<String, List<Campo>> {
+public class CamposToStringTypeConverter implements DynamoDBTypeConverter<String, Campo[]> {
     @Override
-    public String convert(final List<Campo> campos) {
-        return campos.toString();
+    public String convert(final Campo[] campos)  {
+        String stringCampos = new Gson().toJson(campos);
+        return stringCampos;
     }
 
     @Override
-    public List<Campo> unconvert(final String string) {
-        //List<Campo> campos = new ArrayList<>();
-        /*String regexpStr = "(\\[([0-9]+),\\s*([0-9a-zA-Z]+),\\])";
-        //String inputData = "[11, john,][23, Adam,][88, Angie,]";
-
-        Pattern regexp = Pattern.compile(regexpStr);
-        Matcher matcher = regexp.matcher(string);
-        while (matcher.find()) {
-            MatchResult result = matcher.toMatchResult();
-
-            String nombre = result.group(2);
-            String valorDominio = result.group(3);
-            String valorProveedor = result.group(4);
-
-            Campo campo = new Campo(nombre, valorDominio, valorProveedor);
-            campos.add(campo);
-        }*/
-        //return campos.toArray(Campo[]::new);
-        return null;
+    public Campo[] unconvert(final String string) {
+        Type listType = new TypeToken<Campo[]>() {}.getType();
+        Campo[] campos = new Gson().fromJson(string, listType);
+        return campos;
     }
 }

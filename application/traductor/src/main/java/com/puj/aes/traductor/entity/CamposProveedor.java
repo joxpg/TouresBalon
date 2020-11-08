@@ -20,7 +20,7 @@ import java.util.List;
 public class CamposProveedor implements Serializable{
     @DynamoDBHashKey(attributeName = "idProvider")
     private String idProvider;
-    //@DynamoDBTypeConverted(converter = CamposToStringTypeConverter.class)
+    @DynamoDBTypeConverted(converter = CamposToStringTypeConverter.class)
     @DynamoDBAttribute(attributeName="campo")
-    private List<Campo> campos;
+    private Campo[] campos;
 }
