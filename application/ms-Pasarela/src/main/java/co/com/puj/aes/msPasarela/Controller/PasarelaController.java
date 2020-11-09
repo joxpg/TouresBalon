@@ -1,13 +1,12 @@
 package co.com.puj.aes.msPasarela.Controller;
 
-import co.com.puj.aes.msPasarela.Entity.Pasarela;
+import  co.com.puj.aes.msPasarela.Entity.Pasarela;
 import co.com.puj.aes.msPasarela.Service.PasarelaService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.http.ResponseEntity;
-import org.springframework.http.HttpStatus;
 
 import javax.validation.Valid;
 
@@ -26,6 +25,11 @@ public class PasarelaController {
 
     @PostMapping("")
     public void servicioPagos(@Valid @RequestBody Pasarela pasarela){
-        kafkaTemplate.send("pagos", pasarela);
+        kafkaTemplate.send("pagosresultado", pasarela);
+    }
+    @KafkaListener(topics = "pagopendiente", groupId = "pagopendiente")
+    public String consumerReserva(String reserva){
+        System.out.println(" Mensaje entrante de un reserva para pago = " + reserva);
+        return reserva;
     }
 }
