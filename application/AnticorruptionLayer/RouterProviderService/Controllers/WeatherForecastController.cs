@@ -40,19 +40,19 @@ namespace RouterProviderService.Controllers
         public IEnumerable<WeatherForecast> Get()
         {
 
-            Type type = typeof(GeneralDto);
+            //Type type = typeof(GeneralDto);
 
-            foreach (var item in type.GetProperties())
-            {
-                if (item.Name == "GeneralFlightInfo")
-                {
-                    Type type1 = GetTypeFromDll(type.Assembly.FullName, item.PropertyType.FullName);
-                    foreach (var item1 in type1.GetProperties())
-                    {
-                        var yy = item1.Name;
-                    }
-                }
-            }
+            //foreach (var item in type.GetProperties())
+            //{
+            //    if (item.Name == "GeneralFlightInfo")
+            //    {
+            //        Type type1 = GetTypeFromDll(type.Assembly.FullName, item.PropertyType.FullName);
+            //        foreach (var item1 in type1.GetProperties())
+            //        {
+            //            var yy = item1.Name;
+            //        }
+            //    }
+            //}
 
 
             var rng = new Random();

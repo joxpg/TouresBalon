@@ -40,7 +40,9 @@ namespace RestAdapter.Controllers
                 if (result == null)
                     return NoContent();
                 else
+                {
                     return Ok(result);
+                }
             }
             catch (Exception)
             {

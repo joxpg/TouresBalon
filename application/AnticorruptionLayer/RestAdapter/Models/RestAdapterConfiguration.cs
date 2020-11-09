@@ -32,6 +32,8 @@ namespace RestAdapter.Models
         /// </summary>
         public string RequestType { get; set; }
 
+        public string Response { get; set; }
+
 
 
     }

@@ -6,6 +6,8 @@ using System.Dynamic;
 using RestAdapter.Models;
 using RestAdapter.Interfaces;
 using System.Reflection;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 
 namespace RestAdapter.Services
 {
@@ -39,17 +41,21 @@ namespace RestAdapter.Services
             for (int i = 0; i < matches.Count; i++)
             {
                 var item = matches[i].Value;
-                var value = getUrlParam(item);
-                var property = metadataType.GetProperty(value);
-                if (property!=null)
-                {
-                    var fieldValue = property.GetValue(metadataInfo, null);
-                    if (fieldValue != null)
-                    {
-                        url = url.Replace(item, fieldValue.ToString());
-                    }
-                }
+                url = GetUrlRit(item, url, metadataInfo);               
+   
             }
+
+            #region obsoleto
+            ///var value = GetUrlParam(item);
+            //var property = metadataType.GetProperty(value);
+            //if (property != null)
+            //{
+            //    var fieldValue = property.GetValue(metadataInfo, null);
+            //    if (fieldValue != null)
+            //    {
+            //        url = url.Replace(item, fieldValue.ToString());
+            //    }
+            //}
 
             /*
             foreach (var item in metadataType.GetProperties())
@@ -61,12 +67,43 @@ namespace RestAdapter.Services
                     url = url.Replace(item.Name, fieldValue.ToString());
                 }
             }*/
+            #endregion
 
             return url;
 
         }
 
-        private string getUrlParam(string item)
+        private string GetUrlRit(string item, string url, object metadataInfo)
+        {
+            Type metadataType = metadataInfo.GetType();//Obtiene el tipo de objeto de metadata 
+
+            var value = GetUrlParam(item);
+            var property = metadataType.GetProperty(value);
+            if (property != null)
+            {
+                var fieldValue = property.GetValue(metadataInfo, null);
+                if (fieldValue != null)
+                {
+                   url = url.Replace(item, fieldValue.ToString());           
+                }
+            }
+            else
+            {
+                foreach (var propertyInfo in metadataType.GetProperties())
+                {
+                    var fromDto = propertyInfo.PropertyType.FullName;
+                    if (fromDto.Contains("DomainModel.Dto"))
+                    {
+                        var fieldValue = propertyInfo.GetValue(metadataInfo, null);
+                        url = GetUrlRit(item, url, fieldValue);
+                    }
+                }
+            }
+
+            return url;
+        }
+
+        private string GetUrlParam(string item)
         {
             return item.Replace("{", "").Replace("}", "");
         }
@@ -78,6 +115,28 @@ namespace RestAdapter.Services
             Type t = a.GetType(fullNameObject);
             return t;
         }
+
+        public T GetObjetMapped<T>(string jsonRecibidoPorServicio, string jsonConfiguracion)
+        {
+            var data2 = JObject.Parse(jsonConfiguracion);//Obtengo los valores de 
+            foreach (var item in data2)
+            {
+                var metaType = JsonConvert.DeserializeObject<MetaType>(item.Value.ToString());
+                jsonRecibidoPorServicio = jsonRecibidoPorServicio.Replace(item.Key, metaType.Field);
+            }
+
+            try
+            {
+                var objectT = JsonConvert.DeserializeObject<T>(jsonRecibidoPorServicio);
+                return objectT;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
 
 
         //      private string AssignParameterValue(string paramName, string paramType, Object valor)

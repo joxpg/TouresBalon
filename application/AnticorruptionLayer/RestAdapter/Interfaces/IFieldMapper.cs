@@ -10,5 +10,7 @@ namespace RestAdapter.Interfaces
         public string GetBodyMapped(object metadataInfo, string body);
 
         public string GetUrlMapped(object metadataInfo, string url);
+
+        public T GetObjetMapped<T>(string jsonRecibidoPorServicio, string jsonConfiguracion);
     }
 }
