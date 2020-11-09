@@ -12,21 +12,13 @@ import java.util.Date;
 @NoArgsConstructor
 @Setter
 public class Pasarela implements Serializable {
-    private Long id;
-    private String nombre;
-    private Short tipoPruducto;
-    private String categoria;
-    private String descripcion;
-    private String infoAdicional;
-    private Date fechaInicio;
-    private Date fechaFin;
-    private String origen;
-    private String destino;
-    private File imagen;
-    private Double precio;
-    private String codigoPromocional;
-    private Long idBusqueda;
-    private Double calificacion;
-    private Double pesoConvenio;
-    private String idProveedor;
+    private String idBooking;
+    private String idCoustumer;
+    private String email;
+    private String address;
+    private String phoneNumber;
+    private String contact;
+    private boolean active;
+    private String country;
+    private String amount;
 }
