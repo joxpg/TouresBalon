@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace RestAdapter.Services
@@ -15,7 +16,7 @@ namespace RestAdapter.Services
             this.consumerService = consumerService;
         }
 
-        public async Task<object> Request(RestAdapter.Models.RestAdapterConfiguration connection)
+        public async Task<HttpResponseMessage> Request(RestAdapter.Models.RestAdapterConfiguration connection)
         {
 
             switch (connection.Method.ToLower())

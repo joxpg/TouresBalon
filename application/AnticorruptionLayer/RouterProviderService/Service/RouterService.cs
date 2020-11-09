@@ -34,7 +34,7 @@ namespace RouterProviderService.Service
             var router = _context.RouterProvider.FirstOrDefault(x => x.IdProveedor == generalDto.InformationProvider.IdProvider && x.TipoProveedor == generalDto.InformationProvider.ProviderType);
             if (router != null)
             {
-                var url = $"{router.Endpoint}/{router.TipoAdaptador}/{router.TipoProveedor}/{type}";
+                var url = $"{router.Endpoint}/{router.TipoAdaptador}/Provider/{router.TipoProveedor}/{type}";
 
                 var result = await Post(url, generalDto);
 

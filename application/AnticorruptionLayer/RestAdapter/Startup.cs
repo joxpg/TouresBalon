@@ -35,11 +35,7 @@ namespace RestAdapter
         {
             services.AddDiscoveryClient(Configuration);
             services.AddControllers();
-            var awsOptions = Configuration.GetAWSOptions();
-            var awsCredentials = new BasicAWSCredentials("AKIAXUBBAWFFH4XPS5EH", "Db/5S/ham0GEaDFqjrWVDYLeUklbK9xVEoFuyzzp");
-            awsOptions.Credentials = awsCredentials;
-            services.AddDefaultAWSOptions(awsOptions);
-            services.AddAWSService<IAmazonDynamoDB>();
+
 
             services.AddDbContext<MetadataPGContext>(options =>
             {
@@ -54,7 +50,6 @@ namespace RestAdapter
             services.AddScoped<IFieldMapper, FieldAdapter>();
             services.AddScoped<IConsumer, ConsumerService>();
             services.AddScoped<IMetadataRepository, MetadataRepository>();
-            //services.AddScoped(typeof(IAsyncRepository<>), typeof(EfRepository<>));
 
         }
 
