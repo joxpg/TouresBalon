@@ -12,13 +12,11 @@ import java.util.Date;
 @NoArgsConstructor
 @Setter
 public class Pasarela implements Serializable {
+
+    private String idPayment;
     private String idBooking;
-    private String idCoustumer;
-    private String email;
-    private String address;
-    private String phoneNumber;
-    private String contact;
-    private boolean active;
-    private String country;
-    private String amount;
+    private String amountT;
+    private String amountH;
+    private String amountS;
+    private Boolean active;
 }
