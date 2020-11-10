@@ -3,6 +3,7 @@ package co.com.puj.aes.msBusqueda.Controller;
 import co.com.puj.aes.msBusqueda.Entity.BusquedaProducto;
 import co.com.puj.aes.msBusqueda.Entity.BusquedaReserva;
 import co.com.puj.aes.msBusqueda.Service.BusquedaService;
+import com.puj.aes.producto.producto.Entity.ProductoResultado;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -39,13 +40,13 @@ public class BusquedaController {
     }
 
     @PostMapping(value = "reserva")
-    public void servicioReserva(@Valid @RequestBody BusquedaReserva busquedaReserva) throws Exception {
-        kafkaTemplatereserva.send("calificacion", busquedaReserva);
+    public void servicioReserva( @RequestBody BusquedaReserva reserva) throws Exception {
+        kafkaTemplatereserva.send("reserva", reserva);
     }
 
     @KafkaListener(topics = "productoresultado", groupId = "productoresultado")
-    public String consumerBusqueda(String busqueda){
-        System.out.println(" Mensaje entrante de un producto = " + busqueda);
-        return busqueda;
+    public ProductoResultado consumerBusqueda(ProductoResultado productoResultado){
+        System.out.println(" Mensaje entrante de un producto = " + productoResultado);
+        return productoResultado;
     }
 }

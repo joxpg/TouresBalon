@@ -3,7 +3,7 @@ package co.com.puj.aes.msPagos.service;
 import java.util.List;
 
 public interface ServiceInterface <E, PK>  {
-
+/*
     E findById(PK key) throws Exception;
 
     List<E> findAll() throws Exception;
@@ -13,6 +13,6 @@ public interface ServiceInterface <E, PK>  {
 
     void delete(PK key) throws Exception;
 
-
+*/
 
 }

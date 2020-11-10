@@ -10,10 +10,10 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 
 @Service
-public class PagosService implements ServiceInterface  <Pagos, Short>{
+public class PagosService implements ServiceInterface{
 
     private PagosRepository pagosRepository;
-
+/*
     @Override
     public Pagos findById(Short key) throws Exception {
         if (key == null || !existeById(key)) {
@@ -80,12 +80,12 @@ public class PagosService implements ServiceInterface  <Pagos, Short>{
      * @param key id de pagos
      * @return
      * @throws Exception
-     */
+
     @Deprecated
     public Pagos activar(Short key) throws Exception {
         Pagos pagos = pagosRepository.findById(key).get();
         pagos.setEstadoPagos(true);
         return pagosRepository.save(pagos);
     }
-
+*/
 }
