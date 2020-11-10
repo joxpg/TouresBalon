@@ -104,3 +104,25 @@ services:
    - eureka-server
   links:
    - eureka-server
+ restadapter:
+  image: restadapter:lastest
+  environment: 
+   # Important for clients to register with eureka
+   - eureka.client.serviceUrl=http://eureka-server:9040/eureka/
+  ports:
+   - "9091:80"
+  depends_on:
+   - eureka-server
+  links:
+   - eureka-server
+ routerproviderservice:
+  image: routerproviderservice:lastest
+  environment: 
+   # Important for clients to register with eureka
+   - eureka.client.serviceUrl=http://eureka-server:9040/eureka/
+  ports:
+   - "9092:80"
+  depends_on:
+   - eureka-server
+  links:
+   - eureka-server

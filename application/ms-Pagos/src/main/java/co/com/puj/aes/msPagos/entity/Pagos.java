@@ -24,26 +24,15 @@ public class Pagos implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "ID_PAGOS")
-    private Short idPagos;
+    private String idPayment;
     @Column(name = "ID_RESERVA")
-    private String idReserva;
-    @Column(name = "MONTO")
-    private String monto;
-    @Column(name = "ESTADO_PAGOS")
-    private Boolean estadoPagos;
-
-
-    public Pagos(Short idPagos) {
-        this.idPagos = idPagos;
-    }
-
-    public void setEstadoPagos(boolean b) {this.estadoPagos = estadoPagos; }
-
-    public void setIdPagos(Short idPagos) { this.idPagos = idPagos; }
-
-    public Short getIdPagos() {return idPagos; }
-
-    public void setIdReserva(String idPagos) { this.idReserva = idReserva; }
-
-    public String getIdReserva() {return idReserva; }
+    private String idBooking;
+    @Column(name = "PAGOT")
+    private String amountT;
+    @Column(name = "PAGOH")
+    private String amountH;
+    @Column(name = "PAGOS")
+    private String amountS;
+    @Column(name = "ESTADO_RESERVA")
+    private Boolean active;
 }

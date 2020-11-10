@@ -1,6 +1,10 @@
-﻿using DomainModel.Dto;
+﻿using AutoMapper;
+using DomainModel.Dto;
 using DomainModel.Dto.Transport;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using RestAdapter.Interfaces;
+using RestAdapter.Models;
 using RestAdapter.Repository.Common;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -27,7 +31,7 @@ namespace RestAdapter.Services
         public async Task<bool> Book(BookFlightDto bookFlight, InformationProvider informationProvider)
         {
             //Obtiene la información de metadata y la lleva al modelo de metadata
-            var metadataCofig = await _repository.GetMetadata(informationProvider, IMetadataRepository.RequestType.search);
+            var metadataCofig = await _repository.GetMetadata(informationProvider, IMetadataRepository.RequestType.book);
 
             if(metadataCofig.Body!=null || metadataCofig.Body!="")
             {
@@ -40,13 +44,18 @@ namespace RestAdapter.Services
             metadataCofig.Url = _fieldMapper.GetUrlMapped(bookFlight, metadataCofig.Url);
             var providerConsumer = new ProviderConsumerService(_consumer);
             var result = await providerConsumer.Request(metadataCofig);
-            
 
-            return false;
+            if (!result.IsSuccessStatusCode)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         public async Task<List<TripDto>> Search(SearchFlightDto searchFlight, DomainModel.Dto.InformationProvider informationProvider)
         {
+
             //Obtiene la información de metadata y la lleva al modelo de metadata
             var metadataCofig = await _repository.GetMetadata(informationProvider, IMetadataRepository.RequestType.search);
 
@@ -61,7 +70,20 @@ namespace RestAdapter.Services
             metadataCofig.Url = _fieldMapper.GetUrlMapped(searchFlight, metadataCofig.Url);
             var providerConsumer = new ProviderConsumerService(_consumer);
             var result = await providerConsumer.Request(metadataCofig);
-            return new List<TripDto>();
+            if (!result.IsSuccessStatusCode)//Respondió de manera negativa
+            {
+                return new List<TripDto>();
+            }
+
+            var trips = new List<TripDto>();
+            var response = await  result.Content.ReadAsStringAsync();
+            //var jt = JToken.Parse(response);
+
+            var  fly = _fieldMapper.GetObjetMapped<List<FlightDto>>(response, metadataCofig.Response);
+            if (fly != null)
+                trips.Add(new TripDto { Flights = fly });
+
+            return trips;
         }
     }
 }

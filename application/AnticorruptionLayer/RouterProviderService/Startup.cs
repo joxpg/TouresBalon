@@ -15,6 +15,8 @@ using RouterProviderService.Interface;
 using RouterProviderService.Models;
 using RouterProviderService.Service;
 using Steeltoe.Discovery.Client;
+using Steeltoe.Extensions.Configuration;
+
 
 namespace RouterProviderService
 {
@@ -30,8 +32,8 @@ namespace RouterProviderService
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDiscoveryClient(Configuration);
             services.AddControllers();
+            services.AddDiscoveryClient(Configuration);
 
             services.AddDbContext<RouterContext>(options =>
             {

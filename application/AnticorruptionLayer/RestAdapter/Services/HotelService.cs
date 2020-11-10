@@ -27,7 +27,7 @@ namespace RestAdapter.Services
         public async Task<int> Book(RoomReservationDto roomReservation, InformationProvider informationProvider)
         {
             //Obtiene la información de metadata y la lleva al modelo de metadata
-            var metadataCofig = await _repository.GetMetadata(informationProvider, IMetadataRepository.RequestType.search);
+            var metadataCofig = await _repository.GetMetadata(informationProvider, IMetadataRepository.RequestType.book);
             if (metadataCofig.Body != null || metadataCofig.Body != "")
             {
                 var metadataFieldTransport = Newtonsoft.Json.JsonConvert.DeserializeObject<RestAdapter.Models.Hotel.RoomReservationDto>(metadataCofig.Body);
@@ -37,7 +37,16 @@ namespace RestAdapter.Services
             }
             metadataCofig.Url = _fieldMapper.GetUrlMapped(roomReservation, metadataCofig.Url);
             var providerConsumer = new ProviderConsumerService(_consumer);
-            var result = providerConsumer.Request(metadataCofig);
+            var result = await providerConsumer.Request(metadataCofig);
+
+            if (!result.IsSuccessStatusCode)
+            {
+                return 0;
+            }
+
+            var response = await result.Content.ReadAsStringAsync();
+           if(int.TryParse(response,out int responseNumber))            
+                return responseNumber;           
 
             return 0;
         }
@@ -56,8 +65,14 @@ namespace RestAdapter.Services
             metadataCofig.Url = _fieldMapper.GetUrlMapped(searchRoom, metadataCofig.Url);
             var providerConsumer = new ProviderConsumerService(_consumer);
             var result = await providerConsumer.Request(metadataCofig);
+            if (!result.IsSuccessStatusCode)
+            {
+                return new List<RoomDto>();
+            }
 
-            return new List<RoomDto>();
+            var response = await result.Content.ReadAsStringAsync();
+            var rooms = _fieldMapper.GetObjetMapped<List<RoomDto>>(response, metadataCofig.Response);
+            return rooms;
         }
     }
 }

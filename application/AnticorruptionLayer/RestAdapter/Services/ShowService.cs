@@ -26,7 +26,7 @@ namespace RestAdapter.Services
 
         public async Task<bool> Book(ShowReservationDto showReservation, InformationProvider informationProvider)
         {
-            var metadataCofig = await _repository.GetMetadata(informationProvider, IMetadataRepository.RequestType.search);
+            var metadataCofig = await _repository.GetMetadata(informationProvider, IMetadataRepository.RequestType.book);
             //Obtiene la información de metadata y la lleva al modelo de metadata
 
             if (metadataCofig.Body != null || metadataCofig.Body != "")
@@ -39,8 +39,14 @@ namespace RestAdapter.Services
             metadataCofig.Url = _fieldMapper.GetUrlMapped(showReservation, metadataCofig.Url);
             var providerConsumer = new ProviderConsumerService(_consumer);
             var result = await providerConsumer.Request(metadataCofig);
+            if (!result.IsSuccessStatusCode)
+            {
+                return false;
+            }
 
-            return false;
+            return true;
+
+
         }
 
         public async Task<List<ShowDto>> Search(SearchShowDto searchShow, InformationProvider informationProvider)
@@ -59,7 +65,14 @@ namespace RestAdapter.Services
             var providerConsumer = new ProviderConsumerService(_consumer);
             var result = await providerConsumer.Request(metadataCofig);
 
-            return new List<ShowDto>();
+            if (!result.IsSuccessStatusCode)
+            {
+                return new List<ShowDto>();
+            }
+
+            var response = await result.Content.ReadAsStringAsync();
+            var show = _fieldMapper.GetObjetMapped<List<ShowDto>>(response, metadataCofig.Response);
+            return show;
         }
     }
 }

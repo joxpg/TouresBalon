@@ -50,7 +50,18 @@ dotnet build -c Release
 docker build -t soapadapter:lastest .
 cd ..
 cd ..
-
+cd AnticorruptionLayer
+cd RestAdapter
+dotnet build -c Release
+docker build -t restadapter:lastest .
+cd ..
+cd ..
+cd AnticorruptionLayer
+cd RouterProviderService
+dotnet build -c Release
+docker build -t routerproviderservice:lastest .
+cd ..
+cd ..
 
 
 docker-compose up -d

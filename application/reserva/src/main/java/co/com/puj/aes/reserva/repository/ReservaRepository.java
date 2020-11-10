@@ -1,4 +1,5 @@
 package co.com.puj.aes.reserva.repository;
+import co.com.puj.aes.msBusqueda.Entity.BusquedaReserva;
 import co.com.puj.aes.reserva.entity.Reserva;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBSaveExpression;
@@ -18,6 +19,10 @@ public class ReservaRepository {
     private DynamoDBMapper dynamoDbMapper;
 
     public Reserva save(Reserva reserva) {
+        dynamoDbMapper.save(reserva);
+        return reserva;
+    }
+    public BusquedaReserva savePagoReserva(BusquedaReserva reserva) {
         dynamoDbMapper.save(reserva);
         return reserva;
     }
