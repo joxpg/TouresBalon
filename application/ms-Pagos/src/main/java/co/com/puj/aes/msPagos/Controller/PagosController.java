@@ -1,6 +1,8 @@
 package co.com.puj.aes.msPagos.Controller;
 
 import co.com.puj.aes.msPagos.entity.Pagos;
+import co.com.puj.aes.msPasarela.Entity.Pasarela;
+import co.com.puj.aes.msPagos.entity.UpdateReserva;
 import co.com.puj.aes.msPagos.service.PagosService;
 import co.com.puj.aes.msPagos.repository.PagosRepository;
 import lombok.RequiredArgsConstructor;
@@ -24,17 +26,19 @@ public class PagosController {
     @Autowired
     private KafkaTemplate<String, Pagos> kafkaTemplatepagos;
     @Autowired
+    private KafkaTemplate<String, UpdateReserva> kafkaTemplatereserva;
+    @Autowired
     private PagosService pagosService;
 
     public PagosController(PagosService pagosService) {this.pagosService = pagosService;}
 
     @PostMapping("")
-    public void servicioReserva(@Valid @RequestBody Pagos pagos){
-        kafkaTemplatepagos.send("confirmarreserva", pagos);
+    public void servicioReserva( @RequestBody UpdateReserva updateReserva){
+        kafkaTemplatereserva.send("confirmarreserva", updateReserva);
     }
 
     @KafkaListener(topics = "pagosresultado", groupId = "pagosresultado")
-    public String consumerPasarela(String pago){
+    public Pasarela consumerPasarela( Pasarela pago){
         System.out.println(" Mensaje entrante de un pago = " + pago);
         return pago;
     }

@@ -1,5 +1,6 @@
 package co.com.puj.aes.msPasarela.Controller;
 
+import co.com.puj.aes.msBusqueda.Entity.BusquedaReserva;
 import  co.com.puj.aes.msPasarela.Entity.Pasarela;
 import co.com.puj.aes.msPasarela.Service.PasarelaService;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +19,7 @@ import javax.validation.Valid;
 public class PasarelaController {
     @Autowired
     private KafkaTemplate<String, Pasarela> kafkaTemplate;
-    private static final String TOPIC = "pagos";
+    //private static final String TOPIC = "pagos";
     @Autowired
     PasarelaService pasarelaService;
     public PasarelaController(PasarelaService pasarelaService) {this.pasarelaService = pasarelaService;}
@@ -28,8 +29,8 @@ public class PasarelaController {
         kafkaTemplate.send("pagosresultado", pasarela);
     }
     @KafkaListener(topics = "pagopendiente", groupId = "pagopendiente")
-    public String consumerReserva(String reserva){
-        System.out.println(" Mensaje entrante de un reserva para pago = " + reserva);
+    public BusquedaReserva consumerReserva(BusquedaReserva reserva){
+        System.out.println(" Mensaje entrante de pago de reserva = " + reserva);
         return reserva;
     }
 }
