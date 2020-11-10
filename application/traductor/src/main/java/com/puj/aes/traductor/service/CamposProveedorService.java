@@ -33,9 +33,11 @@ public class CamposProveedorService implements ICamposProveedor<CamposProveedor,
             try {
                 String propertyName = objDescriptor.getName();
                 Object propValue = PropertyUtils.getProperty(peticion, propertyName);
-                String vproveedor = obtenerValorProveedor(idProvider,propertyName,propValue.toString());
-                if (vproveedor != null) {
-                    clase.getDeclaredField(propertyName).set(peticion, vproveedor);
+                if(propValue != null){
+                    String vproveedor = obtenerValorProveedor(idProvider,propertyName,propValue.toString());
+                    if (vproveedor != null) {
+                        clase.getDeclaredField(propertyName).set(peticion, vproveedor);
+                    }
                 }
 
             } catch (Exception e) {
@@ -55,6 +57,7 @@ public class CamposProveedorService implements ICamposProveedor<CamposProveedor,
                 String valorProveedor = campo.getValorProveedor();
                 if (nombreCampo.equals(propertyName) && valorDominio.equals(value)){
                    vproveedor = valorProveedor;
+                   break;
                 }
             }
         }
