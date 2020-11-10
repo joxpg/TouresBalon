@@ -19,6 +19,8 @@ public class Trasporte {
     @DynamoDBAttribute
     private String idProvider;
     @DynamoDBAttribute
+    private String amountT;
+    @DynamoDBAttribute
     private String departingCity;
     @DynamoDBAttribute
     private String arrivingCity;

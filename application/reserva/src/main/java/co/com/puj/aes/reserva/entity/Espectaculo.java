@@ -20,6 +20,8 @@ public class Espectaculo {
     @DynamoDBAttribute
     private String idShow;
     @DynamoDBAttribute
+    private String amountS;
+    @DynamoDBAttribute
     private Date showDate;
     @DynamoDBAttribute
     private String attendeeIdentification;
