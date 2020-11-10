@@ -10,12 +10,12 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Collections;
 import java.util.List;
 
@@ -74,16 +74,8 @@ public class ProveedorController {
         if(proveedor==null){
             return new ResponseEntity<>("No existen resultados para su consulta",HttpStatus.BAD_REQUEST);
         }
-        kafkaTemplate.send(TOPIC, proveedor);
         return new ResponseEntity<>(proveedorService.getProveedorById(id),HttpStatus.OK);
     }
-    @KafkaListener(topics = "reserva", groupId = "reserva")
-    public Reserva consumerProveedor (Reserva reserva){
-        System.out.println("Mensaje entrante de nueva reserva" + reserva);
-        System.out.println("Atencion alerta de nueva reserva = " + reserva.getIdBooking());
-        return reserva;
-    }
-
     @PutMapping("{id}")
     public ResponseEntity <?> update(@PathVariable("id") String idProveedor, @RequestBody Proveedor proveedor) throws Exception {
         Proveedor proveedor1 = proveedorService.getProveedorById(idProveedor);
@@ -93,12 +85,6 @@ public class ProveedorController {
         }
         proveedor.setIdProvider(idProveedor);
         return new ResponseEntity<>(proveedorService.update(idProveedor, proveedor),HttpStatus.OK);
-    }
-
-    @KafkaListener(topics = "calificacion", groupId = "proveedor")
-    public Calificacion consumerCalificacion (Calificacion proveedor){
-        System.out.println(" Mensaje entrante de un proveedor = " + proveedor);
-        return proveedor;
     }
 
     @ResponseBody

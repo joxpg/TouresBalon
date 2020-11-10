@@ -1,5 +1,6 @@
 package co.com.puj.aes.reserva.controller;
 
+import co.com.puj.aes.msBusqueda.Entity.BusquedaReserva;
 import co.com.puj.aes.reserva.entity.Reserva;
 import co.com.puj.aes.reserva.repository.ReservaRepository;
 import lombok.RequiredArgsConstructor;
@@ -22,24 +23,20 @@ public class ReservaController {
     @Autowired
     private ReservaRepository reservaRepository;
     @Autowired
-    private KafkaTemplate<String, Reserva> kafkaTemplate;
+    private KafkaTemplate<Object, BusquedaReserva> kafkaTemplate;
     private static final String TOPIC = "reserva";
 
     @GetMapping("")
     public ResponseEntity<?> getList() throws Exception {
         List<Reserva> list = reservaRepository.getlist();
         if(!list.isEmpty()){
-            //return new ResponseEntity<List>(list, HttpStatus.OK);
             return new ResponseEntity<>(list, HttpStatus.OK);
         }
         return new ResponseEntity<>("No hay registros",HttpStatus.NOT_FOUND);
     }
-
     @PostMapping("")
     public ResponseEntity<?> create(@RequestBody Reserva reserva) throws Exception {
-    Reserva booking =reservaRepository.save(reserva);
-    kafkaTemplate.send(TOPIC, booking);
-        return new ResponseEntity<>(booking, HttpStatus.OK);
+        return new ResponseEntity<>(reservaRepository.save(reserva), HttpStatus.OK);
     }
 
     @ResponseBody
@@ -71,11 +68,22 @@ public class ReservaController {
         return new ResponseEntity<>(reservaRepository.delete(idBooking), HttpStatus.OK);
     }
 
-
     @KafkaListener(topics = "reserva", groupId = "reserva")
-    public String consumerProveedor (String proveedor){
-        System.out.println(" Mensaje entrante de un proveedor = " + proveedor);
-        return proveedor;
+    public BusquedaReserva consumerReserva(BusquedaReserva reserva) {
+        BusquedaReserva booking = reservaRepository.savePagoReserva(reserva);
+        System.out.println(" Mensaje entrante de pago de reserva = " + booking);
+        kafkaTemplate.send("pagopendiente", booking);
+        return reserva;
+    }
+
+    @KafkaListener(topics = "confirmarreserva", groupId = "reserva")
+    public Reserva consumerUpdatePagoReserva (Reserva reserva){
+        Reserva booking =reservaRepository.save(reserva);
+        System.out.println("reserva = " + booking.getIdBooking());
+        System.out.println("reserva = " + booking.isActive());
+
+        System.out.println(" Mensaje entrante de un proveedor = " + booking);
+        return booking;
     }
 
 }
