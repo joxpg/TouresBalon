@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2020-11-11T11:06:52.438Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36" etag="OfNzmrFtLVRW7pDxAT2U" version="13.9.3" type="github">
+<mxfile host="app.diagrams.net" modified="2020-11-11T11:07:18.634Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36" etag="k86gKn5kdyohz0y7rhB5" version="13.9.3" type="github">
   <diagram id="9anLDQHCdUL1ynDijxt3" name="Page-1">
     <mxGraphModel dx="942" dy="1751" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -232,7 +232,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="jJ0a-vmSGyXXhpWtrDC0-31" value="Producto" style="outlineConnect=0;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;shape=mxgraph.aws3.dynamo_db;fillColor=#2E73B8;gradientColor=none;" vertex="1" parent="1">
-          <mxGeometry x="1225" y="194.43" width="45" height="60" as="geometry" />
+          <mxGeometry x="1216" y="191.64" width="45" height="65.57" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
