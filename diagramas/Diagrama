@@ -1,9 +1,12 @@
-<mxfile host="app.diagrams.net" modified="2020-11-11T01:55:16.762Z" agent="5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36" etag="pb79RBbStDlPj4xpgSWk" version="13.9.3" type="github">
+<mxfile host="app.diagrams.net" modified="2020-11-11T01:55:56.725Z" agent="5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36" etag="vfuVY5ArlBsilpkLQLju" version="13.9.3" type="github">
   <diagram id="9anLDQHCdUL1ynDijxt3" name="Page-1">
     <mxGraphModel dx="1623" dy="1565" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="dIby3I5H5diVOXa2QS9A-3" value="Availability Zone A" style="fillColor=none;strokeColor=#147EBA;dashed=1;verticalAlign=top;fontStyle=0;fontColor=#147EBA;" vertex="1" parent="1">
+          <mxGeometry x="180" y="-220" width="780" height="580" as="geometry" />
+        </mxCell>
         <mxCell id="dIby3I5H5diVOXa2QS9A-24" value="EKS" style="fillColor=#d5e8d4;strokeColor=#82b366;dashed=0;verticalAlign=top;fontStyle=0;" vertex="1" parent="1">
           <mxGeometry x="310" y="-180" width="710" height="380" as="geometry" />
         </mxCell>
@@ -11,10 +14,7 @@
           <mxGeometry x="60" y="-320" width="1100" height="690" as="geometry" />
         </mxCell>
         <mxCell id="dIby3I5H5diVOXa2QS9A-2" value="us-east-2" style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=12;fontStyle=0;shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_region;strokeColor=#147EBA;fillColor=none;verticalAlign=top;align=left;spacingLeft=30;fontColor=#147EBA;dashed=1;" vertex="1" parent="1">
-          <mxGeometry x="170" y="-270" width="790" height="540" as="geometry" />
-        </mxCell>
-        <mxCell id="dIby3I5H5diVOXa2QS9A-3" value="Availability Zone A" style="fillColor=none;strokeColor=#147EBA;dashed=1;verticalAlign=top;fontStyle=0;fontColor=#147EBA;" vertex="1" parent="1">
-          <mxGeometry x="180" y="-220" width="780" height="490" as="geometry" />
+          <mxGeometry x="170" y="-270" width="790" height="630" as="geometry" />
         </mxCell>
         <mxCell id="dIby3I5H5diVOXa2QS9A-23" value="Persistencia" style="fillColor=#EFF0F3;strokeColor=none;dashed=0;verticalAlign=top;fontStyle=0;fontColor=#232F3D;" vertex="1" parent="1">
           <mxGeometry x="830" y="-132" width="180" height="230" as="geometry" />
