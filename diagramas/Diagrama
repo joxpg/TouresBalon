@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2020-11-11T01:49:32.154Z" agent="5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36" etag="kiYZB3BpT7-DTLfKteEB" version="13.9.3" type="github">
+<mxfile host="app.diagrams.net" modified="2020-11-11T01:50:59.313Z" agent="5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36" etag="BHXQuhGtDN_hesQiihIQ" version="13.9.3" type="github">
   <diagram id="9anLDQHCdUL1ynDijxt3" name="Page-1">
     <mxGraphModel dx="1623" dy="1565" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -56,13 +56,10 @@
           <mxGeometry x="160" y="-200" width="130" height="130" as="geometry" />
         </mxCell>
         <mxCell id="dIby3I5H5diVOXa2QS9A-19" value="Auto Scaling group" style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=12;fontStyle=0;shape=mxgraph.aws4.groupCenter;grIcon=mxgraph.aws4.group_auto_scaling_group;grStroke=1;strokeColor=#D86613;fillColor=none;verticalAlign=top;align=center;fontColor=#D86613;dashed=1;spacingTop=25;" vertex="1" parent="1">
-          <mxGeometry x="750" y="110" width="130" height="130" as="geometry" />
+          <mxGeometry x="910" y="140" width="130" height="130" as="geometry" />
         </mxCell>
         <mxCell id="dIby3I5H5diVOXa2QS9A-20" value="Security group" style="fillColor=none;strokeColor=#DD3522;verticalAlign=top;fontStyle=0;fontColor=#DD3522;" vertex="1" parent="1">
-          <mxGeometry x="505" y="117" width="130" height="130" as="geometry" />
-        </mxCell>
-        <mxCell id="dIby3I5H5diVOXa2QS9A-21" value="FrontEnd" style="fillColor=#EFF0F3;strokeColor=none;dashed=0;verticalAlign=top;fontStyle=0;fontColor=#232F3D;" vertex="1" parent="1">
-          <mxGeometry x="400" y="-140" width="150" height="220" as="geometry" />
+          <mxGeometry x="270" y="71" width="130" height="130" as="geometry" />
         </mxCell>
         <mxCell id="dIby3I5H5diVOXa2QS9A-22" value="Backend " style="fillColor=#EFF0F3;strokeColor=none;dashed=0;verticalAlign=top;fontStyle=0;fontColor=#232F3D;" vertex="1" parent="1">
           <mxGeometry x="570" y="-156" width="220" height="176" as="geometry" />
@@ -80,6 +77,15 @@
         </mxCell>
         <mxCell id="dIby3I5H5diVOXa2QS9A-32" value="Pagos" style="outlineConnect=0;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;shape=mxgraph.aws3.ec2_compute_container;fillColor=#F58534;gradientColor=none;" vertex="1" parent="1">
           <mxGeometry x="588" y="-114" width="60" height="34.5" as="geometry" />
+        </mxCell>
+        <mxCell id="dIby3I5H5diVOXa2QS9A-33" value="RouterService" style="outlineConnect=0;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;shape=mxgraph.aws3.ec2_compute_container;fillColor=#F58534;gradientColor=none;" vertex="1" parent="1">
+          <mxGeometry x="648" y="83" width="60" height="34.5" as="geometry" />
+        </mxCell>
+        <mxCell id="dIby3I5H5diVOXa2QS9A-34" value="RestAdapterSerivce" style="outlineConnect=0;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;shape=mxgraph.aws3.ec2_compute_container;fillColor=#F58534;gradientColor=none;" vertex="1" parent="1">
+          <mxGeometry x="750" y="83" width="60" height="34.5" as="geometry" />
+        </mxCell>
+        <mxCell id="dIby3I5H5diVOXa2QS9A-35" value="SOAPAdapterSerivce" style="outlineConnect=0;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;shape=mxgraph.aws3.ec2_compute_container;fillColor=#F58534;gradientColor=none;" vertex="1" parent="1">
+          <mxGeometry x="700" y="167" width="60" height="34.5" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
