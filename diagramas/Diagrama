@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2020-11-11T02:10:08.869Z" agent="5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36" etag="_MuCDXggKRNIN8_jVHTL" version="13.9.3" type="github">
+<mxfile host="app.diagrams.net" modified="2020-11-11T02:10:24.636Z" agent="5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36" etag="vdSBLSC_okZvODjc70qr" version="13.9.3" type="github">
   <diagram id="9anLDQHCdUL1ynDijxt3" name="Page-1">
     <mxGraphModel dx="1623" dy="1565" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -14,7 +14,7 @@
           <mxGeometry x="180" y="-220" width="1410" height="750" as="geometry" />
         </mxCell>
         <mxCell id="dIby3I5H5diVOXa2QS9A-24" value="EKS" style="fillColor=#d5e8d4;strokeColor=#82b366;dashed=0;verticalAlign=top;fontStyle=0;" vertex="1" parent="1">
-          <mxGeometry x="310" y="-180" width="1210" height="640" as="geometry" />
+          <mxGeometry x="310" y="-180" width="780" height="640" as="geometry" />
         </mxCell>
         <mxCell id="dIby3I5H5diVOXa2QS9A-23" value="Persistencia" style="fillColor=#EFF0F3;strokeColor=none;dashed=0;verticalAlign=top;fontStyle=0;fontColor=#232F3D;" vertex="1" parent="1">
           <mxGeometry x="1130" y="-150" width="320" height="450" as="geometry" />
