@@ -1,17 +1,15 @@
-package co.com.puj.aes.msBusqueda.Entity;
+package co.com.puj.aes.reserva.entity;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-import java.io.Serializable;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Setter
-public class Categoria  implements Serializable {
+public class Categoria {
+
     private String categorianame;
     private String categoriacode;
 

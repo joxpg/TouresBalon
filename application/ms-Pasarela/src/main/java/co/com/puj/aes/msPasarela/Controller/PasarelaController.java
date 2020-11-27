@@ -1,5 +1,6 @@
 package co.com.puj.aes.msPasarela.Controller;
 
+import co.com.puj.aes.reserva.entity.Reserva;
 import co.com.puj.aes.msBusqueda.Entity.BusquedaReserva;
 import  co.com.puj.aes.msPasarela.Entity.Pasarela;
 import co.com.puj.aes.msPasarela.Service.PasarelaService;
@@ -8,8 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
-
-import javax.validation.Valid;
 
 @RestController
 @RequiredArgsConstructor
@@ -24,13 +23,23 @@ public class PasarelaController {
     PasarelaService pasarelaService;
     public PasarelaController(PasarelaService pasarelaService) {this.pasarelaService = pasarelaService;}
 
-    @PostMapping("")
+    /*@PostMapping("")
     public void servicioPagos(@Valid @RequestBody Pasarela pasarela){
         kafkaTemplate.send("pagosresultado", pasarela);
-    }
+    }*/
     @KafkaListener(topics = "pagopendiente", groupId = "pagopendiente")
-    public BusquedaReserva consumerReserva(BusquedaReserva reserva){
+    @PostMapping("")
+    public Reserva consumerReserva(Reserva reserva){
         System.out.println(" Mensaje entrante de pago de reserva = " + reserva);
+        Pasarela pasarela= new Pasarela();
+        int idpagos= (int)(Math.random());
+        pasarela.setIdPayment(Integer.toString(idpagos));
+        pasarela.setIdBooking(reserva.getIdBooking());
+        pasarela.setActive(true);
+        pasarela.setAmountH(reserva.getHostingBooking().getAmountH());
+        pasarela.setAmountS(reserva.getShowBooking().getAmountS());
+        pasarela.setAmountT(reserva.getTransportBooking().getAmountT());
+        kafkaTemplate.send("pagosresultado", pasarela);
         return reserva;
     }
 }

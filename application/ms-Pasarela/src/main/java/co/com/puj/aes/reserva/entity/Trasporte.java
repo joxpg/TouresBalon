@@ -1,4 +1,4 @@
-package co.com.puj.aes.msBusqueda.Entity;
+package co.com.puj.aes.reserva.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,7 +14,7 @@ import java.util.Map;
 @NoArgsConstructor
 @Setter
 
-public class BusquedaTrasporte implements Serializable {
+public class Trasporte implements Serializable {
     private String idProvider;
     private String departingCity;
     private String arrivingCity;
@@ -23,4 +23,6 @@ public class BusquedaTrasporte implements Serializable {
     private int child;
     private ArrayList<?> passengers;
     private String amountT;
+
+    public String getAmountT() { return amountT; }
 }
