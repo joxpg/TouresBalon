@@ -32,6 +32,10 @@ public class BusquedaReserva implements Serializable {
     @DynamoDBAttribute
     private boolean active;
     @DynamoDBAttribute
+    private String status;
+    @DynamoDBAttribute
+    private String category;
+    @DynamoDBAttribute
     private String country;
     @DynamoDBAttribute
     private Trasporte transportBooking;
