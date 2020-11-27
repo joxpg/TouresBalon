@@ -1,4 +1,4 @@
-package co.com.puj.aes.msBusqueda.Entity;
+package co.com.puj.aes.reserva.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,7 +14,7 @@ import java.util.Date;
 @NoArgsConstructor
 @Setter
 
-public class BusquedaHospedaje implements Serializable {
+public class Hospedaje implements Serializable {
 
     private String idProvider;
     private String guestName;
@@ -23,4 +23,6 @@ public class BusquedaHospedaje implements Serializable {
     private Date checkOut;
     private String hotel;
     private String amountH;
+
+    public String getAmountH() { return amountH; }
 }

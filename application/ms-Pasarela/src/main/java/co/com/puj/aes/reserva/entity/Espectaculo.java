@@ -1,4 +1,4 @@
-package co.com.puj.aes.msBusqueda.Entity;
+package co.com.puj.aes.reserva.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,11 +12,13 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
-public class BusquedaEspectaculo implements Serializable {
+public class Espectaculo implements Serializable {
 
     private String idProvider;
     private String idShow;
     private Date showDate;
     private String attendeeIdentification;
     private String amountS;
+
+    public String getAmountS() { return amountS; }
 }
