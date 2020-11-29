@@ -1,22 +1,15 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Amazon.DynamoDBv2;
-using Amazon.Runtime;
+using ApplicationCore.RestAdapter.Interfaces;
+using ApplicationCore.RestAdapter.Services.CommonServices;
+using ApplicationCore.RestAdapter.Services.DomainServices;
+using Infrastructure.Data.Interfaces;
+using Infrastructure.Data.Repository;
+using Infrastructure.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using RestAdapter.Interfaces;
-using RestAdapter.Models;
-using RestAdapter.Repository.Common;
-using RestAdapter.Services;
 using Steeltoe.Discovery.Client;
 
 namespace RestAdapter
@@ -36,7 +29,6 @@ namespace RestAdapter
             services.AddDiscoveryClient(Configuration);
             services.AddControllers();
 
-
             services.AddDbContext<MetadataPGContext>(options =>
             {
                 options.UseNpgsql(Configuration.GetConnectionString("DbPGConnection"));
@@ -46,10 +38,10 @@ namespace RestAdapter
             services.AddScoped<IHotelServices, HotelService>();
             services.AddScoped<IShowServices, ShowService>();
 
-
             services.AddScoped<IFieldMapper, FieldAdapter>();
             services.AddScoped<IConsumer, ConsumerService>();
-            services.AddScoped<IMetadataRepository, MetadataRepository>();
+
+            services.AddScoped<IMetadataRestRepository, MetadataRestRepository>();
 
         }
 

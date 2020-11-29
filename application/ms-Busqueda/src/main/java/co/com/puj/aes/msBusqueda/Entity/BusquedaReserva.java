@@ -16,6 +16,8 @@ public class BusquedaReserva implements Serializable {
     private String phoneNumber;
     private String contact;
     private boolean active;
+    private String status;
+    private String category;
     private String country;
     private BusquedaTrasporte transportBooking;
     private BusquedaHospedaje hostingBooking;

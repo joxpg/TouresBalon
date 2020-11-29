@@ -35,4 +35,5 @@ public class Pagos implements Serializable {
     private String amountS;
     @Column(name = "ESTADO_RESERVA")
     private Boolean active;
+
 }

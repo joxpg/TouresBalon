@@ -13,4 +13,19 @@ import java.io.Serializable;
 public class UpdateReserva implements Serializable {
     private String idBooking;
     private Boolean active;
+
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
+
+    public void setIdBooking(String idBooking) {
+        this.idBooking = idBooking;
+    }
+
+    public String getIdBooking() {
+        return idBooking;
+    }
+    public Boolean getActive() {
+        return active;
+    }
 }

@@ -1,13 +1,9 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Threading.Tasks;
-using DomainModel.Dto;
-using DomainModel.Dto.Transport;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using RouterProviderService.Models;
 
 namespace RouterProviderService.Controllers
 {
@@ -21,12 +17,11 @@ namespace RouterProviderService.Controllers
         };
 
         private readonly ILogger<WeatherForecastController> _logger;
-        private readonly RouterContext _routerContext;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger, RouterContext routerContext)
+
+        public WeatherForecastController(ILogger<WeatherForecastController> logger)
         {
             _logger = logger;
-            _routerContext = routerContext;
         }
 
         private Type GetTypeFromDll(string assembly, string fullNameObject)

@@ -62,6 +62,10 @@ dotnet build -c Release
 docker build -t routerproviderservice:lastest .
 cd ..
 cd ..
-
+cd traductor
+mvn install
+docker rm -f traductor
+docker build -t traductor:lastest .
+cd ..
 
 docker-compose up -d

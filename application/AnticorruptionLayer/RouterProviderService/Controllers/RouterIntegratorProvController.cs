@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ApplicationCore.RouterProvider.Entity;
+using ApplicationCore.RouterProvider.Interfaces;
 using DomainModel.Dto;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using RouterProviderService.Controllers.Dto;
-using RouterProviderService.Interface;
+using Microsoft.Extensions.Logging;
+
 
 namespace RouterProviderService.Controllers
 {
@@ -16,11 +18,13 @@ namespace RouterProviderService.Controllers
     {
         private readonly IRouterService _routerService;
         private readonly IMapperService _mapperService;
+        private readonly ILogger<RouterIntegratorProvController> _logger;
 
-        public RouterIntegratorProvController(IRouterService routerService, IMapperService mapperService)
+        public RouterIntegratorProvController(IRouterService routerService, IMapperService mapperService, ILogger<RouterIntegratorProvController> logger)
         {
             _routerService = routerService;
             _mapperService = mapperService;
+            _logger = logger;
         }
 
         /// <summary>
@@ -42,9 +46,9 @@ namespace RouterProviderService.Controllers
                 var result = await _routerService.Search(dto);
                 return Ok(result);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return GetErrorServerCode();
+                return GetErrorServerCode(ex);
             }
         }
 
@@ -61,16 +65,19 @@ namespace RouterProviderService.Controllers
                 var result = await _routerService.Book(dto);
                 return Ok(result);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return GetErrorServerCode();
+                return GetErrorServerCode(ex);
             }
         }
 
 
-        private IActionResult GetErrorServerCode()
+        private IActionResult GetErrorServerCode(object value=null)
         {
-            return StatusCode(StatusCodes.Status500InternalServerError);
+            if (value == null)            
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            
+            return StatusCode(StatusCodes.Status500InternalServerError, value);
         }
     }
 }

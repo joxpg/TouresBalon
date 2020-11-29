@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Threading.Tasks;
+using ApplicationCore.SoapAdapter.Manager.Hotel;
+using ApplicationCore.SoapAdapter.Manager.Show;
+using ApplicationCore.SoapAdapter.Manager.Transport;
 using DomainModel.Dto;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using SoapAdapter.Manager;
 
 namespace SoapAdapter.Controllers
 {
