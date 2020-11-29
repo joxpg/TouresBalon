@@ -34,11 +34,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Services\ShowServices\" />
+    <ProjectReference Include="..\ApplicationCore\ApplicationCore.csproj" />
+    <ProjectReference Include="..\DomainModel\DomainModel.csproj" />
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DomainModel\DomainModel.csproj" />
+    <Folder Include="Connected Services\" />
   </ItemGroup>
 
 

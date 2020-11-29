@@ -3,9 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using DomainModel.Dto;
-using Microsoft.Extensions.Configuration;
-using RestAdapter.Services;
-using RestAdapter.Interfaces;
+using ApplicationCore.RestAdapter.Interfaces;
 
 namespace RestAdapter.Controllers
 {
