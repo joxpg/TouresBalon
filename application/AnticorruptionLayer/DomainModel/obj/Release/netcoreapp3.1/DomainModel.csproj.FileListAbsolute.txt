@@ -1,0 +1,9 @@
+C:\Users\javbecsa\Documents\Desarrollo\NetCoreTraining\PICA_1\AnticorruptionLayer\DomainModel\bin\Release\netcoreapp3.1\DomainModel.deps.json
+C:\Users\javbecsa\Documents\Desarrollo\NetCoreTraining\PICA_1\AnticorruptionLayer\DomainModel\bin\Release\netcoreapp3.1\DomainModel.dll
+C:\Users\javbecsa\Documents\Desarrollo\NetCoreTraining\PICA_1\AnticorruptionLayer\DomainModel\bin\Release\netcoreapp3.1\DomainModel.pdb
+C:\Users\javbecsa\Documents\Desarrollo\NetCoreTraining\PICA_1\AnticorruptionLayer\DomainModel\bin\Release\netcoreapp3.1\DomainModel.xml
+C:\Users\javbecsa\Documents\Desarrollo\NetCoreTraining\PICA_1\AnticorruptionLayer\DomainModel\obj\Release\netcoreapp3.1\DomainModel.AssemblyInfoInputs.cache
+C:\Users\javbecsa\Documents\Desarrollo\NetCoreTraining\PICA_1\AnticorruptionLayer\DomainModel\obj\Release\netcoreapp3.1\DomainModel.AssemblyInfo.cs
+C:\Users\javbecsa\Documents\Desarrollo\NetCoreTraining\PICA_1\AnticorruptionLayer\DomainModel\obj\Release\netcoreapp3.1\DomainModel.dll
+C:\Users\javbecsa\Documents\Desarrollo\NetCoreTraining\PICA_1\AnticorruptionLayer\DomainModel\obj\Release\netcoreapp3.1\DomainModel.xml
+C:\Users\javbecsa\Documents\Desarrollo\NetCoreTraining\PICA_1\AnticorruptionLayer\DomainModel\obj\Release\netcoreapp3.1\DomainModel.pdb
