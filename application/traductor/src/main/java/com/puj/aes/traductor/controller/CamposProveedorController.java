@@ -27,9 +27,14 @@ public class CamposProveedorController {
         return new ResponseEntity<>(camposProveedorService.save(camposProveedor), HttpStatus.OK);
     }
 
-    @GetMapping("/proveedor/{idProvider}")
+    @PostMapping("/proveedor/out/{idProvider}")
     public ResponseEntity<?> translate(@RequestBody Peticion peticion, @PathVariable String idProvider)throws Exception {
         return new ResponseEntity<>(camposProveedorService.traducirPeticion(peticion, idProvider), HttpStatus.OK);
+    }
+
+    @PostMapping("/proveedor/in/{idProvider}")
+    public ResponseEntity<?> translateBack(@RequestBody Peticion peticion, @PathVariable String idProvider)throws Exception {
+        return new ResponseEntity<>(camposProveedorService.traducirRespuesta(peticion, idProvider), HttpStatus.OK);
     }
 
 }

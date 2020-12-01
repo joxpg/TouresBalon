@@ -63,6 +63,44 @@ public class CamposProveedorService implements ICamposProveedor<CamposProveedor,
         }
         return vproveedor;
     }
+    //TODO traducirRespuesta
+    public Peticion traducirRespuesta(Peticion respuesta, String idProvider) throws Exception {
+        Class<?> clase = respuesta.getClass();
+        PropertyDescriptor[] objDescriptors = PropertyUtils.getPropertyDescriptors(respuesta);
+        for (PropertyDescriptor objDescriptor : objDescriptors) {
+            try {
+                String propertyName = objDescriptor.getName();
+                Object propValue = PropertyUtils.getProperty(respuesta, propertyName);
+                if(propValue != null){
+                    String vdominio = obtenerValorDominio(idProvider,propertyName,propValue.toString());
+                    if (vdominio != null) {
+                        clase.getDeclaredField(propertyName).set(respuesta, vdominio);
+                    }
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return respuesta;
+    }
+    //TODO obtenerValorDominio
+    private String obtenerValorDominio(String idProvider, String propertyName, String value) throws Exception {
+        CamposProveedor camposProveedor = getCamposProveedorById(idProvider);
+        String vdominio = null;
+        if (camposProveedor.getCampos().length > 0) {
+            for (Campo campo : camposProveedor.getCampos()) {
+                String nombreCampo = campo.getNombre();
+                String valorDominio = campo.getValorDominio();
+                String valorProveedor = campo.getValorProveedor();
+                if (nombreCampo.equals(propertyName) && valorProveedor.equals(value)){
+                    vdominio = valorDominio;
+                    break;
+                }
+            }
+        }
+        return vdominio;
+    }
 
 
 
