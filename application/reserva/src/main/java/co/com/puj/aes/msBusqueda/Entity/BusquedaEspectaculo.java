@@ -18,5 +18,5 @@ public class BusquedaEspectaculo implements Serializable {
     private String idShow;
     private Date showDate;
     private String attendeeIdentification;
-    private String amountS;
+    private Long amountS;
 }

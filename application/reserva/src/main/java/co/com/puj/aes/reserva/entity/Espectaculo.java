@@ -20,7 +20,7 @@ public class Espectaculo {
     @DynamoDBAttribute
     private String idShow;
     @DynamoDBAttribute
-    private String amountS;
+    private Long amountS;
     @DynamoDBAttribute
     private Date showDate;
     @DynamoDBAttribute

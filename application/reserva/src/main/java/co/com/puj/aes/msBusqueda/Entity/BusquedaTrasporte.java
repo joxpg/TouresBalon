@@ -22,5 +22,5 @@ public class BusquedaTrasporte implements Serializable {
     private int adult;
     private int child;
     private ArrayList<?> passengers;
-    private String amountT;
+    private Long amountT;
 }

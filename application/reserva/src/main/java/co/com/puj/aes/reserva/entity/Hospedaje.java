@@ -20,7 +20,7 @@ public class Hospedaje {
     @DynamoDBAttribute
     private String idProvider;
     @DynamoDBAttribute
-    private String amountH;
+    private Long amountH;
     @DynamoDBAttribute
     private String guestName;
     @DynamoDBAttribute
