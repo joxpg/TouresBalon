@@ -1,7 +1,6 @@
 package co.com.puj.aes.msPasarela.Controller;
 
 import co.com.puj.aes.reserva.entity.Reserva;
-import co.com.puj.aes.msBusqueda.Entity.BusquedaReserva;
 import  co.com.puj.aes.msPasarela.Entity.Pasarela;
 import co.com.puj.aes.msPasarela.Service.PasarelaService;
 import lombok.RequiredArgsConstructor;
