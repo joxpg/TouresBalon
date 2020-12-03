@@ -12,9 +12,9 @@ public class Pasarela implements Serializable {
 
     private String idPayment;
     private String idBooking;
-    private String amountT;
-    private String amountH;
-    private String amountS;
+    private Long amountT;
+    private Long amountH;
+    private Long amountS;
     private Boolean active;
 
     public String getIdPayment() { return idPayment; }
@@ -26,12 +26,12 @@ public class Pasarela implements Serializable {
     public void setActive(Boolean active) { this.active = active; }
     public Boolean getStatus() { return active; }
 
-    public String getAmountH() { return amountH; }
-    public void setAmountH(String amountH) { this.amountH = amountH; }
+    public Long getAmountH() { return amountH; }
+    public void setAmountH(Long amountH) { this.amountH = amountH; }
 
-    public String getAmountT() { return amountT; }
-    public void setAmountT(String amountT) { this.amountT = amountT; }
+    public Long getAmountT() { return amountT; }
+    public void setAmountT(Long amountT) { this.amountT = amountT; }
 
-    public String getAmountS() { return amountS; }
-    public void setAmountS(String amountS) { this.amountS = amountS; }
+    public Long getAmountS() { return amountS; }
+    public void setAmountS(Long amountS) { this.amountS = amountS; }
 }

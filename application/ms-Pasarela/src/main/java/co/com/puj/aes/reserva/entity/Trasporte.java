@@ -22,7 +22,7 @@ public class Trasporte implements Serializable {
     private int adult;
     private int child;
     private ArrayList<?> passengers;
-    private String amountT;
+    private Long amountT;
 
-    public String getAmountT() { return amountT; }
+    public Long getAmountT() { return amountT; }
 }
