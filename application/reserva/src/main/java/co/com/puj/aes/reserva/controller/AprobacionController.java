@@ -1,11 +1,9 @@
 package co.com.puj.aes.reserva.controller;
 
-import co.com.puj.aes.msBusqueda.Entity.BusquedaReserva;
 import co.com.puj.aes.reserva.entity.Aprobacion;
 import co.com.puj.aes.reserva.entity.Reserva;
-import co.com.puj.aes.reserva.repository.AprobacionRepository;
 import co.com.puj.aes.reserva.service.AprobacionService;
-import co.com.puj.aes.reserva.repository.ReservaRepository;
+import co.com.puj.aes.reserva.service.ReservaService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,7 +25,7 @@ public class AprobacionController {
     private AprobacionService aprobacionRepository;
 
     @Autowired
-    private ReservaRepository reservaRepository;
+    private ReservaService reservaService;
 
     @Autowired
     private AprobacionService aprobacionService;
@@ -76,12 +74,17 @@ public class AprobacionController {
         }
         //aprobacion.setIdBooking(idBooking);
         aprobacionRepository.update(idBooking, aprobacion);
-
-        Reserva reserva = reservaRepository.getReservaById(idBooking);
+        System.out.println("Reserva "+ idBooking+ "   " +aprobacion.getStatus());
+        Reserva reserva = reservaService.getReservaById(idBooking);
+        System.out.println("reserva = " + reserva);
+        if(reserva ==null){
+            return new ResponseEntity<>("No existe una Solicitud de aprobación a la Reserva  " + idBooking +
+                    ",   pudo ser eliminada o no se encuentra activa",HttpStatus.BAD_REQUEST);
+        }
         reserva.setStatus(aprobacion.getStatus());
         kafkaTemplate.send("pagopendiente", reserva);
 
-        return new ResponseEntity<>(reservaRepository.update(idBooking, reserva),HttpStatus.OK);
+        return new ResponseEntity<>(reservaService.update(reserva),HttpStatus.OK);
     }
     @ResponseBody
     @DeleteMapping("{idBooking}")
