@@ -1,11 +1,15 @@
+using ApplicationCore.SoapAdapter.Manager.Hotel;
+using ApplicationCore.SoapAdapter.Manager.Show;
+using ApplicationCore.SoapAdapter.Manager.Transport;
+using Infrastructure.Data.Interfaces;
+using Infrastructure.Data.Repository;
+using Infrastructure.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using SoapAdapter.Manager;
-using SoapAdapter.Models;
 using Steeltoe.Discovery.Client;
 
 namespace SoapAdapter
@@ -25,7 +29,7 @@ namespace SoapAdapter
             services.AddDiscoveryClient(Configuration);
             services.AddControllers();
 
-            services.AddDbContext<MetadataContext>(options =>
+            services.AddDbContext<MetadataPGContext>(options =>
             {
                 options.UseNpgsql(Configuration.GetConnectionString("DbPGConnection"));
             });
@@ -33,6 +37,9 @@ namespace SoapAdapter
             services.AddScoped<IFlightServiceManager, FlightServiceManager>();
             services.AddScoped<IHotelServiceManager, HotelServiceManager>();
             services.AddScoped<IShowServiceManager, ShowServiceManager>();
+
+
+            services.AddScoped<IMetadataSoapRepository, MetadataSoapRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

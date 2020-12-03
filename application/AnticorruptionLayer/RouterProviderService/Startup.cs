@@ -1,21 +1,16 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using ApplicationCore.RouterProvider.Interfaces;
+using ApplicationCore.RouterProvider.Service;
+using Infrastructure.Data.Interfaces;
+using Infrastructure.Data.Repository;
+using Infrastructure.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using RouterProviderService.Interface;
-using RouterProviderService.Models;
-using RouterProviderService.Service;
+using RouterProviderService.Filters.ExceptionHandling;
 using Steeltoe.Discovery.Client;
-using Steeltoe.Extensions.Configuration;
 
 
 namespace RouterProviderService
@@ -35,13 +30,20 @@ namespace RouterProviderService
             services.AddControllers();
             services.AddDiscoveryClient(Configuration);
 
-            services.AddDbContext<RouterContext>(options =>
+            services.AddMvc(options =>
+            {
+                options.Filters.Add(typeof(ExceptionFilter));
+            });
+
+            services.AddDbContext<MetadataPGContext>(options =>
             {
                 options.UseNpgsql(Configuration.GetConnectionString("DbPGConnection"));
             });
 
             services.AddScoped<IRouterService, RouterService>();
             services.AddScoped<IMapperService, MapperService>();
+
+            services.AddScoped<IMetadataRouterRepository, MetadataRouterRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
