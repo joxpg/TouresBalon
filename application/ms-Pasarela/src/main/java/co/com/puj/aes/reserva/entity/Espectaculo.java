@@ -5,7 +5,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
 
 @Data
@@ -18,7 +17,7 @@ public class Espectaculo implements Serializable {
     private String idShow;
     private Date showDate;
     private String attendeeIdentification;
-    private String amountS;
+    private Long amountS;
 
-    public String getAmountS() { return amountS; }
+    public Long getAmountS() { return amountS; }
 }

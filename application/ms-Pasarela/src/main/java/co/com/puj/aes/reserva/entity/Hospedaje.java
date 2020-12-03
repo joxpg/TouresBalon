@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
 
 @Data
@@ -22,7 +21,7 @@ public class Hospedaje implements Serializable {
     private Date checkIn;
     private Date checkOut;
     private String hotel;
-    private String amountH;
+    private Long amountH;
 
-    public String getAmountH() { return amountH; }
+    public Long getAmountH() { return amountH; }
 }
