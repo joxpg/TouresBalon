@@ -22,5 +22,5 @@ public class BusquedaHospedaje implements Serializable {
     private Date checkIn;
     private Date checkOut;
     private String hotel;
-    private String amountH;
+    private Long amountH;
 }

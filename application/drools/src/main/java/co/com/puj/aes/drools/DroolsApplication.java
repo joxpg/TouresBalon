@@ -1,4 +1,4 @@
-package co.com.puj.aes.reserva;
+package co.com.puj.aes.drools;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,7 +10,8 @@ import org.springframework.web.reactive.function.client.WebClient;
 
 @SpringBootApplication
 @EnableEurekaClient
-public class ReservaApplication {
+public class DroolsApplication {
+
     @Bean
     @LoadBalanced
     public RestTemplate getrestTemplate(){
@@ -21,9 +22,9 @@ public class ReservaApplication {
     public WebClient.Builder getWebClientBuilder(){
         return WebClient.builder();
     }
-
     public static void main(String[] args) {
-        SpringApplication.run(ReservaApplication.class, args);
+
+        SpringApplication.run(DroolsApplication.class, args);
     }
 
 }
