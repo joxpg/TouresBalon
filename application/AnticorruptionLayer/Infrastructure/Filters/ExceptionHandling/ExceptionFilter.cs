@@ -6,7 +6,7 @@ using System.Net;
 using System.Threading.Tasks;
 
 
-namespace RouterProviderService.Filters.ExceptionHandling
+namespace Infrastructure.Filters.ExceptionHandling
 {
     /// <summary>
     /// Maneje de exepciones generales del sistema

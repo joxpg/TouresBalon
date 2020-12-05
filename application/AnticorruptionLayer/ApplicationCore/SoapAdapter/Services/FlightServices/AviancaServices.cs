@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using ApplicationCore.Exceptions;
 using ApplicationCore.SoapAdapter.Interfaces;
 using DomainModel.Dto.Transport;
 using ServiceReferenceAvianca;
@@ -9,7 +10,7 @@ namespace ApplicationCore.SoapAdapter.Services.FlightServices
 {
     public class AviancaServices : IFlightServices
     {
-        private readonly  ServicioAviancaVuelos _flightService;
+        private readonly ServicioAviancaVuelos _flightService;
         public AviancaServices()
         {
             _flightService = new ServicioAviancaVuelosClient();
@@ -17,16 +18,30 @@ namespace ApplicationCore.SoapAdapter.Services.FlightServices
 
         public async Task<List<TripDto>> SearchFlight(SearchFlightDto searchFlight)
         {
-            var search = new consultarVueloRequest(searchFlight.DepartingCity,searchFlight.ArrivingCity, searchFlight.DepartingDate, searchFlight.Cabin);
-            var trip = await _flightService.consultarVueloAsync(search);    
-            return GetTrips(trip.result);
+            var search = new consultarVueloRequest(searchFlight.DepartingCity, searchFlight.ArrivingCity, searchFlight.DepartingDate, searchFlight.Cabin);
+            try
+            {
+                var trip = await _flightService.consultarVueloAsync(search);
+                return GetTrips(trip.result);
+            }
+            catch (Exception)
+            {
+                throw new ProviderNotResponseException();
+            }
         }
 
         public async Task<bool> BookFlight(BookFlightDto bookFligth)
-        { 
+        {
             var reservarVuelo = new reservarVueloRequest(GetFlight(bookFligth.Flight), bookFligth.PassengerName, bookFligth.PassengerIdentification);
-            var respuesta = await _flightService.reservarVueloAsync(reservarVuelo);
-            return respuesta.result;
+            try
+            {
+                var respuesta = await _flightService.reservarVueloAsync(reservarVuelo);
+                return respuesta.result;
+            }
+            catch (Exception)
+            {
+                throw new ProviderNotResponseException();
+            }
         }
 
         private List<TripDto> GetTrips(Vuelo[] vuelos)
@@ -78,8 +93,8 @@ namespace ApplicationCore.SoapAdapter.Services.FlightServices
                 clase = fl.Cabin,
                 fechaSalida = fl.DepartingDate,
                 fechaLlegada = fl.ArrivingDate
-            };              
-        }         
+            };
+        }
 
     }
 }

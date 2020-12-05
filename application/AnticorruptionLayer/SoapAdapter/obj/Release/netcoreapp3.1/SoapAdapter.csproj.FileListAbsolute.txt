@@ -1,9 +1,5 @@
 C:\Users\javbecsa\Documents\Desarrollo\NetCoreTraining\PICA_1\AnticorruptionLayer\SoapAdapter\bin\Release\netcoreapp3.1\appsettings.Development.json
 C:\Users\javbecsa\Documents\Desarrollo\NetCoreTraining\PICA_1\AnticorruptionLayer\SoapAdapter\bin\Release\netcoreapp3.1\appsettings.json
-C:\Users\javbecsa\Documents\Desarrollo\NetCoreTraining\PICA_1\AnticorruptionLayer\SoapAdapter\bin\Release\netcoreapp3.1\Connected Services\ServiceReferenceAAAFligth\ConnectedService.json
-C:\Users\javbecsa\Documents\Desarrollo\NetCoreTraining\PICA_1\AnticorruptionLayer\SoapAdapter\bin\Release\netcoreapp3.1\Connected Services\ServiceReferenceAvianca\ConnectedService.json
-C:\Users\javbecsa\Documents\Desarrollo\NetCoreTraining\PICA_1\AnticorruptionLayer\SoapAdapter\bin\Release\netcoreapp3.1\Connected Services\ServiceReferenceHiltomRoom\ConnectedService.json
-C:\Users\javbecsa\Documents\Desarrollo\NetCoreTraining\PICA_1\AnticorruptionLayer\SoapAdapter\bin\Release\netcoreapp3.1\Connected Services\ServiceReferenceHiltonBooking\ConnectedService.json
 C:\Users\javbecsa\Documents\Desarrollo\NetCoreTraining\PICA_1\AnticorruptionLayer\SoapAdapter\bin\Release\netcoreapp3.1\Properties\launchSettings.json
 C:\Users\javbecsa\Documents\Desarrollo\NetCoreTraining\PICA_1\AnticorruptionLayer\SoapAdapter\bin\Release\netcoreapp3.1\SoapAdapter.exe
 C:\Users\javbecsa\Documents\Desarrollo\NetCoreTraining\PICA_1\AnticorruptionLayer\SoapAdapter\bin\Release\netcoreapp3.1\SoapAdapter.deps.json
@@ -134,3 +130,17 @@ C:\Users\javbecsa\Documents\Desarrollo\NetCoreTraining\PICA_1\AnticorruptionLaye
 C:\Users\javbecsa\Documents\Desarrollo\NetCoreTraining\PICA_1\AnticorruptionLayer\SoapAdapter\obj\Release\netcoreapp3.1\SoapAdapter.csproj.CopyComplete
 C:\Users\javbecsa\Documents\Desarrollo\NetCoreTraining\PICA_1\AnticorruptionLayer\SoapAdapter\obj\Release\netcoreapp3.1\SoapAdapter.dll
 C:\Users\javbecsa\Documents\Desarrollo\NetCoreTraining\PICA_1\AnticorruptionLayer\SoapAdapter\obj\Release\netcoreapp3.1\SoapAdapter.pdb
+C:\Users\javbecsa\Documents\Desarrollo\NetCoreTraining\PICA_1\AnticorruptionLayer\SoapAdapter\bin\Release\netcoreapp3.1\ApplicationCore.dll
+C:\Users\javbecsa\Documents\Desarrollo\NetCoreTraining\PICA_1\AnticorruptionLayer\SoapAdapter\bin\Release\netcoreapp3.1\Infrastructure.dll
+C:\Users\javbecsa\Documents\Desarrollo\NetCoreTraining\PICA_1\AnticorruptionLayer\SoapAdapter\bin\Release\netcoreapp3.1\ApplicationCore.pdb
+C:\Users\javbecsa\Documents\Desarrollo\NetCoreTraining\PICA_1\AnticorruptionLayer\SoapAdapter\bin\Release\netcoreapp3.1\Infrastructure.pdb
+C:\Users\javbecsa\Documents\Desarrollo\NetCoreTraining\PICA_1\AnticorruptionLayer\SoapAdapter\obj\Release\netcoreapp3.1\SoapAdapter.csprojAssemblyReference.cache
+C:\Users\javbecsa\Documents\Desarrollo\NetCoreTraining\PICA_1\AnticorruptionLayer\SoapAdapter\bin\Release\netcoreapp3.1\log4net.config
+C:\Users\javbecsa\Documents\Desarrollo\NetCoreTraining\PICA_1\AnticorruptionLayer\SoapAdapter\bin\Release\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\javbecsa\Documents\Desarrollo\NetCoreTraining\PICA_1\AnticorruptionLayer\SoapAdapter\bin\Release\netcoreapp3.1\Microsoft.AspNetCore.Mvc.Razor.Extensions.dll
+C:\Users\javbecsa\Documents\Desarrollo\NetCoreTraining\PICA_1\AnticorruptionLayer\SoapAdapter\bin\Release\netcoreapp3.1\Microsoft.DotNet.PlatformAbstractions.dll
+C:\Users\javbecsa\Documents\Desarrollo\NetCoreTraining\PICA_1\AnticorruptionLayer\SoapAdapter\bin\Release\netcoreapp3.1\Microsoft.Extensions.DependencyModel.dll
+C:\Users\javbecsa\Documents\Desarrollo\NetCoreTraining\PICA_1\AnticorruptionLayer\SoapAdapter\bin\Release\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+C:\Users\javbecsa\Documents\Desarrollo\NetCoreTraining\PICA_1\AnticorruptionLayer\SoapAdapter\bin\Release\netcoreapp3.1\System.Security.Cryptography.Pkcs.dll
+C:\Users\javbecsa\Documents\Desarrollo\NetCoreTraining\PICA_1\AnticorruptionLayer\SoapAdapter\bin\Release\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Security.Cryptography.Pkcs.dll
+C:\Users\javbecsa\Documents\Desarrollo\NetCoreTraining\PICA_1\AnticorruptionLayer\SoapAdapter\obj\Release\netcoreapp3.1\SoapAdapter.MvcApplicationPartsAssemblyInfo.cs

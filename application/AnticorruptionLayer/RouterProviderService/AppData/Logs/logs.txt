@@ -1,0 +1,100 @@
+INFO  2020-11-12 00:52:15,088 [1    ] teeltoe.Discovery.Eureka.DiscoveryClient - Starting HeartBeat
+INFO  2020-11-12 00:52:15,117 [1    ] Microsoft.Hosting.Lifetime               - Application started. Press Ctrl+C to shut down.
+INFO  2020-11-12 00:52:15,120 [1    ] Microsoft.Hosting.Lifetime               - Hosting environment: Development
+INFO  2020-11-12 00:52:15,126 [1    ] Microsoft.Hosting.Lifetime               - Content root path: C:\Users\javbecsa\Documents\Desarrollo\NetCoreTraining\PICA_1\AnticorruptionLayer\RouterProviderService
+INFO  2020-11-12 00:52:23,948 [4    ] terProviderService.Service.RouterService - URL_SENDED http://rest-adapter-service/api/restadapter/Provider/transport/search
+INFO  2020-11-12 00:52:23,977 [4    ] terProviderService.Service.RouterService - BODY_SENDED {
+  "InformationProvider": {
+    "IdProvider": "VA",
+    "ProviderName": "Viva Air",
+    "ProviderType": "transport"
+  },
+  "GeneralFlightInfo": {
+    "BookFlight": {
+      "PassengerIdentification": null,
+      "PassengerName": null,
+      "Flight": null
+    },
+    "Flight": {
+      "Cabin": "AWS",
+      "DepartingDate": "2020-12-03T00:00:00",
+      "ArrivingDate": null,
+      "Price": null,
+      "DepartingCity": "BOG",
+      "ArrivingCity": "CAL",
+      "Meals": null,
+      "TripNumber": 0,
+      "FlightNumber": null
+    },
+    "SearchFlight": {
+      "DepartingCity": "BOG",
+      "ArrivingCity": "CAL",
+      "DepartingDate": "2020-12-03T00:00:00",
+      "Cabin": "AWS",
+      "PromotionCode": null
+    },
+    "Trip": null,
+    "BookFlightResponse": null
+  },
+  "GeneralHotelInfo": {
+    "Hotel": {
+      "Name": null,
+      "Address": null,
+      "City": null,
+      "Country": null
+    },
+    "Rooms": null,
+    "RoomReservation": {
+      "GuestName": null,
+      "RoomNumber": 0,
+      "Checkout": "0001-01-01T00:00:00",
+      "Checkin": "0001-01-01T00:00:00",
+      "Hotel": null
+    },
+    "SearchRoom": {
+      "City": null,
+      "Country": null,
+      "CheckIn": "0001-01-01T00:00:00",
+      "CheckOut": "0001-01-01T00:00:00",
+      "Rooms": 0,
+      "TypeofRoom": null
+    },
+    "RoomReservationResponse": null
+  },
+  "GeneralShowInfo": {
+    "SearchShow": {
+      "Country": null,
+      "City": null,
+      "ShowDate": "0001-01-01T00:00:00",
+      "Quantity": 0,
+      "Location": null
+    },
+    "Shows": null,
+    "ShowReservation": {
+      "ShowDate": "0001-01-01T00:00:00",
+      "AttendeeIdentification": null
+    },
+    "Show": {
+      "Price": 0.0,
+      "Row": null,
+      "SeatNumber": null,
+      "Location": null
+    },
+    "ShowReservationResponse": null
+  }
+}
+INFO  2020-11-12 00:52:24,892 [7    ] terProviderService.Service.RouterService - ERROR_CONSUMING_SERVICE 
+System.Net.Http.HttpRequestException: Host desconocido.
+ ---> System.Net.Sockets.SocketException (11001): Host desconocido.
+   at System.Net.Http.ConnectHelper.ConnectAsync(String host, Int32 port, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.ConnectHelper.ConnectAsync(String host, Int32 port, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean allowHttp2, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.GetHttpConnectionAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithRetryAsync(HttpRequestMessage request, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at System.Net.Http.DiagnosticsHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.FinishSendAsyncBuffered(Task`1 sendTask, HttpRequestMessage request, CancellationTokenSource cts, Boolean disposeCts)
+   at RouterProviderService.Service.RouterService.Post(String endpoint, Object body) in C:\Users\javbecsa\Documents\Desarrollo\NetCoreTraining\PICA_1\AnticorruptionLayer\RouterProviderService\Service\RouterService.cs:line 63
+   at RouterProviderService.Service.RouterService.GetResponseProviderService(GeneralDto generalDto, String type) in C:\Users\javbecsa\Documents\Desarrollo\NetCoreTraining\PICA_1\AnticorruptionLayer\RouterProviderService\Service\RouterService.cs:line 45

@@ -1,8 +1,10 @@
-﻿using ApplicationCore.SoapAdapter.Interfaces;
+﻿using ApplicationCore.Exceptions;
+using ApplicationCore.SoapAdapter.Interfaces;
 using AutoMapper;
 using DomainModel.Dto.Hotel;
 using ServiceReferenceHiltomRoom;
 using ServiceReferenceHiltonBooking;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -22,15 +24,29 @@ namespace ApplicationCore.SoapAdapter.Services.HotelServices
         public async Task<List<RoomDto>> SearchRoom(SearchRoomDto searchRoom)
         {
             var roomRequest = GetRequestRoom(searchRoom);
-            var roomsFinded = await _roomService.initiateAsync(roomRequest);
-            return GetRoomResponse(roomsFinded);
+            try
+            {
+                var roomsFinded = await _roomService.initiateAsync(roomRequest);
+                return GetRoomResponse(roomsFinded);
+            }
+            catch (Exception)
+            {
+                throw new ProviderNotResponseException();
+            }
         }
 
         public async Task<int> RoomReservation(RoomReservationDto roomReservation)
         {
-            var bookRoomRequest = GetBookRoomResponse(roomReservation);
-            var booking = await _bookService.bookRoomAsync(bookRoomRequest);
-            return booking.result;
+            try
+            {
+                var bookRoomRequest = GetBookRoomResponse(roomReservation);
+                var booking = await _bookService.bookRoomAsync(bookRoomRequest);
+                return booking.result;
+            }
+            catch (Exception)
+            {
+                throw new ProviderNotResponseException();
+            }
         }
 
         private List<RoomDto> GetRoomResponse(initiateResponse responseRoom)
@@ -53,7 +69,7 @@ namespace ApplicationCore.SoapAdapter.Services.HotelServices
             {
                 Hotel = GetHotelDto(room.Hotel),
                 Price = room.Price,
-                RoomNumber = int.TryParse(room.Number, out int roomNumber)? roomNumber : 0 ,
+                RoomNumber = int.TryParse(room.Number, out int roomNumber) ? roomNumber : 0,
                 TypeofRoom = room.Type
             };
         }
@@ -81,7 +97,7 @@ namespace ApplicationCore.SoapAdapter.Services.HotelServices
                 Rooms = searchRoom.Rooms.ToString(),
                 Type = searchRoom.TypeofRoom
             };
-       
+
             return new initiateRequest(roomService);
         }
 

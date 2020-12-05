@@ -3,6 +3,7 @@ using ApplicationCore.RestAdapter.Services.CommonServices;
 using ApplicationCore.RestAdapter.Services.DomainServices;
 using Infrastructure.Data.Interfaces;
 using Infrastructure.Data.Repository;
+using Infrastructure.Filters.ExceptionHandling;
 using Infrastructure.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -28,6 +29,12 @@ namespace RestAdapter
         {
             services.AddDiscoveryClient(Configuration);
             services.AddControllers();
+
+
+            services.AddMvc(options =>
+            {
+                options.Filters.Add(typeof(ExceptionFilter));
+            });
 
             services.AddDbContext<MetadataPGContext>(options =>
             {

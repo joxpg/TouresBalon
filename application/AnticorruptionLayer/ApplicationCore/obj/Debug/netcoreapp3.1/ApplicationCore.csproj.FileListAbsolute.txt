@@ -1,0 +1,14 @@
+C:\Users\javbecsa\Documents\Desarrollo\NetCoreTraining\PICA_1\AnticorruptionLayer\ApplicationCore\bin\Debug\netcoreapp3.1\ApplicationCore.deps.json
+C:\Users\javbecsa\Documents\Desarrollo\NetCoreTraining\PICA_1\AnticorruptionLayer\ApplicationCore\bin\Debug\netcoreapp3.1\ApplicationCore.dll
+C:\Users\javbecsa\Documents\Desarrollo\NetCoreTraining\PICA_1\AnticorruptionLayer\ApplicationCore\bin\Debug\netcoreapp3.1\ApplicationCore.pdb
+C:\Users\javbecsa\Documents\Desarrollo\NetCoreTraining\PICA_1\AnticorruptionLayer\ApplicationCore\bin\Debug\netcoreapp3.1\DomainModel.dll
+C:\Users\javbecsa\Documents\Desarrollo\NetCoreTraining\PICA_1\AnticorruptionLayer\ApplicationCore\bin\Debug\netcoreapp3.1\Infrastructure.dll
+C:\Users\javbecsa\Documents\Desarrollo\NetCoreTraining\PICA_1\AnticorruptionLayer\ApplicationCore\bin\Debug\netcoreapp3.1\DomainModel.pdb
+C:\Users\javbecsa\Documents\Desarrollo\NetCoreTraining\PICA_1\AnticorruptionLayer\ApplicationCore\bin\Debug\netcoreapp3.1\DomainModel.xml
+C:\Users\javbecsa\Documents\Desarrollo\NetCoreTraining\PICA_1\AnticorruptionLayer\ApplicationCore\bin\Debug\netcoreapp3.1\Infrastructure.pdb
+C:\Users\javbecsa\Documents\Desarrollo\NetCoreTraining\PICA_1\AnticorruptionLayer\ApplicationCore\obj\Debug\netcoreapp3.1\ApplicationCore.csprojAssemblyReference.cache
+C:\Users\javbecsa\Documents\Desarrollo\NetCoreTraining\PICA_1\AnticorruptionLayer\ApplicationCore\obj\Debug\netcoreapp3.1\ApplicationCore.AssemblyInfoInputs.cache
+C:\Users\javbecsa\Documents\Desarrollo\NetCoreTraining\PICA_1\AnticorruptionLayer\ApplicationCore\obj\Debug\netcoreapp3.1\ApplicationCore.AssemblyInfo.cs
+C:\Users\javbecsa\Documents\Desarrollo\NetCoreTraining\PICA_1\AnticorruptionLayer\ApplicationCore\obj\Debug\netcoreapp3.1\ApplicationCore.csproj.CopyComplete
+C:\Users\javbecsa\Documents\Desarrollo\NetCoreTraining\PICA_1\AnticorruptionLayer\ApplicationCore\obj\Debug\netcoreapp3.1\ApplicationCore.dll
+C:\Users\javbecsa\Documents\Desarrollo\NetCoreTraining\PICA_1\AnticorruptionLayer\ApplicationCore\obj\Debug\netcoreapp3.1\ApplicationCore.pdb
