@@ -1,4 +1,5 @@
-﻿using ApplicationCore.RestAdapter.Interfaces;
+﻿using ApplicationCore.Exceptions;
+using ApplicationCore.RestAdapter.Interfaces;
 using ApplicationCore.RestAdapter.Services.CommonServices;
 using DomainModel.Dto;
 using DomainModel.Dto.Show;
@@ -38,10 +39,9 @@ namespace ApplicationCore.RestAdapter.Services.DomainServices
             metadataCofig.Url = _fieldMapper.GetUrlMapped(showReservation, metadataCofig.Url);
             var providerConsumer = new ProviderConsumerService(_consumer);
             var result = await providerConsumer.Request(metadataCofig);
+
             if (!result.IsSuccessStatusCode)
-            {
-                return false;
-            }
+                throw new ProviderNotResponseException();
 
             return true;
 
@@ -65,9 +65,7 @@ namespace ApplicationCore.RestAdapter.Services.DomainServices
             var result = await providerConsumer.Request(metadataCofig);
 
             if (!result.IsSuccessStatusCode)
-            {
-                return new List<ShowDto>();
-            }
+                throw new ProviderNotResponseException();
 
             var response = await result.Content.ReadAsStringAsync();
             var show = _fieldMapper.GetObjetMapped<List<ShowDto>>(response, metadataCofig.Response);

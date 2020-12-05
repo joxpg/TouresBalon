@@ -1,4 +1,5 @@
-﻿using ApplicationCore.RouterProvider.Interfaces;
+﻿using ApplicationCore.Exceptions;
+using ApplicationCore.RouterProvider.Interfaces;
 using DomainModel.Dto;
 using Infrastructure.Data.Interfaces;
 using Microsoft.Extensions.Logging;
@@ -9,13 +10,13 @@ using System.Threading.Tasks;
 namespace ApplicationCore.RouterProvider.Service
 {
     public class RouterService : IRouterService
-    { 
+    {
 
         private readonly IMetadataRouterRepository _routerRepository;
         private readonly ILogger<RouterService> _logger;
 
-        public RouterService(IMetadataRouterRepository routerRepository , ILogger<RouterService> logger)
-        { 
+        public RouterService(IMetadataRouterRepository routerRepository, ILogger<RouterService> logger)
+        {
             _routerRepository = routerRepository;
             _logger = logger;
         }
@@ -38,27 +39,26 @@ namespace ApplicationCore.RouterProvider.Service
                 var url = $"{router.Endpoint}/{router.TipoAdaptador}/Provider/{router.TipoProveedor}/{type}";
                 _logger.LogInformation($"URL_SENDED {url}");
 
-                try
+                var result = await Post(url, generalDto);
+                if (result.IsSuccessStatusCode)
+                    return await result.Content.ReadAsStringAsync();
+                else if (result.StatusCode == System.Net.HttpStatusCode.ServiceUnavailable)
+                    throw new ProviderNotResponseException(await result.Content.ReadAsStringAsync());
+                else
                 {
-                    var result = await Post(url, generalDto);
-                    if (result.IsSuccessStatusCode)                    
-                        return await result.Content.ReadAsStringAsync();                    
+                    _logger.LogInformation(await result.Content.ReadAsStringAsync(), "ERROR_CONSUMING_SERVICE ", new object[] { url });
+                    throw new System.Exception($"StatusCode {result.StatusCode.ToString()}, error {result.Content.ReadAsStringAsync()}");
                 }
-                catch (System.Exception ex)
-                {
-                    _logger.LogInformation(ex, "ERROR_CONSUMING_SERVICE ", new object[] { url });
-                }
-                return null;
             }
             return null;
         }
-          
+
 
         public async Task<HttpResponseMessage> Post(string endpoint, object body)
         {
             var httpClient = new HttpClient();
             var httpContent = GetHttpContent(body);
-            var messageResponse = await httpClient.PostAsync(endpoint, httpContent).ConfigureAwait(false);
+            var messageResponse = await httpClient.PostAsync(endpoint, httpContent);
             return messageResponse;
         }
 

@@ -1,0 +1,143 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DomainModel</name>
+    </assembly>
+    <members>
+        <member name="P:DomainModel.Dto.Show.SearchShowDto.Country">
+            <summary>
+            País donde se disfruta el evento
+            </summary>
+        </member>
+        <member name="P:DomainModel.Dto.Show.SearchShowDto.City">
+            <summary>
+            Ciudad donde se disfruta el evento
+            </summary>
+        </member>
+        <member name="P:DomainModel.Dto.Show.SearchShowDto.ShowDate">
+            <summary>
+            Fecha del evento o espectáculo
+            </summary>
+        </member>
+        <member name="P:DomainModel.Dto.Show.SearchShowDto.Quantity">
+            <summary>
+            Cantidad de boletos de ingreso que se cotizan
+            </summary>
+        </member>
+        <member name="P:DomainModel.Dto.Show.SearchShowDto.Location">
+            <summary>
+            Dto para manejar la categoria, la silla, la ubicación, la locación que es otorgada cuando se compra un boleto a evento
+            </summary>
+        </member>
+        <member name="P:DomainModel.Dto.Show.ShowDto.Row">
+            <summary>
+            Fila Si tiene
+            </summary>
+        </member>
+        <member name="P:DomainModel.Dto.Show.ShowDto.SeatNumber">
+            <summary>
+            Número de silla si tiene
+            </summary>
+        </member>
+        <member name="P:DomainModel.Dto.Show.ShowDto.Location">
+            <summary>
+            Locación, categoria si tiene
+            </summary>
+        </member>
+        <member name="P:DomainModel.Dto.Show.ShowReservationDto.ShowDate">
+            <summary>
+            Fecha de evento
+            </summary>
+        </member>
+        <member name="P:DomainModel.Dto.Show.ShowReservationDto.AttendeeIdentification">
+            <summary>
+            Identificación del asistente al evento
+            </summary>
+        </member>
+        <member name="T:DomainModel.Dto.Transport.BookFlightDto">
+            <summary>
+            Objeto para manejar la reserva del vuelo
+            </summary>
+        </member>
+        <member name="T:DomainModel.Dto.Transport.FlightDto">
+            <summary>
+            Objeto para manejar la información del vuelo
+            </summary>
+        </member>
+        <member name="P:DomainModel.Dto.Transport.FlightDto.Cabin">
+            <summary>
+            Clase o cabina del vuelo
+            </summary>
+        </member>
+        <member name="P:DomainModel.Dto.Transport.FlightDto.DepartingDate">
+            <summary>
+            Fecha de salida
+            </summary>
+        </member>
+        <member name="P:DomainModel.Dto.Transport.FlightDto.ArrivingDate">
+            <summary>
+            Fecha de destino vuello
+            </summary>
+        </member>
+        <member name="P:DomainModel.Dto.Transport.FlightDto.Price">
+            <summary>
+            precio del vuelo
+            </summary>
+        </member>
+        <member name="P:DomainModel.Dto.Transport.FlightDto.DepartingCity">
+            <summary>
+            Ciudad de origen
+            </summary>
+        </member>
+        <member name="P:DomainModel.Dto.Transport.FlightDto.ArrivingCity">
+            <summary>
+            ciudaad de llegada
+            </summary>
+        </member>
+        <member name="P:DomainModel.Dto.Transport.FlightDto.Meals">
+            <summary>
+            Comida
+            </summary>
+        </member>
+        <member name="P:DomainModel.Dto.Transport.FlightDto.TripNumber">
+            <summary>
+            Número de viaje (AA)
+            </summary>
+        </member>
+        <member name="P:DomainModel.Dto.Transport.FlightDto.FlightNumber">
+            <summary>
+            Podría ser código de vuelo (AV)
+            </summary>
+        </member>
+        <member name="P:DomainModel.Dto.Transport.SearchFlightDto.DepartingCity">
+            <summary>
+            Ciudad de Origen
+            </summary>
+        </member>
+        <member name="P:DomainModel.Dto.Transport.SearchFlightDto.ArrivingCity">
+            <summary>
+            Ciudad de Destino
+            </summary>
+        </member>
+        <member name="P:DomainModel.Dto.Transport.SearchFlightDto.DepartingDate">
+            <summary>
+            Fecha de salida
+            </summary>
+        </member>
+        <member name="P:DomainModel.Dto.Transport.SearchFlightDto.Cabin">
+            <summary>
+            Clase
+            </summary>
+        </member>
+        <member name="P:DomainModel.Dto.Transport.SearchFlightDto.PromotionCode">
+            <summary>
+            Código de promoción
+            </summary>
+        </member>
+        <member name="T:DomainModel.Dto.Transport.TripDto">
+            <summary>
+            Objeto para Manejar el Viaje
+            </summary>
+        </member>
+    </members>
+</doc>

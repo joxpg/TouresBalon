@@ -1,4 +1,5 @@
-﻿using ApplicationCore.RestAdapter.Interfaces;
+﻿using ApplicationCore.Exceptions;
+using ApplicationCore.RestAdapter.Interfaces;
 using ApplicationCore.RestAdapter.Services.CommonServices;
 using DomainModel.Dto;
 using DomainModel.Dto.Hotel;
@@ -40,9 +41,7 @@ namespace ApplicationCore.RestAdapter.Services.DomainServices
             var result = await providerConsumer.Request(metadataCofig);
 
             if (!result.IsSuccessStatusCode)
-            {
-                return 0;
-            }
+                throw new ProviderNotResponseException();
 
             var response = await result.Content.ReadAsStringAsync();
            if(int.TryParse(response,out int responseNumber))            
@@ -66,9 +65,7 @@ namespace ApplicationCore.RestAdapter.Services.DomainServices
             var providerConsumer = new ProviderConsumerService(_consumer);
             var result = await providerConsumer.Request(metadataCofig);
             if (!result.IsSuccessStatusCode)
-            {
-                return new List<RoomDto>();
-            }
+                throw new ProviderNotResponseException();
 
             var response = await result.Content.ReadAsStringAsync();
             var rooms = _fieldMapper.GetObjetMapped<List<RoomDto>>(response, metadataCofig.Response);
