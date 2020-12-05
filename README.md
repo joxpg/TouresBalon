@@ -87,7 +87,7 @@ Figura 2: Compra de plan turístico
 
 Figura 3: Cancelación de plan turístico
 
-![alt text][fig10
+![alt text][fig10]
 
 Figura 4: Proveedores
 
