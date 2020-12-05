@@ -87,6 +87,11 @@ Figura 2: Compra de plan turístico
 
 Figura 3: Cancelación de plan turístico
 
+![alt text][fig10
+
+Figura 4: Proveedores
+
+
 ## 3.2 Vista estructural <a name="vista-estructural"></a>
 
 La vista estructural se presenta por medio del diagrama de componentes. En este diagrama podemos describir algunos de los principales patrones y decisiones arquitectónicas que se tomaron, decisiones que explicaremos en la siguiente sección.
@@ -160,4 +165,5 @@ Se lleva a cabo la evaluación de atributos de calidad respecto de los requerimi
 [fig7]: /img/atr5.jpg "Eficiencia de rendimiento"
 [fig8]: /img/negocio2.jpg "Compra"
 [fig9]: /img/negocio3.jpg "Cancelación"
+[fig10]: /img/Imagen4.jpeg "Proveedores"
 
