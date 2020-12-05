@@ -3,6 +3,10 @@ cd eureka-server
 mvn install
 docker rm -f eureka-server
 docker build -t eureka-server:lastest .
+cd administrator
+mvn install
+docker rm -f administrator
+docker build -t administrator:lastest .
 cd ..
 cd zuul
 mvn install

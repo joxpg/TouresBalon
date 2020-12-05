@@ -4,6 +4,17 @@ services:
   image: eureka-server:lastest
   ports:
    - "9040:9040"
+ administrator:
+  image: administrator:lastest
+  environment: 
+   # Important for clients to register with eureka
+   - eureka.client.serviceUrl.defaultZone=http://eureka-server:9040/eureka/
+  ports:
+   - "9043:9043"
+  depends_on:
+   - eureka-server
+  links:
+   - eureka-server
  zuul:
   image: zuul:lastest
   environment: 
