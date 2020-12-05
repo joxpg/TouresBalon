@@ -1,5 +1,6 @@
 package co.com.puj.aes.reserva.controller;
 
+import co.com.puj.aes.msBusqueda.Entity.BusquedaReserva;
 import co.com.puj.aes.reserva.entity.Aprobacion;
 import co.com.puj.aes.reserva.entity.Reserva;
 import co.com.puj.aes.reserva.service.AprobacionService;
@@ -31,7 +32,7 @@ public class AprobacionController {
     private AprobacionService aprobacionService;
 
     @Autowired
-    private KafkaTemplate<Object, Reserva> kafkaTemplate;
+    private KafkaTemplate<Object, BusquedaReserva> kafkaTemplate;
     //private static final String TOPIC = "reserva";
 
     private static final String STATUS_DEFAULT = "Pending";
@@ -75,7 +76,7 @@ public class AprobacionController {
         //aprobacion.setIdBooking(idBooking);
         aprobacionRepository.update(idBooking, aprobacion);
         System.out.println("Reserva "+ idBooking+ "   " +aprobacion.getStatus());
-        Reserva reserva = reservaService.getReservaById(idBooking);
+        BusquedaReserva reserva = reservaService.getBookingById(idBooking);
         System.out.println("reserva = " + reserva);
         if(reserva ==null){
             return new ResponseEntity<>("No existe una Solicitud de aprobación a la Reserva  " + idBooking +
@@ -84,7 +85,7 @@ public class AprobacionController {
         reserva.setStatus(aprobacion.getStatus());
         kafkaTemplate.send("pagopendiente", reserva);
 
-        return new ResponseEntity<>(reservaService.update(reserva),HttpStatus.OK);
+        return new ResponseEntity<>(reservaService.updateBooking(idBooking, reserva),HttpStatus.OK);
     }
     @ResponseBody
     @DeleteMapping("{idBooking}")

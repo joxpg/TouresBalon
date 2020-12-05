@@ -39,6 +39,9 @@ public  class ReservaService  implements ServiceInterface <Reserva, String>  {
         return reserva;
     }
 
+    public BusquedaReserva getBookingById (String idBooking) throws Exception{
+        return dynamoDbMapper.load(BusquedaReserva.class, idBooking);
+    }
     public Reserva getReservaById (String idBooking) throws Exception{
         return dynamoDbMapper.load(Reserva.class, idBooking);
     }
@@ -54,7 +57,7 @@ public  class ReservaService  implements ServiceInterface <Reserva, String>  {
         return (List <Reserva>) reservaRepository.findAll();
     }
 
-    public  Reserva update1 (String idBooking, Reserva reserva) throws Exception {
+    public  Reserva updateBooking (String idBooking, BusquedaReserva reserva) throws Exception {
         Reserva reserva1 = getReservaById(reserva.getIdBooking());
         if (reserva.isActive()) {
             reserva1.setActive(reserva.isActive());
