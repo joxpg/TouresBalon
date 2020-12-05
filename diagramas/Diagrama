@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2020-12-05T00:30:12.256Z" agent="5.0 (X11)" etag="ZoX563VXFNiGtNrzqOt0" version="13.10.9" type="github">
+<mxfile host="app.diagrams.net" modified="2020-12-05T00:35:28.530Z" agent="5.0 (X11)" etag="pd1jpqy9606wH7IICw88" version="13.10.9" type="github">
   <diagram id="9anLDQHCdUL1ynDijxt3" name="Arquitectura General">
     <mxGraphModel dx="1623" dy="1661" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -533,9 +533,6 @@
         <mxCell id="pnOxeAULsoSdvAINixIH-5" value="Security group" style="fillColor=none;strokeColor=#DD3522;verticalAlign=top;fontStyle=0;fontColor=#DD3522;" vertex="1" parent="1">
           <mxGeometry x="-180" y="-639" width="140" height="89" as="geometry" />
         </mxCell>
-        <mxCell id="pnOxeAULsoSdvAINixIH-6" value="" style="outlineConnect=0;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;shape=mxgraph.aws3.ec2_compute_container;fillColor=#F58534;gradientColor=none;" vertex="1" parent="1">
-          <mxGeometry x="-140" y="-611.75" width="60" height="34.5" as="geometry" />
-        </mxCell>
         <mxCell id="pnOxeAULsoSdvAINixIH-7" value="S3" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;strokeColor=#ffffff;fillColor=#232F3E;dashed=0;verticalLabelPosition=middle;verticalAlign=bottom;align=center;html=1;whiteSpace=wrap;fontSize=10;fontStyle=1;spacing=3;shape=mxgraph.aws4.productIcon;prIcon=mxgraph.aws4.s3;" vertex="1" parent="1">
           <mxGeometry x="1818.01" y="327.75" width="71.99" height="92.25" as="geometry" />
         </mxCell>
@@ -574,6 +571,18 @@
               <mxPoint x="526" y="510" />
             </Array>
           </mxGeometry>
+        </mxCell>
+        <mxCell id="pnOxeAULsoSdvAINixIH-19" value="Amazon S3 es un servicio de almacenamiento de objetos creado para &#xa;almacenar y recuperar cualquier volumen de datos desde cualquier &#xa;ubicación de Internet." style="text;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1891.01" y="328.28" width="400" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="pnOxeAULsoSdvAINixIH-20" value="Amazon Route 53 proporciona servicios web DNS (sistema de nombres de&amp;nbsp; dominio) de alta disponibilidad y escalabilidad, de registro de nombres de dominio y de comprobación de estado" style="text;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1894.35" y="420" width="385.65" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="pnOxeAULsoSdvAINixIH-21" value="AWS WAF es un firewall para aplicaciones web que ayuda a proteger &#xa;aplicaciones web contra ataques al permitirle configurar reglas que &#xa;habilitan, bloquean o monitorizan (cuentan) las solicitudes web a partir&#xa; de las condiciones que usted defina." style="text;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1894.35" y="549" width="400" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="pnOxeAULsoSdvAINixIH-22" value="Amazon&amp;nbsp;CloudFront es un servicio web que ofrece a las empresas y los &#xa;desarrolladores de aplicaciones web una forma fácil y económica de &#xa;distribuir contenido con baja latencia y alta velocidad en la &#xa;transferencia de datos." style="text;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1894.35" y="650" width="410" height="70" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
