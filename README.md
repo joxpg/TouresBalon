@@ -153,7 +153,7 @@ Se lleva a cabo la evaluación de atributos de calidad respecto de los requerimi
 [contrato-notificacion]: contratos/NotificationV2.yaml
 [contrato-transporte]: contratos/transporte.yaml
 [fig1]: /img/negocio1.jpg "Cotización"
-[fig2]: /img/diagramaComponentesV7.jpg "Diagrama de componentes"
+[fig2]: /img/ComponentesPicaV7.jpg "Diagrama de componentes"
 [fig3]: /img/atr1.jpg "Interoperabilidad"
 [fig4]: /img/atr2.jpg "Adaptabiliadad"
 [fig5]: /img/atr3.jpg "Modificabilidad"
