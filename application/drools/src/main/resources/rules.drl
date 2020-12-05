@@ -1,0 +1,34 @@
+package KieRule;
+import co.com.puj.aes.drools.entity.Orden;
+
+rule "DORADO"
+
+when
+orderObject : Orden(category=="DORADO" && amount>10000);
+then
+orderObject.setCheck(true);
+end;
+
+rule "DORADO2"
+
+when
+orderObject : Orden(category=="DORADO" && amount<=10000);
+then
+orderObject.setCheck(false);
+end;
+
+rule "PLATEADO"
+
+when
+orderObject : Orden(category=="PLATEADO");
+then
+orderObject.setCheck(true);
+end;
+
+rule "PLATINO"
+
+when
+orderObject : Orden(category=="PLATINO");
+then
+orderObject.setCheck(false);
+end;

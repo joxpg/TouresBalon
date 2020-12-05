@@ -28,11 +28,11 @@ public class Pagos implements Serializable {
     @Column(name = "ID_RESERVA")
     private String idBooking;
     @Column(name = "PAGOT")
-    private String amountT;
+    private Long amountT;
     @Column(name = "PAGOH")
-    private String amountH;
+    private Long amountH;
     @Column(name = "PAGOS")
-    private String amountS;
+    private Long amountS;
     @Column(name = "ESTADO_RESERVA")
     private Boolean active;
 

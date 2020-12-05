@@ -12,9 +12,9 @@ public class Pasarela implements Serializable {
 
     private String idPayment;
     private String idBooking;
-    private String amountT;
-    private String amountH;
-    private String amountS;
+    private Long amountT;
+    private Long amountH;
+    private Long amountS;
     private Boolean active;
 
 
