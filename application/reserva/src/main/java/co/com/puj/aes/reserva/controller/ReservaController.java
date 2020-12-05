@@ -180,4 +180,12 @@ public class ReservaController {
       reservaService.update(reserva1);
        return reserva1;
     }
+
+    @KafkaListener(topics = "cancelacion", groupId = "reserva")
+    public Reserva consumerCancelacionPagoReserva (UpdateReserva reserva) throws Exception {
+        Reserva reserva1 = reservaService.getReservaById(reserva.getIdBooking());
+        reserva1.setActive(reserva.isActive());
+        reservaService.update(reserva1);
+        return reserva1;
+    }
 }
