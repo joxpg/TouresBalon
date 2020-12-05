@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2020-12-05T00:43:57.074Z" agent="5.0 (X11)" etag="_AN-y10XRJFY8Owq2foV" version="13.10.9" type="github">
+<mxfile host="app.diagrams.net" modified="2020-12-05T00:46:50.614Z" agent="5.0 (X11)" etag="hThrBZGv849soHUm6Ez9" version="13.10.9" type="github">
   <diagram id="9anLDQHCdUL1ynDijxt3" name="Arquitectura General">
     <mxGraphModel dx="1623" dy="1661" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -502,7 +502,7 @@
         <mxCell id="KUd42jZBUJtkj55PW7YX-14" value="" style="outlineConnect=0;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;shape=mxgraph.aws3.management_console;fillColor=#D2D3D3;gradientColor=none;" parent="1" vertex="1">
           <mxGeometry x="-726.5" y="-217.75" width="63" height="63" as="geometry" />
         </mxCell>
-        <mxCell id="KUd42jZBUJtkj55PW7YX-15" value="Mobile client" style="outlineConnect=0;strokeColor=#6c8ebf;fillColor=#dae8fc;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.mobile_client;" parent="1" vertex="1">
+        <mxCell id="KUd42jZBUJtkj55PW7YX-15" value="" style="outlineConnect=0;strokeColor=#6c8ebf;fillColor=#dae8fc;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.mobile_client;" parent="1" vertex="1">
           <mxGeometry x="-726.5" y="-123.84" width="60" height="60" as="geometry" />
         </mxCell>
         <mxCell id="KUd42jZBUJtkj55PW7YX-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="KUd42jZBUJtkj55PW7YX-17" target="KUd42jZBUJtkj55PW7YX-7" edge="1">
@@ -528,10 +528,10 @@
           <mxGeometry x="1014" y="560" width="56" height="90" as="geometry" />
         </mxCell>
         <mxCell id="pnOxeAULsoSdvAINixIH-3" value="Amazon CloudWatch" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;strokeColor=#ffffff;fillColor=#232F3E;dashed=0;verticalLabelPosition=middle;verticalAlign=bottom;align=center;html=1;whiteSpace=wrap;fontSize=10;fontStyle=1;spacing=3;shape=mxgraph.aws4.productIcon;prIcon=mxgraph.aws4.cloudwatch;" vertex="1" parent="1">
-          <mxGeometry x="-290" y="-639" width="80" height="110" as="geometry" />
+          <mxGeometry x="-290" y="-649.5" width="80" height="110" as="geometry" />
         </mxCell>
-        <mxCell id="pnOxeAULsoSdvAINixIH-5" value="Security group" style="fillColor=none;strokeColor=#DD3522;verticalAlign=top;fontStyle=0;fontColor=#DD3522;" vertex="1" parent="1">
-          <mxGeometry x="-180" y="-639" width="140" height="89" as="geometry" />
+        <mxCell id="pnOxeAULsoSdvAINixIH-5" value="Security groups" style="fillColor=none;strokeColor=#DD3522;verticalAlign=top;fontStyle=0;fontColor=#DD3522;" vertex="1" parent="1">
+          <mxGeometry x="-180" y="-639" width="100" height="79" as="geometry" />
         </mxCell>
         <mxCell id="pnOxeAULsoSdvAINixIH-7" value="S3" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;strokeColor=#ffffff;fillColor=#232F3E;dashed=0;verticalLabelPosition=middle;verticalAlign=bottom;align=center;html=1;whiteSpace=wrap;fontSize=10;fontStyle=1;spacing=3;shape=mxgraph.aws4.productIcon;prIcon=mxgraph.aws4.s3;" vertex="1" parent="1">
           <mxGeometry x="1818.01" y="327.75" width="71.99" height="92.25" as="geometry" />
