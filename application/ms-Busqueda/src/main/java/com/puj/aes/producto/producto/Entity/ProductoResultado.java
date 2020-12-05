@@ -29,6 +29,7 @@ public class ProductoResultado {
     private String calificacion;
     private String pesoConvenio;
     private String idBusqueda;
+    private String errorCode;
 
     public ProductoResultado(String idBusqueda){
         this.idBusqueda = idBusqueda;
