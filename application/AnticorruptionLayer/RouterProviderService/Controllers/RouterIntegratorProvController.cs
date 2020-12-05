@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ApplicationCore.Exceptions;
 using ApplicationCore.RouterProvider.Entity;
 using ApplicationCore.RouterProvider.Interfaces;
 using DomainModel.Dto;
@@ -42,9 +43,14 @@ namespace RouterProviderService.Controllers
             
             try
             {
+                info.InformationProvider.ProviderType = info.InformationProvider.ProviderType.ToLower();
                 var dto = await _mapperService.GetGeneralDtoAsync(info);
                 var result = await _routerService.Search(dto);
                 return Ok(result);
+            }
+            catch (ProviderNotResponseException exProv)
+            {
+                return GetUnavailableService(exProv);
             }
             catch (Exception ex)
             {
@@ -61,9 +67,14 @@ namespace RouterProviderService.Controllers
                 return BadRequest(ModelState);
             try
             {
+                info.InformationProvider.ProviderType = info.InformationProvider.ProviderType.ToLower();
                 var dto = await _mapperService.GetGeneralDtoAsync(info);
                 var result = await _routerService.Book(dto);
                 return Ok(result);
+            }
+            catch (ProviderNotResponseException exProv)
+            {
+                return GetUnavailableService(exProv);
             }
             catch (Exception ex)
             {
@@ -78,6 +89,11 @@ namespace RouterProviderService.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError);
             
             return StatusCode(StatusCodes.Status500InternalServerError, value);
+        }
+
+        private IActionResult GetUnavailableService(ProviderNotResponseException exProv)
+        {
+            return StatusCode(StatusCodes.Status503ServiceUnavailable, exProv.Message);
         }
     }
 }

@@ -19,8 +19,8 @@ namespace ApplicationCore.SoapAdapter.Manager
         protected async Task<T> GetService(InformationProvider informationProv)
         {
             var serviceFullName = await _soapRepository.GetMetadata(informationProv);
-            if (serviceFullName != null)            
-                return GetService(serviceFullName.Servicio);
+            if (serviceFullName != null)
+                return GetService(serviceFullName.Servicio, serviceFullName.TipoProveedor);
 
             return default;
         }
@@ -30,8 +30,24 @@ namespace ApplicationCore.SoapAdapter.Manager
         /// </summary>
         /// <param name="service">nombre del servicio p.e. SoapAdapter.Services.FlightServices.AviancaServices </param>
         /// <returns></returns>
-        private T GetService(string serviceFullName)
+        private T GetService(string serviceFullName, string tipoProveedor)
         {
+            switch (tipoProveedor.ToLower())
+            {
+                case "hotel":
+                    tipoProveedor = "HotelServices";
+                    break;
+                case "transport":
+                    tipoProveedor = "FlightServices";
+                    break;
+                case "show":
+                    tipoProveedor = "ShowServices";
+                    break;
+                default:
+                    break;
+            }
+
+            serviceFullName = $"ApplicationCore.SoapAdapter.Services.{tipoProveedor}.{serviceFullName}";
             Type serviceType = Type.GetType(serviceFullName);
             return (T)serviceType.Assembly.CreateInstance(serviceType.FullName);
         }

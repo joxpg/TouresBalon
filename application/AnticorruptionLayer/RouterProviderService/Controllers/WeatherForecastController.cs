@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace RouterProviderService.Controllers
 {
@@ -35,21 +37,6 @@ namespace RouterProviderService.Controllers
         public IEnumerable<WeatherForecast> Get()
         {
 
-            //Type type = typeof(GeneralDto);
-
-            //foreach (var item in type.GetProperties())
-            //{
-            //    if (item.Name == "GeneralFlightInfo")
-            //    {
-            //        Type type1 = GetTypeFromDll(type.Assembly.FullName, item.PropertyType.FullName);
-            //        foreach (var item1 in type1.GetProperties())
-            //        {
-            //            var yy = item1.Name;
-            //        }
-            //    }
-            //}
-
-
             var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
@@ -58,6 +45,46 @@ namespace RouterProviderService.Controllers
                 Summary = Summaries[rng.Next(Summaries.Length)]
             })
             .ToArray();
+        }
+
+        [Route("Rest")]
+        [HttpGet]
+        public async Task<IActionResult> TestRest()
+        {
+            try
+            {
+                var url = @"http://rest-adapter-service/api/restadapter/Provider";
+               var result = await GetAsync(url);
+                if (result.IsSuccessStatusCode)
+                {
+                   return Ok(result.Content.ReadAsStringAsync());
+                }
+                else
+                {
+                    return BadRequest("Error consumiendo el servicio REST");
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogInformation(ex.Message);
+                return BadRequest($"Error consumiendo el servicio REST. {ex.Message}");
+            }
+
+        }
+
+
+        [Route("Soap")]
+        [HttpGet]
+        public IActionResult TestSoap()
+        {
+            return Ok("Servicio Rest OK");
+        }
+
+        private async Task<HttpResponseMessage> GetAsync(string endpoint)
+        {
+            var httpClient = new HttpClient();
+            var messageResponse = await httpClient.GetAsync(endpoint).ConfigureAwait(false);
+            return messageResponse;
         }
     }
 }

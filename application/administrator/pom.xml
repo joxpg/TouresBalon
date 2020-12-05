@@ -20,6 +20,11 @@
 	</properties>
 
 	<dependencies>
+	<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-mail</artifactId>
+  
+</dependency>
 		<dependency>
 			<groupId>de.codecentric</groupId>
 			<artifactId>spring-boot-admin-starter-server</artifactId>
@@ -49,6 +54,7 @@
 	</dependencyManagement>
 
 	<build>
+	<finalName>app</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

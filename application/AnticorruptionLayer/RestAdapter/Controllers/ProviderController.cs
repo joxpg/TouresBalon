@@ -4,6 +4,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using DomainModel.Dto;
 using ApplicationCore.RestAdapter.Interfaces;
+using ApplicationCore.Exceptions;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace RestAdapter.Controllers
 {
@@ -39,8 +42,15 @@ namespace RestAdapter.Controllers
                     return NoContent();
                 else
                 {
-                    return Ok(result);
+                    if (result.Any())
+                        return Ok(result.FirstOrDefault().Flights);//Se devuelve solo el listado de transportes
+                    else
+                        return Ok(result);
                 }
+            }
+            catch (ProviderNotResponseException exProv)
+            {
+                return GetUnavailableService(exProv, info);
             }
             catch (Exception)
             {
@@ -59,6 +69,10 @@ namespace RestAdapter.Controllers
                 var result = await transportServices.Book(info.GeneralFlightInfo.BookFlight, info.InformationProvider);
                 return Ok(result);
             }
+            catch (ProviderNotResponseException exProv)
+            {
+                return GetUnavailableService(exProv, info);
+            }
             catch (Exception)
             {
                 return GetErrorServerCode();
@@ -76,6 +90,10 @@ namespace RestAdapter.Controllers
                 var result = await hotelServices.Search(info.GeneralHotelInfo.SearchRoom, info.InformationProvider);
                 return Ok(result);
             }
+            catch (ProviderNotResponseException exProv)
+            {
+                return GetUnavailableService(exProv, info);
+            }
             catch (Exception)
             {
                 return GetErrorServerCode();
@@ -92,6 +110,10 @@ namespace RestAdapter.Controllers
             {
                 var result = await hotelServices.Book(info.GeneralHotelInfo.RoomReservation, info.InformationProvider);
                 return Ok(result);
+            }
+            catch (ProviderNotResponseException exProv)
+            {
+                return GetUnavailableService(exProv, info);
             }
             catch (Exception)
             {
@@ -111,6 +133,10 @@ namespace RestAdapter.Controllers
                 var result = await showServices.Search(info.GeneralShowInfo.SearchShow, info.InformationProvider);
                 return Ok(result);
             }
+            catch (ProviderNotResponseException exProv)
+            {
+                return GetUnavailableService(exProv, info);
+            }
             catch (Exception)
             {
                 return GetErrorServerCode();
@@ -128,6 +154,10 @@ namespace RestAdapter.Controllers
                 var result = await showServices.Book(info.GeneralShowInfo.ShowReservation, info.InformationProvider);
                 return Ok(result);
             }
+            catch (ProviderNotResponseException exProv)
+            {
+                return GetUnavailableService(exProv, info);
+            }
             catch (Exception)
             {
                 return GetErrorServerCode();
@@ -137,6 +167,17 @@ namespace RestAdapter.Controllers
         private IActionResult GetErrorServerCode()
         {
             return StatusCode(StatusCodes.Status500InternalServerError);
+        }
+
+        private IActionResult GetUnavailableService(ProviderNotResponseException exProv, GeneralDto info)
+        {
+            return StatusCode(StatusCodes.Status503ServiceUnavailable, string.Format(exProv.Message, info.InformationProvider.IdProvider, info.InformationProvider.ProviderName));
+        }
+
+        [HttpGet]
+        public IActionResult Test()
+        {
+            return Ok("Servicio Rest OK");
         }
 
 

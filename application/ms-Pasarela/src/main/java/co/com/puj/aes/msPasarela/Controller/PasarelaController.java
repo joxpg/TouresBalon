@@ -1,5 +1,6 @@
 package co.com.puj.aes.msPasarela.Controller;
 
+import co.com.puj.aes.msBusqueda.Entity.BusquedaReserva;
 import co.com.puj.aes.reserva.entity.Reserva;
 import  co.com.puj.aes.msPasarela.Entity.Pasarela;
 import co.com.puj.aes.msPasarela.Service.PasarelaService;
@@ -28,7 +29,7 @@ public class PasarelaController {
     }*/
     @KafkaListener(topics = "pagopendiente", groupId = "pagopendiente")
     @PostMapping("")
-    public Reserva consumerReserva(Reserva reserva){
+    public BusquedaReserva consumerReserva(BusquedaReserva reserva){
         System.out.println(" Mensaje entrante de pago de reserva = " + reserva);
         Pasarela pasarela= new Pasarela();
         int idpagos= (int)(Math.random());

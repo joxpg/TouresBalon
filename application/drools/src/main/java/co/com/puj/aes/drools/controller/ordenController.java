@@ -28,6 +28,7 @@ public class ordenController {
     public Boolean orderNow(@RequestBody Orden order) {
         session.insert(order);
         session.fireAllRules();
+        System.out.println(" Debe ir a validación  = " + order);
         return order.isCheck();
     }
 

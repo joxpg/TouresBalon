@@ -4,6 +4,7 @@ import co.com.puj.aes.msPagos.entity.Pagos;
 import co.com.puj.aes.msPasarela.Entity.Pasarela;
 import co.com.puj.aes.msPagos.entity.UpdateReserva;
 import co.com.puj.aes.msPagos.service.PagosService;
+import com.google.gson.Gson;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -40,6 +41,14 @@ public class PagosController {
         kafkaTemplatereserva.send("confirmarreserva", updateReserva);
         System.out.println(" Mensaje saliente de un pago = " + updateReserva);
         return pago;
+    }
+
+    @PostMapping(value = "cancelacion/{idBooking}")
+    public void servicioCancelacion(@PathVariable("idBooking") String idBooking) throws Exception {
+        UpdateReserva updateReserva= new UpdateReserva();
+        updateReserva.setIdBooking(idBooking);
+        updateReserva.setActive(false);
+        kafkaTemplatereserva.send("cancelacion", updateReserva);
     }
 
 

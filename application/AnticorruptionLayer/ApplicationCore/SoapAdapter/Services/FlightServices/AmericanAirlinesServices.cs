@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using ApplicationCore.SoapAdapter.Interfaces;
+using ApplicationCore.Exceptions;
 
 namespace ApplicationCore.SoapAdapter.Services.FlightServices
 {
@@ -17,16 +18,30 @@ namespace ApplicationCore.SoapAdapter.Services.FlightServices
 
         public async Task<List<TripDto>> SearchFlight(SearchFlightDto searchFlight)
         {
-            var search = new searchFlightRequest(searchFlight.DepartingCity,searchFlight.ArrivingCity,searchFlight.DepartingDate,searchFlight.Cabin,searchFlight.PromotionCode);
-            var trip = await _flightService.searchFlightAsync(search);
-            return GetTrips(trip.result);
+            var search = new searchFlightRequest(searchFlight.DepartingCity, searchFlight.ArrivingCity, searchFlight.DepartingDate, searchFlight.Cabin, searchFlight.PromotionCode);
+            try
+            {
+                var trip = await _flightService.searchFlightAsync(search);
+                return GetTrips(trip.result);
+            }
+            catch (Exception)
+            {
+                throw new ProviderNotResponseException();
+            }
         }
 
         public async Task<bool> BookFlight(BookFlightDto bookFligth)
         {
             var reservarVuelo = new bookFligthRequest(GetVuelo(bookFligth.Flight), bookFligth.PassengerName);
-            var respuesta = await _flightService.bookFligthAsync(reservarVuelo);
-            return respuesta.result;
+            try
+            {
+                var respuesta = await _flightService.bookFligthAsync(reservarVuelo);
+                return respuesta.result;
+            }
+            catch (Exception)
+            {
+                throw new ProviderNotResponseException("{0}");
+            }
         }
 
         private List<TripDto> GetTrips(Trip[] trips)
@@ -65,7 +80,7 @@ namespace ApplicationCore.SoapAdapter.Services.FlightServices
                 Meals = flight.meals,
                 Price = flight.price,
                 TripNumber = flight.number,
-                FlightNumber = flight.number==null? "" : flight.number.ToString()
+                FlightNumber = flight.number == null ? "" : flight.number.ToString()
             };
         }
 

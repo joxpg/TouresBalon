@@ -2,6 +2,7 @@ using ApplicationCore.RouterProvider.Interfaces;
 using ApplicationCore.RouterProvider.Service;
 using Infrastructure.Data.Interfaces;
 using Infrastructure.Data.Repository;
+using Infrastructure.Filters.ExceptionHandling;
 using Infrastructure.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -9,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using RouterProviderService.Filters.ExceptionHandling;
+
 using Steeltoe.Discovery.Client;
 
 

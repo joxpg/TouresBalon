@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using ApplicationCore.RestAdapter.Services.CommonServices;
 using ApplicationCore.RestAdapter.Interfaces;
+using ApplicationCore.Exceptions;
+using System;
 
 namespace ApplicationCore.RestAdapter.Services.DomainServices
 {
@@ -16,8 +18,8 @@ namespace ApplicationCore.RestAdapter.Services.DomainServices
         private readonly IMetadataRestRepository _repository;
 
         public TransportService(
-            IConsumer consumer, 
-            IFieldMapper fieldMapper, 
+            IConsumer consumer,
+            IFieldMapper fieldMapper,
             IMetadataRestRepository repository)
         {
             _consumer = consumer;
@@ -30,7 +32,7 @@ namespace ApplicationCore.RestAdapter.Services.DomainServices
             //Obtiene la información de metadata y la lleva al modelo de metadata
             var metadataCofig = await _repository.GetMetadata(informationProvider, IMetadataRestRepository.RequestType.book);
 
-            if(metadataCofig.Body!=null || metadataCofig.Body!="")
+            if (metadataCofig.Body != null || metadataCofig.Body != "")
             {
                 var metadataFieldTransport = Newtonsoft.Json.JsonConvert.DeserializeObject<Entity.Transport.BookFlightDto>(metadataCofig.Body);
                 //Convierte el objeto request en Json
@@ -40,12 +42,15 @@ namespace ApplicationCore.RestAdapter.Services.DomainServices
 
             metadataCofig.Url = _fieldMapper.GetUrlMapped(bookFlight, metadataCofig.Url);
             var providerConsumer = new ProviderConsumerService(_consumer);
+
             var result = await providerConsumer.Request(metadataCofig);
 
             if (!result.IsSuccessStatusCode)
-            {
-                return false;
-            }
+                throw new ProviderNotResponseException();
+
+            var value = await result.Content.ReadAsStringAsync();
+            if (bool.TryParse(value, out bool finalBook))
+                return finalBook;
 
             return true;
         }
@@ -67,16 +72,14 @@ namespace ApplicationCore.RestAdapter.Services.DomainServices
             metadataCofig.Url = _fieldMapper.GetUrlMapped(searchFlight, metadataCofig.Url);
             var providerConsumer = new ProviderConsumerService(_consumer);
             var result = await providerConsumer.Request(metadataCofig);
-            if (!result.IsSuccessStatusCode)//Respondió de manera negativa
-            {
-                return new List<TripDto>();
-            }
+            if (!result.IsSuccessStatusCode)//Respondió de manera 
+                throw new ProviderNotResponseException();
 
             var trips = new List<TripDto>();
-            var response = await  result.Content.ReadAsStringAsync();
-            //var jt = JToken.Parse(response);
+            var response = await result.Content.ReadAsStringAsync();
 
-            var  fly = _fieldMapper.GetObjetMapped<List<FlightDto>>(response, metadataCofig.Response);
+
+            var fly = _fieldMapper.GetObjetMapped<List<FlightDto>>(response, metadataCofig.Response);
             if (fly != null)
                 trips.Add(new TripDto { Flights = fly });
 
