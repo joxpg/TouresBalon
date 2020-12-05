@@ -7,58 +7,75 @@ import co.com.puj.aes.msPagos.repository.PagosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.Column;
+import java.sql.SQLOutput;
 import java.util.*;
 
 @Service
-public class PagosService implements ServiceInterface{
-
+public class PagosService implements ServiceInterface <Pagos, String>{
+    //@Autowired
     private PagosRepository pagosRepository;
-/*
+
     @Override
-    public Pagos findById(Short key) throws Exception {
+    public Pagos findById(String key) throws Exception {
         if (key == null || !existeById(key)) {
             throw new ResourceNotFoundException("El pago con id " + key + " no existe.");
         }
         return pagosRepository.findById(key).get();
+    }
+    @Override
+    public Pagos findByIdBooking(String key) throws Exception {
+        if (key == null || !existeByIdBooking(key)) {
+            throw new ResourceNotFoundException("El pago con id " + key + " no existe.");
+        }
+        return pagosRepository.findByIdBooking(key);
     }
 
     @Override
     public List<Pagos> findAll() throws Exception {
         return (List <Pagos>) pagosRepository.findAll();
     }
-    public List <Map<String, String>> findAllByPagos() throws Exception {
-        return pagosRepository.findAllByPagos();
-    }
 
     @Override
     public Pagos create(Pagos entity) throws Exception {
-        entity.setEstadoPagos(true);
+        System.out.println("error: "+entity.getIdPayment());
         return pagosRepository.save(entity);
     }
 
     @Override
     public Pagos update(Pagos entity) throws Exception {
-        Pagos pagos = pagosRepository.findById(entity.getIdPagos()).get();
+        //Pagos pagos = pagosRepository.findById(entity.getIdPayment()).get();
+        Pagos pagos = pagosRepository.findByIdBooking(entity.getIdBooking());
 
-        if (entity.getIdReserva() != null) {
-            pagos.setIdReserva(entity.getIdReserva());
+        if (entity.getIdBooking() != null) {
+            pagos.setIdBooking(entity.getIdBooking());
         }
-
+        if (entity.getAmountT() != null) {
+            pagos.setAmountT(entity.getAmountT());
+        }
+        if (entity.getAmountH() != null) {
+            pagos.setAmountH(entity.getAmountH());
+        }
+        if (entity.getAmountS() != null) {
+            pagos.setAmountS(entity.getAmountS());
+        }
+        if (entity.getActive() != null) {
+            pagos.setActive(entity.getActive());
+        }
         return pagosRepository.save(pagos);
     }
 
     @Override
-    public void delete(Short key) throws Exception {
-        
+    public void delete(String key) throws Exception {
+
     }
 
-    public Pagos deletePagos(Short key) throws Exception {
-        Pagos pagos = pagosRepository.findById(key).get();
-        pagos.setEstadoPagos(false);
+    public Pagos cancelacion(String key) throws Exception {
+        Pagos pagos = pagosRepository.findByIdBooking(key);
+        pagos.setActive(false);
         return pagosRepository.save(pagos);
     }
-
-    public Boolean existeById (Short key) throws Exception {
+    public Boolean existeById (String key) throws Exception {
         if(key==null){
             throw new ResourceNotFoundException("El ID a validar, no puede estar vacio.");
         }
@@ -68,24 +85,14 @@ public class PagosService implements ServiceInterface{
         return pagosRepository.existsById(key);
     }
 
-    public Pagos findId(Short key) throws Exception {
-        if (key == null || !existeById(key)) {
-            throw new ResourceNotFoundException("El pagos con id " + key + " no existe.");
+    public Boolean existeByIdBooking (String key) throws Exception {
+        if(key==null){
+            throw new ResourceNotFoundException("El ID a validar, no puede estar vacio.");
         }
-        return pagosRepository.findById(key).get();
+        if (pagosRepository.findByIdBooking(key) == null) {
+            return false;
+        }
+        return pagosRepository.existsByIdBooking(key);
     }
 
-    /**
-     * Metodo para activar pagos
-     * @param key id de pagos
-     * @return
-     * @throws Exception
-
-    @Deprecated
-    public Pagos activar(Short key) throws Exception {
-        Pagos pagos = pagosRepository.findById(key).get();
-        pagos.setEstadoPagos(true);
-        return pagosRepository.save(pagos);
-    }
-*/
 }

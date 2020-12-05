@@ -24,7 +24,7 @@ public class Pagos implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "ID_PAGOS")
-    private String idPayment;
+    private int idPayment;
     @Column(name = "ID_RESERVA")
     private String idBooking;
     @Column(name = "PAGOT")
@@ -35,5 +35,25 @@ public class Pagos implements Serializable {
     private Long amountS;
     @Column(name = "ESTADO_RESERVA")
     private Boolean active;
+
+    public int getIdPayment() { return idPayment; }
+    public void setIdPayment(int idPayment) { this.idPayment = idPayment;}
+
+    public String getIdBooking() { return idBooking; }
+    public void setIdBooking(String idBooking) { this.idBooking = idBooking;}
+
+    public Long getAmountT() { return amountT; }
+    public void setAmountT(Long amountT) { this.amountT = amountT;}
+
+    public Long getAmountH() { return amountH; }
+    public void setAmountH(Long amountH) { this.amountH = amountH;}
+
+    public Long getAmountS() { return amountS; }
+    public void setAmountS(Long amountS) { this.amountS = amountS;}
+
+    public Boolean getActive() { return active; }
+    public void setActive(Boolean active) { this.active = active;}
+
+
 
 }

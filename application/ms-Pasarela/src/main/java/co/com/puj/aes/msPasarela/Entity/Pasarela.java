@@ -10,15 +10,15 @@ import java.io.Serializable;
 @Setter
 public class Pasarela implements Serializable {
 
-    private String idPayment;
+    private int idPayment;
     private String idBooking;
     private Long amountT;
     private Long amountH;
     private Long amountS;
     private Boolean active;
 
-    public String getIdPayment() { return idPayment; }
-    public void setIdPayment(String idPayment) { this.idPayment = idPayment; }
+    public int getIdPayment() { return idPayment; }
+    public void setIdPayment(int idPayment) { this.idPayment = idPayment; }
 
     public String getIdBooking() { return idBooking; }
     public void setIdBooking(String idBooking) { this.idBooking = idBooking; }

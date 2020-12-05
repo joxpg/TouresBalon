@@ -9,17 +9,9 @@ import java.util.List;
 import java.util.Map;
 
 @Repository
-public interface PagosRepository extends CrudRepository<Pagos, Short>{
-    Pagos findEpsByIdEps(Short idEps);
-    Pagos findByIdEpsAndEstadoEpsTrue(Short idEps);
+public interface PagosRepository extends CrudRepository<Pagos, String>{
 
+    Pagos findByIdBooking(String idBooking);
 
-    @Query(value=" SELECT COUNT(\"simedSch\".\"USUARIO\".\"ID_EPS\") AS TOTAL,\n" +
-            "\"simedSch\".\"EPS\".\"NOMBRE_EPS\" AS NOMBRE_EPS\n" +
-            "FROM \"simedSch\".\"USUARIO\"\n" +
-            "JOIN \"simedSch\".\"EPS\" ON \"simedSch\".\"USUARIO\".\"ID_EPS\" = \"simedSch\".\"EPS\".\"ID_EPS\"\n" +
-            "GROUP BY \"simedSch\".\"EPS\".\"NOMBRE_EPS\"",nativeQuery = true)
-
-
-    List<Map<String, String>> findAllByPagos();
+    Boolean existsByIdBooking(String idBooking);
 }
