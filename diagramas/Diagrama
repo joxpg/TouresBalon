@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2020-12-05T00:35:28.530Z" agent="5.0 (X11)" etag="pd1jpqy9606wH7IICw88" version="13.10.9" type="github">
+<mxfile host="app.diagrams.net" modified="2020-12-05T00:43:57.074Z" agent="5.0 (X11)" etag="_AN-y10XRJFY8Owq2foV" version="13.10.9" type="github">
   <diagram id="9anLDQHCdUL1ynDijxt3" name="Arquitectura General">
     <mxGraphModel dx="1623" dy="1661" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -28,7 +28,7 @@
         <mxCell id="KUd42jZBUJtkj55PW7YX-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="KUd42jZBUJtkj55PW7YX-16" target="KUd42jZBUJtkj55PW7YX-17" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="KUd42jZBUJtkj55PW7YX-16" value="Generic group" style="fillColor=#dae8fc;strokeColor=#6c8ebf;dashed=0;verticalAlign=top;fontStyle=0;" parent="1" vertex="1">
+        <mxCell id="KUd42jZBUJtkj55PW7YX-16" value="Usuarios" style="fillColor=#dae8fc;strokeColor=#6c8ebf;dashed=0;verticalAlign=top;fontStyle=0;" parent="1" vertex="1">
           <mxGeometry x="-790" y="-282.75" width="190" height="275" as="geometry" />
         </mxCell>
         <mxCell id="DpYKsPVAlP6ZBf5e1Bjs-15" value="Sistema de Colas Permanentes" style="fillColor=#ffe6cc;strokeColor=#d79b00;dashed=0;verticalAlign=top;fontStyle=0;" parent="1" vertex="1">
