@@ -32,8 +32,6 @@ public class PasarelaController {
     public BusquedaReserva consumerReserva(BusquedaReserva reserva){
         System.out.println(" Mensaje entrante de pago de reserva = " + reserva);
         Pasarela pasarela= new Pasarela();
-        int idpagos= (int)(Math.random());
-        pasarela.setIdPayment(Integer.toString(idpagos));
         pasarela.setIdBooking(reserva.getIdBooking());
         pasarela.setActive(true);
         pasarela.setAmountH(reserva.getHostingBooking().getAmountH());

@@ -40,6 +40,7 @@ public class BusquedaController {
 
     @PostMapping("")
     public void servicioBusqueda(@Valid @RequestBody BusquedaProducto busquedaproducto){
+        System.out.println(" Mensaje saliente de una busqueda = " + busquedaproducto);
         kafkaTemplateproducto.send("productobusqueda", busquedaproducto);
     }
 
